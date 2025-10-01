@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - Hệ thống đánh giá và review sách</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-book-open"></i> BookReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm sách...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Trang chủ</a></li>
+                    <li><a href="pages/products.html">Sách</a></li>
+                    <li><a href="pages/categories.html">Thể loại</a></li>
+                    <li><a href="pages/authors.html">Tác giả</a></li>
+                    <li><a href="pages/compare.html">So sánh</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-avatar">
+                                        <img src="assets/images/product1.jpg" alt="Book Cover">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>To Kill a Mockingbird</strong> vừa có đánh giá mới</p>
+                                        <span class="notification-time">2 giờ trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-avatar">
+                                        <img src="assets/images/product2.jpg" alt="Book Cover">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>1984</strong> vừa có đánh giá mới</p>
+                                        <span class="notification-time">3 giờ trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-avatar">
+                                        <img src="assets/images/user1.jpg" alt="User">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>Nguyễn Văn A</strong> đã thích đánh giá của bạn</p>
+                                        <span class="notification-time">1 ngày trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="pages/user/profile.html">
+                            <img src="assets/images/avatar.jpg" alt="Avatar"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Khám phá thế giới qua từng trang sách</h1>
+            <p>Tham khảo hàng ngàn đánh giá sách từ cộng đồng đọc giả giúp bạn tìm được những cuốn sách phù hợp nhất với
+                bạn.</p>
+            <a href="pages/products.html" class="btn btn-secondary">Khám phá ngay</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Thể loại sách</h2>
+            <p class="section-subtitle">Khám phá đánh giá và bình luận của độc giả theo các thể loại sách yêu thích của
+                bạn</p>
+
+            <div class="filter-chips">
+                <div class="chip active" data-category="all" onclick="filterProducts('all')">
+                    Tất cả
+                </div>
+                <div class="chip" data-category="fiction" onclick="filterProducts('fiction')">
+                    Tiểu thuyết
+                </div>
+                <div class="chip" data-category="nonfiction" onclick="filterProducts('nonfiction')">
+                    Sách phi hư cấu
+                </div>
+                <div class="chip" data-category="business" onclick="filterProducts('business')">
+                    Kinh doanh
+                </div>
+                <div class="chip" data-category="selfhelp" onclick="filterProducts('selfhelp')">
+                    Phát triển bản thân
+                </div>
+                <div class="chip" data-category="science" onclick="filterProducts('science')">
+                    Khoa học
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Book Card 1 -->
+                <div class="col-3 col-md-6 col-sm-12" data-category="fiction">
+                    <div class="card product-card">
+                        <div class="product-img">
+                            <img src="assets/images/product1.jpg" alt="To Kill a Mockingbird">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">To Kill a Mockingbird</h3>
+                            <h4 class="product-author">Harper Lee</h4>
+                            <div class="product-rating">
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span>4.5 (320 đánh giá)</span>
+                            </div>
+                            <div class="sentiment-overview">
+                                <div class="sentiment-stat">
+                                    <span class="sentiment-number sentiment-positive">92%</span>
+                                    <span>Tích cực</span>
+                                </div>
+                                <div class="sentiment-stat">
+                                    <span class="sentiment-number sentiment-negative">8%</span>
+                                    <span>Tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer product-actions">
+                            <button class="btn btn-outline" onclick="addToCompare('p1', 'iPhone 13 Pro Max')">
+                                <i class="fas fa-exchange-alt"></i> So sánh
+                            </button>
+                            <button class="btn btn-outline favorite-btn" data-product="p1"
+                                onclick="addToFavorites('p1', 'iPhone 13 Pro Max')">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <a href="pages/product-detail.html" class="btn btn-primary">Chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="col-3 col-md-6 col-sm-12" data-category="phone">
+                    <div class="card product-card">
+                        <div class="product-img">
+                            <img src="assets/images/product2.jpg" alt="Samsung Galaxy S21">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Samsung Galaxy S21 Ultra</h3>
+                            <div class="product-rating">
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span>4.0 (98 đánh giá)</span>
+                            </div>
+                            <div class="sentiment-overview">
+                                <div class="sentiment-stat">
+                                    <span class="sentiment-number sentiment-positive">78%</span>
+                                    <span>Tích cực</span>
+                                </div>
+                                <div class="sentiment-stat">
+                                    <span class="sentiment-number sentiment-negative">22%</span>
+                                    <span>Tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer product-actions">
+                            <button class="btn btn-outline" onclick="addToCompare('p2', 'Samsung Galaxy S21 Ultra')">
+                                <i class="fas fa-exchange-alt"></i> So sánh
+                            </button>
+                            <button class="btn btn-outline favorite-btn" data-product="p2"
+                                onclick="addToFavorites('p2', 'Samsung Galaxy S21 Ultra')">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <a href="pages/product-detail.html" class="btn btn-primary">Chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="col-3 col-md-6 col-sm-12" data-category="laptop">
+                    <div class="card product-card">
+                        <div class="product-img">
+                            <img src="assets/images/product3.jpg" alt="MacBook Pro">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">MacBook Pro M1</h3>
+                            <div class="product-rating">
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>4.9 (75 đánh giá)</span>
+                            </div>
+                            <div class="sentiment-overview">
+                                <div class="sentiment-stat">
+                                    <span class="sentiment-number sentiment-positive">92%</span>
+                                    <span>Tích cực</span>
+                                </div>
+                                <div class="sentiment-stat">
+                                    <span class="sentiment-number sentiment-negative">8%</span>
+                                    <span>Tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer product-actions">
+                            <button class="btn btn-outline" onclick="addToCompare('p3', 'MacBook Pro M1')">
+                                <i class="fas fa-exchange-alt"></i> So sánh
+                            </button>
+                            <button class="btn btn-outline favorite-btn" data-product="p3"
+                                onclick="addToFavorites('p3', 'MacBook Pro M1')">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <a href="pages/product-detail.html" class="btn btn-primary">Chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="col-3 col-md-6 col-sm-12" data-category="tablet">
+                    <div class="card product-card">
+                        <div class="product-img">
+                            <img src="assets/images/product4.jpg" alt="iPad Pro">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">iPad Pro 2021</h3>
+                            <div class="product-rating">
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span>4.7 (63 đánh giá)</span>
+                            </div>
+                            <div class="sentiment-overview">
+                                <div class="sentiment-stat">
+                                    <span class="sentiment-number sentiment-positive">88%</span>
+                                    <span>Tích cực</span>
+                                </div>
+                                <div class="sentiment-stat">
+                                    <span class="sentiment-number sentiment-negative">12%</span>
+                                    <span>Tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer product-actions">
+                            <button class="btn btn-outline" onclick="addToCompare('p4', 'iPad Pro 2021')">
+                                <i class="fas fa-exchange-alt"></i> So sánh
+                            </button>
+                            <button class="btn btn-outline favorite-btn" data-product="p4"
+                                onclick="addToFavorites('p4', 'iPad Pro 2021')">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <a href="pages/product-detail.html" class="btn btn-primary">Chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more product cards as needed -->
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="pages/products.html" class="btn btn-outline">Xem thêm sản phẩm</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Reviews -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Đánh giá nổi bật</h2>
+            <p class="section-subtitle">Các đánh giá chi tiết và hữu ích nhất từ cộng đồng người dùng</p>
+
+            <div class="row">
+                <div class="col-6 col-md-12">
+                    <div class="card review-item">
+                        <div class="review-header">
+                            <div class="reviewer">
+                                <img src="assets/images/user1.jpg" alt="User"
+                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                Nguyễn Văn A
+                            </div>
+                            <div class="review-date">
+                                28/09/2023
+                            </div>
+                        </div>
+                        <div class="product-rating mb-2">
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span>iPhone 13 Pro Max</span>
+                        </div>
+                        <div class="review-content">
+                            <p>iPhone 13 Pro Max là chiếc điện thoại đáng đồng tiền bát gạo nhất mà tôi từng sử dụng.
+                                Camera chụp cực kỳ đẹp trong mọi điều kiện ánh sáng, pin dùng thoải mái 2 ngày, màn hình
+                                120Hz mượt mà. Tuy nhiên, sạc vẫn hơi chậm so với các đối thủ Android và giá khá cao.
+                                Nhưng nhìn chung, đây vẫn là một lựa chọn tuyệt vời cho những ai cần một chiếc điện
+                                thoại cao cấp và bền bỉ.</p>
+                        </div>
+                        <div class="review-actions">
+                            <div class="review-action" onclick="voteReview('r1', true)" data-review="r1">
+                                <i class="far fa-thumbs-up"></i>
+                                Hữu ích
+                                <span class="count">42</span>
+                            </div>
+                            <div class="review-action" onclick="voteReview('r1', false)" data-review="r1">
+                                <i class="far fa-thumbs-down"></i>
+                                Không hữu ích
+                                <span class="count">5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-12">
+                    <div class="card review-item">
+                        <div class="review-header">
+                            <div class="reviewer">
+                                <img src="assets/images/user2.jpg" alt="User"
+                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                Trần Thị B
+                            </div>
+                            <div class="review-date">
+                                25/09/2023
+                            </div>
+                        </div>
+                        <div class="product-rating mb-2">
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span>MacBook Pro M1</span>
+                        </div>
+                        <div class="review-content">
+                            <p>MacBook Pro M1 là một cỗ máy mạnh mẽ đáng kinh ngạc. Hiệu năng vượt trội, pin trâu, không
+                                gây tiếng ồn và nhiệt độ luôn mát mẻ. Màn hình Retina sắc nét, bàn phím gõ cực kỳ thoải
+                                mái. Điểm trừ duy nhất là số cổng kết nối còn hạn chế và không thể nâng cấp RAM sau này.
+                                Đối với công việc đồ họa và lập trình của tôi, đây là chiếc laptop hoàn hảo.</p>
+                        </div>
+                        <div class="review-actions">
+                            <div class="review-action" onclick="voteReview('r2', true)" data-review="r2">
+                                <i class="far fa-thumbs-up"></i>
+                                Hữu ích
+                                <span class="count">38</span>
+                            </div>
+                            <div class="review-action" onclick="voteReview('r2', false)" data-review="r2">
+                                <i class="far fa-thumbs-down"></i>
+                                Không hữu ích
+                                <span class="count">3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="pages/reviews.html" class="btn btn-outline">Xem thêm đánh giá</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Cách hệ thống hoạt động</h2>
+            <p class="section-subtitle">Trí tuệ nhân tạo phân tích cảm xúc và phản hồi của khách hàng để đưa ra thông
+                tin hữu ích nhất</p>
+
+            <div class="row">
+                <div class="col-4 col-md-6 col-sm-12">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;">
+                                <i class="fas fa-comment-dots"></i>
+                            </div>
+                            <h3>Thu thập đánh giá</h3>
+                            <p>Hệ thống thu thập đánh giá từ người dùng thực và lọc ra các đánh giá spam để đảm bảo
+                                thông tin chất lượng.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 col-md-6 col-sm-12">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3>Phân tích cảm xúc</h3>
+                            <p>Công nghệ AI phân tích cảm xúc tổng thể và theo từng khía cạnh của sản phẩm từ nội dung
+                                đánh giá.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 col-md-6 col-sm-12">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h3>Thống kê trực quan</h3>
+                            <p>Kết quả được hiển thị dưới dạng biểu đồ và thống kê trực quan giúp dễ dàng đưa ra quyết
+                                định mua sắm.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background-color: var(--primary-color); color: white;">
+        <div class="container text-center">
+            <h2>Đóng góp đánh giá và trải nghiệm của bạn</h2>
+            <p class="mb-4">Giúp cộng đồng đưa ra quyết định mua sắm thông minh và nhận thông báo khi có đánh giá mới về
+                sản phẩm yêu thích</p>
+            <a href="pages/auth.html" class="btn btn-secondary">Đăng ký ngay</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Về chúng tôi</h3>
+                    <p>Hệ thống tham khảo phản hồi khách hàng giúp bạn đưa ra quyết định mua sắm thông minh dựa trên
+                        đánh giá thực tế.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên kết</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="pages/products.html">Sản phẩm</a></li>
+                        <li><a href="pages/compare.html">So sánh</a></li>
+                        <li><a href="pages/contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên hệ</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận XYZ, TP.HCM</li>
+                        <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope"></i> info@productreview.com</li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Theo dõi</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                &copy; 2023 Hệ thống tham khảo phản hồi khách hàng. Tất cả quyền được bảo lưu.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

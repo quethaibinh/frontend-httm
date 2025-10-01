@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý đánh giá - Hệ thống tham khảo phản hồi khách hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../../index.html" class="logo">
+                    <i class="fas fa-comment-dots"></i> ProductReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../../index.html">Trang chủ</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">5</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Đánh giá mới</strong> cần xét duyệt</p>
+                                        <span class="notification-time">5 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Người dùng mới</strong> đã đăng ký</p>
+                                        <span class="notification-time">30 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Báo cáo vi phạm</strong> đã được gửi đến</p>
+                                        <span class="notification-time">1 giờ trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">
+                            <img src="../../assets/images/admin-avatar.jpg" alt="Admin"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="./admin-dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i> Tổng quan
+                </a>
+                <a href="./admin-users.html">
+                    <i class="fas fa-users"></i> Quản lý người dùng
+                </a>
+                <a href="./admin-products.html">
+                    <i class="fas fa-box"></i> Quản lý sản phẩm
+                </a>
+                <a href="./admin-reviews.html" class="active">
+                    <i class="fas fa-comments"></i> Quản lý đánh giá
+                </a>
+                <a href="./admin-models.html">
+                    <i class="fas fa-brain"></i> Quản lý model AI
+                </a>
+                <a href="./admin-settings.html">
+                    <i class="fas fa-cog"></i> Cài đặt
+                </a>
+                <a href="../../index.html">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Quản lý đánh giá</h1>
+                <div class="page-actions">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-file-export"></i> Xuất dữ liệu
+                    </button>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="row">
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="summary-card">
+                        <div class="summary-icon blue">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="summary-info">
+                            <span class="summary-value">8,521</span>
+                            <span class="summary-label">Tổng số đánh giá</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="summary-card">
+                        <div class="summary-icon green">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="summary-info">
+                            <span class="summary-value">7,842</span>
+                            <span class="summary-label">Đã phê duyệt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="summary-card">
+                        <div class="summary-icon orange">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="summary-info">
+                            <span class="summary-value">36</span>
+                            <span class="summary-label">Chờ phê duyệt</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="summary-card">
+                        <div class="summary-icon red">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <div class="summary-info">
+                            <span class="summary-value">25</span>
+                            <span class="summary-label">Bị báo cáo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="filter-product">Sản phẩm</label>
+                    <select id="filter-product" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="iphone13">iPhone 13 Pro Max</option>
+                        <option value="samsung">Samsung Galaxy S21</option>
+                        <option value="macbook">MacBook Pro M1</option>
+                        <option value="ipad">iPad Pro 2021</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-sentiment">Cảm xúc</label>
+                    <select id="filter-sentiment" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="positive">Tích cực</option>
+                        <option value="neutral">Trung tính</option>
+                        <option value="negative">Tiêu cực</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-status">Trạng thái</label>
+                    <select id="filter-status" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="approved">Đã phê duyệt</option>
+                        <option value="pending">Chờ phê duyệt</option>
+                        <option value="reported">Bị báo cáo</option>
+                        <option value="rejected">Đã từ chối</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-date">Thời gian</label>
+                    <select id="filter-date" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="today">Hôm nay</option>
+                        <option value="week">Tuần này</option>
+                        <option value="month">Tháng này</option>
+                        <option value="year">Năm nay</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="search-reviews">Tìm kiếm</label>
+                    <div class="search-input">
+                        <input type="text" id="search-reviews" class="form-control" placeholder="Tìm nội dung...">
+                        <button type="button" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tab-container">
+                <div class="tabs">
+                    <button class="tab active" data-tab="all-reviews">
+                        Tất cả <span class="badge">8,521</span>
+                    </button>
+                    <button class="tab" data-tab="pending-reviews">
+                        Chờ phê duyệt <span class="badge warning">36</span>
+                    </button>
+                    <button class="tab" data-tab="reported-reviews">
+                        Bị báo cáo <span class="badge danger">25</span>
+                    </button>
+                    <button class="tab" data-tab="rejected-reviews">
+                        Đã từ chối <span class="badge">15</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Reviews Table -->
+            <div class="tab-content active" id="all-reviews">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="table-checkbox">
+                                            <input type="checkbox" id="select-all">
+                                        </th>
+                                        <th class="sortable">ID <i class="fas fa-sort"></i></th>
+                                        <th class="sortable">Người dùng <i class="fas fa-sort"></i></th>
+                                        <th class="sortable">Sản phẩm <i class="fas fa-sort"></i></th>
+                                        <th>Đánh giá</th>
+                                        <th>Nội dung</th>
+                                        <th>Cảm xúc</th>
+                                        <th class="sortable">Thời gian <i class="fas fa-sort"></i></th>
+                                        <th class="sortable">Trạng thái <i class="fas fa-sort"></i></th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="table-checkbox">
+                                            <input type="checkbox" class="row-checkbox">
+                                        </td>
+                                        <td>#R001</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/user1.jpg" alt="User"
+                                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                Nguyễn Văn A
+                                            </div>
+                                        </td>
+                                        <td>iPhone 13 Pro Max</td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </td>
+                                        <td class="review-content">
+                                            <span>Sản phẩm rất tốt, màn hình đẹp, pin trâu...</span>
+                                        </td>
+                                        <td><span class="status status-positive">Tích cực</span></td>
+                                        <td>5 phút trước</td>
+                                        <td><span class="status status-approved">Đã phê duyệt</span></td>
+                                        <td class="table-actions">
+                                            <button class="action-btn view-btn" title="Xem chi tiết"
+                                                data-modal="viewReviewModal"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                                data-modal="editReviewModal"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" title="Xóa"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="table-checkbox">
+                                            <input type="checkbox" class="row-checkbox">
+                                        </td>
+                                        <td>#R002</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/user2.jpg" alt="User"
+                                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                Trần Thị B
+                                            </div>
+                                        </td>
+                                        <td>Samsung Galaxy S21</td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </td>
+                                        <td class="review-content">
+                                            <span>Máy chạy mượt, thiết kế đẹp, camera chụp rất nét...</span>
+                                        </td>
+                                        <td><span class="status status-positive">Tích cực</span></td>
+                                        <td>30 phút trước</td>
+                                        <td><span class="status status-approved">Đã phê duyệt</span></td>
+                                        <td class="table-actions">
+                                            <button class="action-btn view-btn" title="Xem chi tiết"
+                                                data-modal="viewReviewModal"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                                data-modal="editReviewModal"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" title="Xóa"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="table-checkbox">
+                                            <input type="checkbox" class="row-checkbox">
+                                        </td>
+                                        <td>#R003</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/user3.jpg" alt="User"
+                                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                Lê Văn C
+                                            </div>
+                                        </td>
+                                        <td>MacBook Pro M1</td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </td>
+                                        <td class="review-content">
+                                            <span>Pin tốt, nhưng cổng kết nối quá ít, không có USB thường...</span>
+                                        </td>
+                                        <td><span class="status status-negative">Tiêu cực</span></td>
+                                        <td>1 giờ trước</td>
+                                        <td><span class="status status-pending">Chờ phê duyệt</span></td>
+                                        <td class="table-actions">
+                                            <button class="action-btn view-btn" title="Xem chi tiết"
+                                                data-modal="viewReviewModal"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                                data-modal="editReviewModal"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" title="Xóa"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="table-checkbox">
+                                            <input type="checkbox" class="row-checkbox">
+                                        </td>
+                                        <td>#R004</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/user4.jpg" alt="User"
+                                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                Phạm Thị D
+                                            </div>
+                                        </td>
+                                        <td>iPad Pro 2021</td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star-half-alt"></i>
+                                            </div>
+                                        </td>
+                                        <td class="review-content">
+                                            <span>Màn hình quá đẹp, trải nghiệm với Apple Pencil rất mượt...</span>
+                                        </td>
+                                        <td><span class="status status-positive">Tích cực</span></td>
+                                        <td>2 giờ trước</td>
+                                        <td><span class="status status-approved">Đã phê duyệt</span></td>
+                                        <td class="table-actions">
+                                            <button class="action-btn view-btn" title="Xem chi tiết"
+                                                data-modal="viewReviewModal"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                                data-modal="editReviewModal"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" title="Xóa"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="table-checkbox">
+                                            <input type="checkbox" class="row-checkbox">
+                                        </td>
+                                        <td>#R005</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/user5.jpg" alt="User"
+                                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                Hoàng Văn E
+                                            </div>
+                                        </td>
+                                        <td>Google Pixel 6</td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </td>
+                                        <td class="review-content">
+                                            <span>Camera đỉnh cao, Android thuần mượt mà, rất thích...</span>
+                                        </td>
+                                        <td><span class="status status-positive">Tích cực</span></td>
+                                        <td>3 giờ trước</td>
+                                        <td><span class="status status-reported">Bị báo cáo</span></td>
+                                        <td class="table-actions">
+                                            <button class="action-btn view-btn" title="Xem chi tiết"
+                                                data-modal="viewReviewModal"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                                data-modal="editReviewModal"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" title="Xóa"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="table-checkbox">
+                                            <input type="checkbox" class="row-checkbox">
+                                        </td>
+                                        <td>#R006</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/user6.jpg" alt="User"
+                                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                Vũ Thị F
+                                            </div>
+                                        </td>
+                                        <td>Dell XPS 13</td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </td>
+                                        <td class="review-content">
+                                            <span>Laptop tốt nhất từng dùng, màn hình đẹp, hiệu suất cao...</span>
+                                        </td>
+                                        <td><span class="status status-positive">Tích cực</span></td>
+                                        <td>5 giờ trước</td>
+                                        <td><span class="status status-approved">Đã phê duyệt</span></td>
+                                        <td class="table-actions">
+                                            <button class="action-btn view-btn" title="Xem chi tiết"
+                                                data-modal="viewReviewModal"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                                data-modal="editReviewModal"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" title="Xóa"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="table-checkbox">
+                                            <input type="checkbox" class="row-checkbox">
+                                        </td>
+                                        <td>#R007</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/user7.jpg" alt="User"
+                                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                Đỗ Văn G
+                                            </div>
+                                        </td>
+                                        <td>AirPods Pro</td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </td>
+                                        <td class="review-content">
+                                            <span>Chống ồn kém, tai nghe rất hay bị rơi, không đáng giá tiền...</span>
+                                        </td>
+                                        <td><span class="status status-negative">Tiêu cực</span></td>
+                                        <td>1 ngày trước</td>
+                                        <td><span class="status status-rejected">Đã từ chối</span></td>
+                                        <td class="table-actions">
+                                            <button class="action-btn view-btn" title="Xem chi tiết"
+                                                data-modal="viewReviewModal"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                                data-modal="editReviewModal"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" title="Xóa"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="table-checkbox">
+                                            <input type="checkbox" class="row-checkbox">
+                                        </td>
+                                        <td>#R008</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../../assets/images/user8.jpg" alt="User"
+                                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                Lý Thị H
+                                            </div>
+                                        </td>
+                                        <td>Samsung Galaxy Tab S7</td>
+                                        <td>
+                                            <div class="star-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                        </td>
+                                        <td class="review-content">
+                                            <span>Máy tính bảng Android tốt nhất hiện tại, S Pen rất tiện lợi...</span>
+                                        </td>
+                                        <td><span class="status status-positive">Tích cực</span></td>
+                                        <td>2 ngày trước</td>
+                                        <td><span class="status status-approved">Đã phê duyệt</span></td>
+                                        <td class="table-actions">
+                                            <button class="action-btn view-btn" title="Xem chi tiết"
+                                                data-modal="viewReviewModal"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                                data-modal="editReviewModal"><i class="fas fa-edit"></i></button>
+                                            <button class="action-btn delete-btn" title="Xóa"><i
+                                                    class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Table Footer -->
+                        <div class="table-footer">
+                            <div class="bulk-actions">
+                                <select class="form-control">
+                                    <option value="">Hành động hàng loạt</option>
+                                    <option value="approve">Phê duyệt đã chọn</option>
+                                    <option value="reject">Từ chối đã chọn</option>
+                                    <option value="delete">Xóa đã chọn</option>
+                                </select>
+                                <button class="btn btn-sm btn-outline">Áp dụng</button>
+                            </div>
+
+                            <div class="pagination">
+                                <button class="pagination-btn" disabled>
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="pagination-pages">
+                                    <button class="pagination-page active">1</button>
+                                    <button class="pagination-page">2</button>
+                                    <button class="pagination-page">3</button>
+                                    <button class="pagination-page">4</button>
+                                    <span class="pagination-dots">...</span>
+                                    <button class="pagination-page">85</button>
+                                </div>
+                                <button class="pagination-btn">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <div class="page-size">
+                                <span>Hiển thị</span>
+                                <select class="form-control">
+                                    <option value="10" selected>10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                <span>trên trang</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other tab content panels will be similar but with filtered data -->
+            <div class="tab-content" id="pending-reviews" style="display: none;">
+                <!-- Pending reviews table -->
+            </div>
+
+            <div class="tab-content" id="reported-reviews" style="display: none;">
+                <!-- Reported reviews table -->
+            </div>
+
+            <div class="tab-content" id="rejected-reviews" style="display: none;">
+                <!-- Rejected reviews table -->
+            </div>
+        </main>
+    </div>
+
+    <!-- View Review Modal -->
+    <div class="modal-overlay" id="viewReviewModal">
+        <div class="modal-container modal-lg">
+            <div class="modal-header">
+                <h3 class="modal-title">Chi tiết đánh giá</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="review-detail">
+                    <div class="review-info">
+                        <div class="review-user">
+                            <img src="../../assets/images/user1.jpg" alt="User" class="review-avatar">
+                            <div>
+                                <h4 class="review-username">Nguyễn Văn A</h4>
+                                <div class="review-meta">
+                                    <span class="review-date">15/09/2023, 09:45</span>
+                                    <span class="review-status approved">Đã phê duyệt</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-product">
+                            <div class="product-image">
+                                <img src="../../assets/images/product1.jpg" alt="iPhone 13 Pro Max">
+                            </div>
+                            <div>
+                                <h4 class="product-name">iPhone 13 Pro Max</h4>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-content-full">
+                        <h4>Nội dung đánh giá</h4>
+                        <p>Sản phẩm rất tốt, màn hình đẹp, pin trâu. Tôi đã sử dụng được một tháng và rất hài lòng với
+                            trải nghiệm. Camera chụp đêm rất tốt, chế độ cinematic là điểm nhấn đáng giá. Tuy nhiên giá
+                            hơi cao so với các sản phẩm cùng phân khúc. Nhìn chung là một chiếc điện thoại đáng mua nếu
+                            bạn có đủ ngân sách.</p>
+
+                        <div class="review-images">
+                            <img src="../../assets/images/review-image1.jpg" alt="Review Image" class="review-image">
+                            <img src="../../assets/images/review-image2.jpg" alt="Review Image" class="review-image">
+                        </div>
+                    </div>
+
+                    <div class="review-sentiment">
+                        <h4>Phân tích cảm xúc</h4>
+                        <div class="sentiment-overview">
+                            <div class="sentiment-chart-wrapper">
+                                <div class="sentiment-donut">
+                                    <div class="donut-hole">
+                                        <span>75%</span>
+                                        <small>Tích cực</small>
+                                    </div>
+                                    <svg width="150" height="150" viewBox="0 0 150 150" class="donut">
+                                        <circle r="60" cx="75" cy="75" fill="transparent" stroke="#e74c3c"
+                                            stroke-width="15" stroke-dasharray="377" stroke-dashoffset="0"></circle>
+                                        <circle r="60" cx="75" cy="75" fill="transparent" stroke="#f39c12"
+                                            stroke-width="15" stroke-dasharray="377" stroke-dashoffset="339.3"
+                                            class="donut-segment"></circle>
+                                        <circle r="60" cx="75" cy="75" fill="transparent" stroke="#2ecc71"
+                                            stroke-width="15" stroke-dasharray="377" stroke-dashoffset="282.75"
+                                            class="donut-segment"></circle>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="sentiment-aspects">
+                                <div class="aspect-item">
+                                    <div class="aspect-header">
+                                        <span class="aspect-name">Màn hình</span>
+                                        <span class="aspect-sentiment positive">Tích cực</span>
+                                    </div>
+                                    <div class="aspect-bar">
+                                        <div class="aspect-value" style="width: 90%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="aspect-item">
+                                    <div class="aspect-header">
+                                        <span class="aspect-name">Pin</span>
+                                        <span class="aspect-sentiment positive">Tích cực</span>
+                                    </div>
+                                    <div class="aspect-bar">
+                                        <div class="aspect-value" style="width: 85%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="aspect-item">
+                                    <div class="aspect-header">
+                                        <span class="aspect-name">Camera</span>
+                                        <span class="aspect-sentiment positive">Tích cực</span>
+                                    </div>
+                                    <div class="aspect-bar">
+                                        <div class="aspect-value" style="width: 95%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="aspect-item">
+                                    <div class="aspect-header">
+                                        <span class="aspect-name">Giá</span>
+                                        <span class="aspect-sentiment negative">Tiêu cực</span>
+                                    </div>
+                                    <div class="aspect-bar">
+                                        <div class="aspect-value negative" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-moderation">
+                        <h4>Lịch sử kiểm duyệt</h4>
+                        <div class="moderation-history">
+                            <div class="moderation-item">
+                                <div class="moderation-user">
+                                    <img src="../../assets/images/admin-avatar.jpg" alt="Admin"
+                                        class="moderation-avatar">
+                                    <span class="moderation-username">Admin</span>
+                                </div>
+                                <div class="moderation-action approved">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Phê duyệt</span>
+                                </div>
+                                <div class="moderation-time">
+                                    15/09/2023, 10:15
+                                </div>
+                                <div class="moderation-comment">
+                                    "Đánh giá chất lượng, có hình ảnh minh họa rõ ràng"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="review-actions">
+                    <button class="btn btn-danger">
+                        <i class="fas fa-ban"></i> Từ chối
+                    </button>
+                    <button class="btn btn-warning">
+                        <i class="fas fa-flag"></i> Đánh dấu vi phạm
+                    </button>
+                    <button class="btn btn-success">
+                        <i class="fas fa-check"></i> Phê duyệt
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Review Modal -->
+    <div class="modal-overlay" id="editReviewModal">
+        <div class="modal-container modal-lg">
+            <div class="modal-header">
+                <h3 class="modal-title">Chỉnh sửa đánh giá</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="edit-user">Người dùng</label>
+                            <select id="edit-user" class="form-control" disabled>
+                                <option value="1">Nguyễn Văn A</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="edit-product">Sản phẩm</label>
+                            <select id="edit-product" class="form-control" disabled>
+                                <option value="1">iPhone 13 Pro Max</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-rating">Đánh giá</label>
+                        <div class="editable-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <input type="hidden" id="edit-rating" value="5">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-content">Nội dung đánh giá</label>
+                        <textarea id="edit-content" class="form-control"
+                            rows="5">Sản phẩm rất tốt, màn hình đẹp, pin trâu. Tôi đã sử dụng được một tháng và rất hài lòng với trải nghiệm. Camera chụp đêm rất tốt, chế độ cinematic là điểm nhấn đáng giá. Tuy nhiên giá hơi cao so với các sản phẩm cùng phân khúc. Nhìn chung là một chiếc điện thoại đáng mua nếu bạn có đủ ngân sách.</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Hình ảnh đánh giá</label>
+                        <div class="review-images-editor">
+                            <div class="review-image-item">
+                                <img src="../../assets/images/review-image1.jpg" alt="Review Image">
+                                <button class="remove-image" type="button"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="review-image-item">
+                                <img src="../../assets/images/review-image2.jpg" alt="Review Image">
+                                <button class="remove-image" type="button"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="review-image-upload">
+                                <i class="fas fa-plus"></i>
+                                <span>Thêm ảnh</span>
+                                <input type="file" class="file-input" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="edit-status">Trạng thái</label>
+                            <select id="edit-status" class="form-control">
+                                <option value="approved" selected>Đã phê duyệt</option>
+                                <option value="pending">Chờ phê duyệt</option>
+                                <option value="rejected">Đã từ chối</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="edit-date">Ngày đăng</label>
+                            <input type="datetime-local" id="edit-date" class="form-control" value="2023-09-15T09:45">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-moderation-note">Ghi chú kiểm duyệt</label>
+                        <textarea id="edit-moderation-note" class="form-control" rows="2"
+                            placeholder="Nhập ghi chú kiểm duyệt (chỉ hiển thị với quản trị viên)"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-primary">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="deleteReviewModal">
+        <div class="modal-container modal-sm">
+            <div class="modal-header">
+                <h3 class="modal-title">Xác nhận xóa</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa đánh giá này? Hành động này không thể hoàn tác.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-danger">Xóa</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize modals
+            const modalTriggers = document.querySelectorAll('[data-modal]');
+            const modalCloseButtons = document.querySelectorAll('.modal-close');
+            const modals = document.querySelectorAll('.modal-overlay');
+
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function () {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+
+                    if (modal) {
+                        modal.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const modal = this.closest('.modal-overlay');
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            modals.forEach(modal => {
+                modal.addEventListener('click', function (e) {
+                    if (e.target === this) {
+                        this.classList.remove('show');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            // Tab switching
+            const tabs = document.querySelectorAll('.tab');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const tabId = this.getAttribute('data-tab');
+
+                    // Hide all tab contents
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.style.display = 'none';
+                    });
+
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.tab').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+
+                    // Show selected tab content and mark tab as active
+                    document.getElementById(tabId).style.display = 'block';
+                    this.classList.add('active');
+                });
+            });
+
+            // Editable rating
+            const ratingStars = document.querySelectorAll('.editable-rating i');
+            const ratingInput = document.getElementById('edit-rating');
+
+            ratingStars.forEach((star, index) => {
+                star.addEventListener('click', function () {
+                    const rating = index + 1;
+
+                    // Update hidden input
+                    if (ratingInput) {
+                        ratingInput.value = rating;
+                    }
+
+                    // Update stars visual
+                    ratingStars.forEach((s, i) => {
+                        if (i < rating) {
+                            s.className = 'fas fa-star';
+                        } else {
+                            s.className = 'far fa-star';
+                        }
+                    });
+                });
+            });
+
+            // Delete button functionality
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const deleteModal = document.getElementById('deleteReviewModal');
+                    deleteModal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Select all functionality
+            const selectAll = document.getElementById('select-all');
+            const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+
+            if (selectAll) {
+                selectAll.addEventListener('change', function () {
+                    rowCheckboxes.forEach(checkbox => {
+                        checkbox.checked = this.checked;
+                    });
+                });
+            }
+
+            // Review image upload functionality
+            const imageUploadInput = document.querySelector('.review-image-upload .file-input');
+            const reviewImagesEditor = document.querySelector('.review-images-editor');
+
+            if (imageUploadInput) {
+                imageUploadInput.addEventListener('change', function (e) {
+                    if (this.files && this.files[0]) {
+                        const reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            const newImageItem = document.createElement('div');
+                            newImageItem.className = 'review-image-item';
+                            newImageItem.innerHTML = `
+                <img src="${e.target.result}" alt="Review Image">
+                <button class="remove-image" type="button"><i class="fas fa-times"></i></button>
+              `;
+
+                            reviewImagesEditor.insertBefore(newImageItem, reviewImagesEditor
+                                .lastElementChild);
+
+                            // Add event listener to new remove button
+                            const removeBtn = newImageItem.querySelector('.remove-image');
+                            removeBtn.addEventListener('click', function () {
+                                this.closest('.review-image-item').remove();
+                            });
+                        }
+
+                        reader.readAsDataURL(this.files[0]);
+                    }
+                });
+            }
+
+            // Remove image functionality
+            const removeImageButtons = document.querySelectorAll('.remove-image');
+            removeImageButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    this.closest('.review-image-item').remove();
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

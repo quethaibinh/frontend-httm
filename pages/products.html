@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sách - Hệ thống đánh giá và review sách</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/products.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-book-open"></i> BookReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm sách...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Trang chủ</a></li>
+                    <li><a href="./products.html" class="active">Sách</a></li>
+                    <li><a href="./categories.html">Thể loại</a></li>
+                    <li><a href="./authors.html">Tác giả</a></li>
+                    <li><a href="./compare.html">So sánh</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-avatar">
+                                        <img src="../assets/images/product1.jpg" alt="Book Cover">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>To Kill a Mockingbird</strong> vừa có đánh giá mới</p>
+                                        <span class="notification-time">2 giờ trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-avatar">
+                                        <img src="../assets/images/product2.jpg" alt="Book Cover">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>1984</strong> vừa có đánh giá mới</p>
+                                        <span class="notification-time">3 giờ trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-avatar">
+                                        <img src="../assets/images/user1.jpg" alt="User">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>Nguyễn Văn A</strong> đã thích đánh giá của bạn</p>
+                                        <span class="notification-time">1 ngày trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="./profile.html">
+                            <img src="../assets/images/avatar.jpg" alt="Avatar"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Products Header -->
+    <div class="products-header">
+        <div class="container">
+            <h1>Khám phá thế giới sách</h1>
+            <p>Tìm kiếm, đánh giá và chia sẻ cảm nhận của bạn về những cuốn sách yêu thích</p>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="filter-container">
+                <!-- Filter Sidebar -->
+                <div class="filter-sidebar">
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span>Thể loại</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="filter-body">
+                            <div class="filter-item">
+                                <input type="checkbox" id="fiction" checked>
+                                <label for="fiction">Tiểu thuyết</label>
+                                <span class="count">142</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="nonfiction">
+                                <label for="nonfiction">Phi hư cấu</label>
+                                <span class="count">98</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="mystery">
+                                <label for="mystery">Trinh thám</label>
+                                <span class="count">76</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="scifi">
+                                <label for="scifi">Khoa học viễn tưởng</label>
+                                <span class="count">53</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="fantasy">
+                                <label for="fantasy">Kỳ ảo</label>
+                                <span class="count">64</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="biography">
+                                <label for="biography">Tiểu sử</label>
+                                <span class="count">41</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="selfhelp">
+                                <label for="selfhelp">Phát triển bản thân</label>
+                                <span class="count">87</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="history">
+                                <label for="history">Lịch sử</label>
+                                <span class="count">52</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="poetry">
+                                <label for="poetry">Thơ</label>
+                                <span class="count">38</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span>Đánh giá</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="filter-body">
+                            <div class="filter-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="count">(56)</span>
+                            </div>
+                            <div class="filter-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="count">(124)</span>
+                            </div>
+                            <div class="filter-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="count">(78)</span>
+                            </div>
+                            <div class="filter-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="count">(32)</span>
+                            </div>
+                            <div class="filter-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="count">(12)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span>Ngôn ngữ</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="filter-body">
+                            <div class="filter-item">
+                                <input type="checkbox" id="vietnamese" checked>
+                                <label for="vietnamese">Tiếng Việt</label>
+                                <span class="count">183</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="english" checked>
+                                <label for="english">Tiếng Anh</label>
+                                <span class="count">245</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="french">
+                                <label for="french">Tiếng Pháp</label>
+                                <span class="count">38</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="chinese">
+                                <label for="chinese">Tiếng Trung</label>
+                                <span class="count">42</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="japanese">
+                                <label for="japanese">Tiếng Nhật</label>
+                                <span class="count">56</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span>Giá sách</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="filter-body">
+                            <div class="price-range">
+                                <input type="text" placeholder="Từ">
+                                <span>-</span>
+                                <input type="text" placeholder="Đến">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <div class="filter-header">
+                            <span>Năm xuất bản</span>
+                            <i class="fas fa-chevron-down icon"></i>
+                        </div>
+                        <div class="filter-body">
+                            <div class="filter-item">
+                                <input type="checkbox" id="year2023">
+                                <label for="year2023">2023</label>
+                                <span class="count">28</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="year2022">
+                                <label for="year2022">2022</label>
+                                <span class="count">45</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="year2021">
+                                <label for="year2021">2021</label>
+                                <span class="count">52</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="year2020">
+                                <label for="year2020">2020</label>
+                                <span class="count">63</span>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" id="before2020">
+                                <label for="before2020">Trước 2020</label>
+                                <span class="count">214</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Content -->
+                <div class="filter-content">
+                    <div class="products-options">
+                        <div class="products-count">
+                            Hiển thị <strong>1-12</strong> trên <strong>402</strong> kết quả
+                        </div>
+                        <div class="products-sort">
+                            <span class="sort-label">Sắp xếp theo:</span>
+                            <select class="sort-select">
+                                <option>Mới nhất</option>
+                                <option>Đánh giá cao nhất</option>
+                                <option>Giá thấp đến cao</option>
+                                <option>Giá cao đến thấp</option>
+                                <option>Tên A-Z</option>
+                                <option>Tên Z-A</option>
+                            </select>
+                            <div class="view-options">
+                                <div class="view-btn active" data-view="grid">
+                                    <i class="fas fa-th-large"></i>
+                                </div>
+                                <div class="view-btn" data-view="list">
+                                    <i class="fas fa-list"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="products-grid" id="products-container">
+                        <!-- Book 1 -->
+                        <div class="col-4 col-md-6 col-sm-12">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product1.jpg" alt="To Kill a Mockingbird">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-title">To Kill a Mockingbird</h3>
+                                    <h4 class="product-author">Harper Lee</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span>4.5 (320 đánh giá)</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="book-category">Tiểu thuyết</span>
+                                        <a href="product-detail.html" class="btn btn-outline">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Book 2 -->
+                        <div class="col-4 col-md-6 col-sm-12">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product2.jpg" alt="1984">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-title">1984</h3>
+                                    <h4 class="product-author">George Orwell</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span>4.9 (412 đánh giá)</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="book-category">Khoa học viễn tưởng</span>
+                                        <a href="product-detail.html" class="btn btn-outline">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Book 3 -->
+                        <div class="col-4 col-md-6 col-sm-12">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product3.jpg" alt="The Great Gatsby">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-title">The Great Gatsby</h3>
+                                    <h4 class="product-author">F. Scott Fitzgerald</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>4.0 (256 đánh giá)</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="book-category">Tiểu thuyết</span>
+                                        <a href="product-detail.html" class="btn btn-outline">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Book 4 -->
+                        <div class="col-4 col-md-6 col-sm-12">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product4.jpg" alt="Sapiens">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-title">Sapiens: A Brief History of Humankind</h3>
+                                    <h4 class="product-author">Yuval Noah Harari</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span>4.6 (380 đánh giá)</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="book-category">Phi hư cấu</span>
+                                        <a href="product-detail.html" class="btn btn-outline">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Book 5 -->
+                        <div class="col-4 col-md-6 col-sm-12">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product5.jpg" alt="The Alchemist">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-title">The Alchemist</h3>
+                                    <h4 class="product-author">Paulo Coelho</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>4.1 (290 đánh giá)</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="book-category">Tiểu thuyết</span>
+                                        <a href="product-detail.html" class="btn btn-outline">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Book 6 -->
+                        <div class="col-4 col-md-6 col-sm-12">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product6.jpg" alt="Atomic Habits">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-title">Atomic Habits</h3>
+                                    <h4 class="product-author">James Clear</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span>4.7 (420 đánh giá)</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="book-category">Phát triển bản thân</span>
+                                        <a href="product-detail.html" class="btn btn-outline">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Book 7 -->
+                        <div class="col-4 col-md-6 col-sm-12">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product7.jpg" alt="Pride and Prejudice">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-title">Pride and Prejudice</h3>
+                                    <h4 class="product-author">Jane Austen</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>4.2 (310 đánh giá)</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="book-category">Tiểu thuyết</span>
+                                        <a href="product-detail.html" class="btn btn-outline">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Book 8 -->
+                        <div class="col-4 col-md-6 col-sm-12">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product8.jpg" alt="Dune">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-title">Dune</h3>
+                                    <h4 class="product-author">Frank Herbert</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span>4.5 (370 đánh giá)</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="book-category">Khoa học viễn tưởng</span>
+                                        <a href="product-detail.html" class="btn btn-outline">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Book 9 -->
+                        <div class="col-4 col-md-6 col-sm-12">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product9.jpg" alt="The Lord of the Rings">
+                                </div>
+                                <div class="product-info">
+                                    <h3 class="product-title">The Lord of the Rings</h3>
+                                    <h4 class="product-author">J.R.R. Tolkien</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span>4.8 (520 đánh giá)</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <span class="book-category">Kỳ ảo</span>
+                                        <a href="product-detail.html" class="btn btn-outline">Chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link active">1</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link">2</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link">3</a>
+                        </div>
+                        <div class="pagination-item">
+                            <span class="pagination-dots">...</span>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link">34</a>
+                        </div>
+                        <div class="pagination-item">
+                            <a href="#" class="pagination-link">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Về BookReview</h3>
+                    <p>BookReview là nền tảng đánh giá và review sách hàng đầu, kết nối độc giả với những cuốn sách hay
+                        nhất.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên kết</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Trang chủ</a></li>
+                        <li><a href="./products.html">Sách</a></li>
+                        <li><a href="./categories.html">Thể loại</a></li>
+                        <li><a href="./authors.html">Tác giả</a></li>
+                        <li><a href="./about.html">Về chúng tôi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Danh mục</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Tiểu thuyết</a></li>
+                        <li><a href="#">Khoa học viễn tưởng</a></li>
+                        <li><a href="#">Phi hư cấu</a></li>
+                        <li><a href="#">Kỳ ảo</a></li>
+                        <li><a href="#">Phát triển bản thân</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Liên hệ</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Đường Sách, Quận 1, TP.HCM</p>
+                    <p><i class="fas fa-phone"></i> (028) 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info@bookreview.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 BookReview. Đã đăng ký bản quyền.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // View Toggle (Grid/List)
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Remove active class from all buttons
+                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Get the view type
+                const viewType = this.getAttribute('data-view');
+
+                // Toggle class on products container
+                const productsContainer = document.getElementById('products-container');
+                if (viewType === 'list') {
+                    productsContainer.classList.add('products-list');
+                } else {
+                    productsContainer.classList.remove('products-list');
+                }
+            });
+        });
+
+        // Filter Groups Toggle
+        document.querySelectorAll('.filter-header').forEach(header => {
+            header.addEventListener('click', function () {
+                this.classList.toggle('collapsed');
+                const body = this.nextElementSibling;
+                body.style.display = body.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+
+</html>

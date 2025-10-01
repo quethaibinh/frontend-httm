@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sản phẩm - Hệ thống tham khảo phản hồi khách hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../../index.html" class="logo">
+                    <i class="fas fa-comment-dots"></i> ProductReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../../index.html">Trang chủ</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Đánh giá mới</strong> cần xét duyệt</p>
+                                        <span class="notification-time">5 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Sản phẩm mới</strong> đã được thêm</p>
+                                        <span class="notification-time">30 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Báo cáo vi phạm</strong> đã được gửi đến</p>
+                                        <span class="notification-time">1 giờ trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">
+                            <img src="../../assets/images/admin-avatar.jpg" alt="Admin"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="./admin-dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i> Tổng quan
+                </a>
+                <a href="./admin-users.html">
+                    <i class="fas fa-users"></i> Quản lý người dùng
+                </a>
+                <a href="./admin-products.html" class="active">
+                    <i class="fas fa-box"></i> Quản lý sản phẩm
+                </a>
+                <a href="./admin-reviews.html">
+                    <i class="fas fa-comments"></i> Quản lý đánh giá
+                </a>
+                <a href="./admin-models.html">
+                    <i class="fas fa-brain"></i> Quản lý model AI
+                </a>
+                <a href="./admin-settings.html">
+                    <i class="fas fa-cog"></i> Cài đặt
+                </a>
+                <a href="../../index.html">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Quản lý sản phẩm</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" data-modal="addProductModal">
+                        <i class="fas fa-plus"></i> Thêm sản phẩm
+                    </button>
+                    <button class="btn btn-outline" data-modal="importProductModal">
+                        <i class="fas fa-file-import"></i> Nhập từ CSV
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-file-export"></i> Xuất dữ liệu
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="filter-category">Danh mục</label>
+                    <select id="filter-category" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="smartphone">Điện thoại</option>
+                        <option value="laptop">Laptop</option>
+                        <option value="tablet">Máy tính bảng</option>
+                        <option value="accessories">Phụ kiện</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-brand">Thương hiệu</label>
+                    <select id="filter-brand" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="apple">Apple</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="xiaomi">Xiaomi</option>
+                        <option value="google">Google</option>
+                        <option value="dell">Dell</option>
+                        <option value="hp">HP</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-status">Trạng thái</label>
+                    <select id="filter-status" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="active">Đang hoạt động</option>
+                        <option value="draft">Bản nháp</option>
+                        <option value="archived">Đã lưu trữ</option>
+                        <option value="outofstock">Hết hàng</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="search-products">Tìm kiếm</label>
+                    <div class="search-input">
+                        <input type="text" id="search-products" class="form-control"
+                            placeholder="Tìm tên, mã sản phẩm...">
+                        <button type="button" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="filter-actions">
+                    <button class="btn btn-sm btn-outline">Lọc</button>
+                    <button class="btn btn-sm btn-text">Xóa bộ lọc</button>
+                </div>
+            </div>
+
+            <!-- View Switcher -->
+            <div class="view-switcher">
+                <button class="view-btn active" data-view="grid">
+                    <i class="fas fa-th-large"></i>
+                </button>
+                <button class="view-btn" data-view="list">
+                    <i class="fas fa-list"></i>
+                </button>
+                <button class="view-btn" data-view="table">
+                    <i class="fas fa-table"></i>
+                </button>
+            </div>
+
+            <!-- Products Grid View -->
+            <div class="products-view grid-view" id="grid-view">
+                <div class="row">
+                    <div class="col-3 col-md-4 col-sm-6">
+                        <div class="product-card">
+                            <div class="product-actions">
+                                <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                        class="fas fa-eye"></i></button>
+                                <button class="action-btn edit-btn" title="Chỉnh sửa" data-modal="editProductModal"><i
+                                        class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></button>
+                            </div>
+                            <div class="product-img">
+                                <img src="../../assets/images/product1.jpg" alt="iPhone 13 Pro Max">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">iPhone 13 Pro Max</h3>
+                                <p class="product-category">Điện thoại</p>
+                                <div class="product-details">
+                                    <span class="product-reviews">
+                                        <i class="fas fa-comment"></i> 245 đánh giá
+                                    </span>
+                                    <span class="product-status active">
+                                        Đang hoạt động
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="product-stats">
+                                <div class="sentiment-bar">
+                                    <div class="bar-item positive" style="width: 75%"></div>
+                                    <div class="bar-item neutral" style="width: 15%"></div>
+                                    <div class="bar-item negative" style="width: 10%"></div>
+                                </div>
+                                <div class="sentiment-stats">
+                                    <span class="sentiment-stat positive">75% tích cực</span>
+                                    <span class="sentiment-stat neutral">15% trung tính</span>
+                                    <span class="sentiment-stat negative">10% tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3 col-md-4 col-sm-6">
+                        <div class="product-card">
+                            <div class="product-actions">
+                                <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                        class="fas fa-eye"></i></button>
+                                <button class="action-btn edit-btn" title="Chỉnh sửa" data-modal="editProductModal"><i
+                                        class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></button>
+                            </div>
+                            <div class="product-img">
+                                <img src="../../assets/images/product2.jpg" alt="Samsung Galaxy S21">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Samsung Galaxy S21</h3>
+                                <p class="product-category">Điện thoại</p>
+                                <div class="product-details">
+                                    <span class="product-reviews">
+                                        <i class="fas fa-comment"></i> 186 đánh giá
+                                    </span>
+                                    <span class="product-status active">
+                                        Đang hoạt động
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="product-stats">
+                                <div class="sentiment-bar">
+                                    <div class="bar-item positive" style="width: 68%"></div>
+                                    <div class="bar-item neutral" style="width: 20%"></div>
+                                    <div class="bar-item negative" style="width: 12%"></div>
+                                </div>
+                                <div class="sentiment-stats">
+                                    <span class="sentiment-stat positive">68% tích cực</span>
+                                    <span class="sentiment-stat neutral">20% trung tính</span>
+                                    <span class="sentiment-stat negative">12% tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3 col-md-4 col-sm-6">
+                        <div class="product-card">
+                            <div class="product-actions">
+                                <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                        class="fas fa-eye"></i></button>
+                                <button class="action-btn edit-btn" title="Chỉnh sửa" data-modal="editProductModal"><i
+                                        class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></button>
+                            </div>
+                            <div class="product-img">
+                                <img src="../../assets/images/product3.jpg" alt="MacBook Pro M1">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">MacBook Pro M1</h3>
+                                <p class="product-category">Laptop</p>
+                                <div class="product-details">
+                                    <span class="product-reviews">
+                                        <i class="fas fa-comment"></i> 142 đánh giá
+                                    </span>
+                                    <span class="product-status active">
+                                        Đang hoạt động
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="product-stats">
+                                <div class="sentiment-bar">
+                                    <div class="bar-item positive" style="width: 80%"></div>
+                                    <div class="bar-item neutral" style="width: 12%"></div>
+                                    <div class="bar-item negative" style="width: 8%"></div>
+                                </div>
+                                <div class="sentiment-stats">
+                                    <span class="sentiment-stat positive">80% tích cực</span>
+                                    <span class="sentiment-stat neutral">12% trung tính</span>
+                                    <span class="sentiment-stat negative">8% tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3 col-md-4 col-sm-6">
+                        <div class="product-card">
+                            <div class="product-actions">
+                                <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                        class="fas fa-eye"></i></button>
+                                <button class="action-btn edit-btn" title="Chỉnh sửa" data-modal="editProductModal"><i
+                                        class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></button>
+                            </div>
+                            <div class="product-img">
+                                <img src="../../assets/images/product4.jpg" alt="iPad Pro 2021">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">iPad Pro 2021</h3>
+                                <p class="product-category">Máy tính bảng</p>
+                                <div class="product-details">
+                                    <span class="product-reviews">
+                                        <i class="fas fa-comment"></i> 124 đánh giá
+                                    </span>
+                                    <span class="product-status active">
+                                        Đang hoạt động
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="product-stats">
+                                <div class="sentiment-bar">
+                                    <div class="bar-item positive" style="width: 72%"></div>
+                                    <div class="bar-item neutral" style="width: 18%"></div>
+                                    <div class="bar-item negative" style="width: 10%"></div>
+                                </div>
+                                <div class="sentiment-stats">
+                                    <span class="sentiment-stat positive">72% tích cực</span>
+                                    <span class="sentiment-stat neutral">18% trung tính</span>
+                                    <span class="sentiment-stat negative">10% tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3 col-md-4 col-sm-6">
+                        <div class="product-card">
+                            <div class="product-actions">
+                                <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                        class="fas fa-eye"></i></button>
+                                <button class="action-btn edit-btn" title="Chỉnh sửa" data-modal="editProductModal"><i
+                                        class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></button>
+                            </div>
+                            <div class="product-img">
+                                <img src="../../assets/images/product5.jpg" alt="Google Pixel 6">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Google Pixel 6</h3>
+                                <p class="product-category">Điện thoại</p>
+                                <div class="product-details">
+                                    <span class="product-reviews">
+                                        <i class="fas fa-comment"></i> 98 đánh giá
+                                    </span>
+                                    <span class="product-status draft">
+                                        Bản nháp
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="product-stats">
+                                <div class="sentiment-bar">
+                                    <div class="bar-item positive" style="width: 65%"></div>
+                                    <div class="bar-item neutral" style="width: 25%"></div>
+                                    <div class="bar-item negative" style="width: 10%"></div>
+                                </div>
+                                <div class="sentiment-stats">
+                                    <span class="sentiment-stat positive">65% tích cực</span>
+                                    <span class="sentiment-stat neutral">25% trung tính</span>
+                                    <span class="sentiment-stat negative">10% tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3 col-md-4 col-sm-6">
+                        <div class="product-card">
+                            <div class="product-actions">
+                                <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                        class="fas fa-eye"></i></button>
+                                <button class="action-btn edit-btn" title="Chỉnh sửa" data-modal="editProductModal"><i
+                                        class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></button>
+                            </div>
+                            <div class="product-img">
+                                <img src="../../assets/images/product6.jpg" alt="Dell XPS 13">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Dell XPS 13</h3>
+                                <p class="product-category">Laptop</p>
+                                <div class="product-details">
+                                    <span class="product-reviews">
+                                        <i class="fas fa-comment"></i> 86 đánh giá
+                                    </span>
+                                    <span class="product-status active">
+                                        Đang hoạt động
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="product-stats">
+                                <div class="sentiment-bar">
+                                    <div class="bar-item positive" style="width: 70%"></div>
+                                    <div class="bar-item neutral" style="width: 20%"></div>
+                                    <div class="bar-item negative" style="width: 10%"></div>
+                                </div>
+                                <div class="sentiment-stats">
+                                    <span class="sentiment-stat positive">70% tích cực</span>
+                                    <span class="sentiment-stat neutral">20% trung tính</span>
+                                    <span class="sentiment-stat negative">10% tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3 col-md-4 col-sm-6">
+                        <div class="product-card">
+                            <div class="product-actions">
+                                <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                        class="fas fa-eye"></i></button>
+                                <button class="action-btn edit-btn" title="Chỉnh sửa" data-modal="editProductModal"><i
+                                        class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></button>
+                            </div>
+                            <div class="product-img">
+                                <img src="../../assets/images/product7.jpg" alt="AirPods Pro">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">AirPods Pro</h3>
+                                <p class="product-category">Phụ kiện</p>
+                                <div class="product-details">
+                                    <span class="product-reviews">
+                                        <i class="fas fa-comment"></i> 72 đánh giá
+                                    </span>
+                                    <span class="product-status outofstock">
+                                        Hết hàng
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="product-stats">
+                                <div class="sentiment-bar">
+                                    <div class="bar-item positive" style="width: 82%"></div>
+                                    <div class="bar-item neutral" style="width: 10%"></div>
+                                    <div class="bar-item negative" style="width: 8%"></div>
+                                </div>
+                                <div class="sentiment-stats">
+                                    <span class="sentiment-stat positive">82% tích cực</span>
+                                    <span class="sentiment-stat neutral">10% trung tính</span>
+                                    <span class="sentiment-stat negative">8% tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3 col-md-4 col-sm-6">
+                        <div class="product-card">
+                            <div class="product-actions">
+                                <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                        class="fas fa-eye"></i></button>
+                                <button class="action-btn edit-btn" title="Chỉnh sửa" data-modal="editProductModal"><i
+                                        class="fas fa-edit"></i></button>
+                                <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></button>
+                            </div>
+                            <div class="product-img">
+                                <img src="../../assets/images/product8.jpg" alt="Samsung Galaxy Tab S7">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">Samsung Galaxy Tab S7</h3>
+                                <p class="product-category">Máy tính bảng</p>
+                                <div class="product-details">
+                                    <span class="product-reviews">
+                                        <i class="fas fa-comment"></i> 64 đánh giá
+                                    </span>
+                                    <span class="product-status active">
+                                        Đang hoạt động
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="product-stats">
+                                <div class="sentiment-bar">
+                                    <div class="bar-item positive" style="width: 75%"></div>
+                                    <div class="bar-item neutral" style="width: 15%"></div>
+                                    <div class="bar-item negative" style="width: 10%"></div>
+                                </div>
+                                <div class="sentiment-stats">
+                                    <span class="sentiment-stat positive">75% tích cực</span>
+                                    <span class="sentiment-stat neutral">15% trung tính</span>
+                                    <span class="sentiment-stat negative">10% tiêu cực</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products List View (Hidden by Default) -->
+            <div class="products-view list-view" id="list-view" style="display: none;">
+                <div class="product-list-item">
+                    <div class="product-list-image">
+                        <img src="../../assets/images/product1.jpg" alt="iPhone 13 Pro Max">
+                    </div>
+                    <div class="product-list-info">
+                        <h3 class="product-name">iPhone 13 Pro Max</h3>
+                        <p class="product-category">Điện thoại</p>
+                        <div class="product-list-details">
+                            <span class="product-brand">Apple</span>
+                            <span class="product-reviews">245 đánh giá</span>
+                            <span class="product-status active">Đang hoạt động</span>
+                        </div>
+                        <div class="product-stats">
+                            <div class="sentiment-bar">
+                                <div class="bar-item positive" style="width: 75%"></div>
+                                <div class="bar-item neutral" style="width: 15%"></div>
+                                <div class="bar-item negative" style="width: 10%"></div>
+                            </div>
+                            <div class="sentiment-stats">
+                                <span class="sentiment-stat positive">75% tích cực</span>
+                                <span class="sentiment-stat neutral">15% trung tính</span>
+                                <span class="sentiment-stat negative">10% tiêu cực</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-list-actions">
+                        <button class="action-btn view-btn" title="Xem chi tiết"><i class="fas fa-eye"></i></button>
+                        <button class="action-btn edit-btn" title="Chỉnh sửa" data-modal="editProductModal"><i
+                                class="fas fa-edit"></i></button>
+                        <button class="action-btn delete-btn" title="Xóa"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+
+                <!-- Add more list items for other products -->
+            </div>
+
+            <!-- Products Table View (Hidden by Default) -->
+            <div class="products-view table-view" id="table-view" style="display: none;">
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th class="table-checkbox">
+                                    <input type="checkbox" id="select-all-products">
+                                </th>
+                                <th class="sortable">ID <i class="fas fa-sort"></i></th>
+                                <th>Ảnh</th>
+                                <th class="sortable">Tên sản phẩm <i class="fas fa-sort"></i></th>
+                                <th class="sortable">Danh mục <i class="fas fa-sort"></i></th>
+                                <th class="sortable">Đánh giá <i class="fas fa-sort"></i></th>
+                                <th>Cảm xúc</th>
+                                <th class="sortable">Trạng thái <i class="fas fa-sort"></i></th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="table-checkbox">
+                                    <input type="checkbox" class="row-checkbox">
+                                </td>
+                                <td>#P001</td>
+                                <td>
+                                    <img src="../../assets/images/product1.jpg" alt="Product" class="product-thumbnail">
+                                </td>
+                                <td>iPhone 13 Pro Max</td>
+                                <td>Điện thoại</td>
+                                <td>245</td>
+                                <td>
+                                    <div class="mini-sentiment-bar">
+                                        <div class="bar-item positive" style="width: 75%"></div>
+                                        <div class="bar-item neutral" style="width: 15%"></div>
+                                        <div class="bar-item negative" style="width: 10%"></div>
+                                    </div>
+                                </td>
+                                <td><span class="status status-active">Đang hoạt động</span></td>
+                                <td class="table-actions">
+                                    <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                            class="fas fa-eye"></i></button>
+                                    <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                        data-modal="editProductModal"><i class="fas fa-edit"></i></button>
+                                    <button class="action-btn delete-btn" title="Xóa"><i
+                                            class="fas fa-trash"></i></button>
+                                </td>
+                            </tr>
+
+                            <!-- Add more rows for other products -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-container">
+                <div class="showing-results">
+                    Hiển thị <span class="font-medium">1</span> đến <span class="font-medium">8</span> của <span
+                        class="font-medium">352</span> sản phẩm
+                </div>
+
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="pagination-pages">
+                        <button class="pagination-page active">1</button>
+                        <button class="pagination-page">2</button>
+                        <button class="pagination-page">3</button>
+                        <button class="pagination-page">4</button>
+                        <span class="pagination-dots">...</span>
+                        <button class="pagination-page">44</button>
+                    </div>
+                    <button class="pagination-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="page-size">
+                    <span>Hiển thị</span>
+                    <select class="form-control">
+                        <option value="8" selected>8</option>
+                        <option value="16">16</option>
+                        <option value="24">24</option>
+                        <option value="48">48</option>
+                    </select>
+                    <span>trên trang</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal-overlay" id="addProductModal">
+        <div class="modal-container modal-lg">
+            <div class="modal-header">
+                <h3 class="modal-title">Thêm sản phẩm mới</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-tabs">
+                        <button type="button" class="form-tab active" data-tab="basic-info">Thông tin cơ bản</button>
+                        <button type="button" class="form-tab" data-tab="images">Hình ảnh</button>
+                        <button type="button" class="form-tab" data-tab="specifications">Thông số kỹ thuật</button>
+                        <button type="button" class="form-tab" data-tab="review-criteria">Tiêu chí đánh giá</button>
+                    </div>
+
+                    <div class="form-tab-content active" id="basic-info">
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="product-name">Tên sản phẩm</label>
+                                <input type="text" id="product-name" class="form-control"
+                                    placeholder="Nhập tên sản phẩm">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="product-sku">Mã sản phẩm</label>
+                                <input type="text" id="product-sku" class="form-control" placeholder="Nhập mã sản phẩm">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="product-category">Danh mục</label>
+                                <select id="product-category" class="form-control">
+                                    <option value="">Chọn danh mục</option>
+                                    <option value="smartphone">Điện thoại</option>
+                                    <option value="laptop">Laptop</option>
+                                    <option value="tablet">Máy tính bảng</option>
+                                    <option value="accessories">Phụ kiện</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="product-brand">Thương hiệu</label>
+                                <select id="product-brand" class="form-control">
+                                    <option value="">Chọn thương hiệu</option>
+                                    <option value="apple">Apple</option>
+                                    <option value="samsung">Samsung</option>
+                                    <option value="xiaomi">Xiaomi</option>
+                                    <option value="google">Google</option>
+                                    <option value="dell">Dell</option>
+                                    <option value="hp">HP</option>
+                                    <option value="other">Khác</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product-description">Mô tả sản phẩm</label>
+                            <textarea id="product-description" class="form-control" rows="5"
+                                placeholder="Nhập mô tả sản phẩm"></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="product-status">Trạng thái</label>
+                                <select id="product-status" class="form-control">
+                                    <option value="active">Đang hoạt động</option>
+                                    <option value="draft">Bản nháp</option>
+                                    <option value="archived">Đã lưu trữ</option>
+                                    <option value="outofstock">Hết hàng</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="product-release-date">Ngày phát hành</label>
+                                <input type="date" id="product-release-date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-tab-content" id="images" style="display: none;">
+                        <div class="form-group">
+                            <label>Hình ảnh sản phẩm</label>
+                            <div class="product-images-uploader">
+                                <div class="product-image-item upload-trigger">
+                                    <div class="upload-icon">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                    <input type="file" id="product-images" class="file-input" multiple accept="image/*">
+                                </div>
+                                <!-- Image previews will be added here dynamically -->
+                            </div>
+                            <p class="form-help">Kéo và thả để sắp xếp lại thứ tự. Hình đầu tiên sẽ là hình ảnh chính
+                                của sản phẩm.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product-video">Link video sản phẩm (YouTube)</label>
+                            <input type="text" id="product-video" class="form-control"
+                                placeholder="Ví dụ: https://www.youtube.com/watch?v=...">
+                        </div>
+                    </div>
+
+                    <div class="form-tab-content" id="specifications" style="display: none;">
+                        <div class="specifications-container">
+                            <div class="specification-group">
+                                <h4>Cấu hình</h4>
+
+                                <div class="specification-item">
+                                    <div class="form-row">
+                                        <div class="form-group col-5">
+                                            <input type="text" class="form-control"
+                                                placeholder="Tên thông số (Ví dụ: CPU)">
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <input type="text" class="form-control"
+                                                placeholder="Giá trị (Ví dụ: Intel Core i7)">
+                                        </div>
+                                        <div class="form-group col-1">
+                                            <button type="button" class="btn btn-icon btn-outline remove-spec">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="specification-item">
+                                    <div class="form-row">
+                                        <div class="form-group col-5">
+                                            <input type="text" class="form-control" placeholder="Tên thông số">
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <input type="text" class="form-control" placeholder="Giá trị">
+                                        </div>
+                                        <div class="form-group col-1">
+                                            <button type="button" class="btn btn-icon btn-outline remove-spec">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-outline btn-sm add-spec">
+                                <i class="fas fa-plus"></i> Thêm thông số
+                            </button>
+
+                            <button type="button" class="btn btn-outline btn-sm add-spec-group mt-2">
+                                <i class="fas fa-layer-group"></i> Thêm nhóm thông số
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-tab-content" id="review-criteria" style="display: none;">
+                        <p class="mb-3">Thiết lập các tiêu chí đánh giá sản phẩm</p>
+
+                        <div class="criteria-container">
+                            <div class="criteria-item">
+                                <div class="form-row">
+                                    <div class="form-group col-5">
+                                        <input type="text" class="form-control" value="Hiệu năng"
+                                            placeholder="Tiêu chí (Ví dụ: Hiệu năng)">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <input type="text" class="form-control" value="Tốc độ xử lý, đa nhiệm, gaming"
+                                            placeholder="Mô tả chi tiết">
+                                    </div>
+                                    <div class="form-group col-1">
+                                        <button type="button" class="btn btn-icon btn-outline remove-criteria">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="criteria-item">
+                                <div class="form-row">
+                                    <div class="form-group col-5">
+                                        <input type="text" class="form-control" value="Màn hình" placeholder="Tiêu chí">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <input type="text" class="form-control" value="Độ sáng, màu sắc, tần số quét"
+                                            placeholder="Mô tả chi tiết">
+                                    </div>
+                                    <div class="form-group col-1">
+                                        <button type="button" class="btn btn-icon btn-outline remove-criteria">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="criteria-item">
+                                <div class="form-row">
+                                    <div class="form-group col-5">
+                                        <input type="text" class="form-control" value="Pin" placeholder="Tiêu chí">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <input type="text" class="form-control" value="Thời lượng sử dụng, tốc độ sạc"
+                                            placeholder="Mô tả chi tiết">
+                                    </div>
+                                    <div class="form-group col-1">
+                                        <button type="button" class="btn btn-icon btn-outline remove-criteria">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-outline btn-sm add-criteria mt-2">
+                            <i class="fas fa-plus"></i> Thêm tiêu chí
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-primary">Thêm sản phẩm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Product Modal -->
+    <div class="modal-overlay" id="editProductModal">
+        <div class="modal-container modal-lg">
+            <div class="modal-header">
+                <h3 class="modal-title">Chỉnh sửa sản phẩm</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Similar to Add Product Modal with pre-filled values -->
+                <form>
+                    <!-- Form tabs and content similar to Add Product Modal -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-primary">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import Product Modal -->
+    <div class="modal-overlay" id="importProductModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Nhập sản phẩm từ CSV</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="import-file">Chọn file CSV</label>
+                        <div class="file-upload">
+                            <input type="file" id="import-file" class="file-input" accept=".csv">
+                            <div class="file-preview">
+                                <i class="fas fa-file-csv"></i>
+                                <span>Nhấp hoặc kéo thả file CSV</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="toggle-container">
+                            <label for="overwrite-existing">Ghi đè sản phẩm hiện có nếu trùng mã</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="overwrite-existing">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <a href="#" class="download-link">
+                            <i class="fas fa-download"></i> Tải mẫu file CSV
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-primary">Nhập sản phẩm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="deleteProductModal">
+        <div class="modal-container modal-sm">
+            <div class="modal-header">
+                <h3 class="modal-title">Xác nhận xóa</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa sản phẩm này? Hành động này không thể hoàn tác.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-danger">Xóa</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize modals
+            const modalTriggers = document.querySelectorAll('[data-modal]');
+            const modalCloseButtons = document.querySelectorAll('.modal-close');
+            const modals = document.querySelectorAll('.modal-overlay');
+
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function () {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+
+                    if (modal) {
+                        modal.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const modal = this.closest('.modal-overlay');
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            modals.forEach(modal => {
+                modal.addEventListener('click', function (e) {
+                    if (e.target === this) {
+                        this.classList.remove('show');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            // Tab switching in modal forms
+            const formTabs = document.querySelectorAll('.form-tab');
+
+            formTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const tabId = this.getAttribute('data-tab');
+
+                    // Hide all tab contents
+                    document.querySelectorAll('.form-tab-content').forEach(content => {
+                        content.style.display = 'none';
+                    });
+
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.form-tab').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+
+                    // Show selected tab content and mark tab as active
+                    document.getElementById(tabId).style.display = 'block';
+                    this.classList.add('active');
+                });
+            });
+
+            // View switching
+            const viewButtons = document.querySelectorAll('.view-btn');
+            const viewPanels = document.querySelectorAll('.products-view');
+
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const viewType = this.getAttribute('data-view');
+
+                    // Remove active class from all view buttons
+                    viewButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+
+                    // Hide all view panels
+                    viewPanels.forEach(panel => {
+                        panel.style.display = 'none';
+                    });
+
+                    // Show selected view panel and mark button as active
+                    document.getElementById(viewType + '-view').style.display = 'block';
+                    this.classList.add('active');
+                });
+            });
+
+            // Delete button functionality
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const deleteModal = document.getElementById('deleteProductModal');
+                    deleteModal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // File upload preview
+            const fileInput = document.getElementById('import-file');
+            if (fileInput) {
+                fileInput.addEventListener('change', function (e) {
+                    const filePreview = this.nextElementSibling;
+
+                    if (this.files && this.files[0]) {
+                        filePreview.innerHTML = `
+              <i class="fas fa-file-csv"></i>
+              <span class="file-name">${this.files[0].name}</span>
+            `;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

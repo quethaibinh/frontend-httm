@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý người dùng - Hệ thống tham khảo phản hồi khách hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../../index.html" class="logo">
+                    <i class="fas fa-comment-dots"></i> ProductReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../../index.html">Trang chủ</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Đánh giá mới</strong> cần xét duyệt</p>
+                                        <span class="notification-time">5 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Người dùng mới</strong> đã đăng ký</p>
+                                        <span class="notification-time">30 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Báo cáo vi phạm</strong> đã được gửi đến</p>
+                                        <span class="notification-time">1 giờ trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">
+                            <img src="../../assets/images/admin-avatar.jpg" alt="Admin"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="./admin-dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i> Tổng quan
+                </a>
+                <a href="./admin-users.html" class="active">
+                    <i class="fas fa-users"></i> Quản lý người dùng
+                </a>
+                <a href="./admin-products.html">
+                    <i class="fas fa-box"></i> Quản lý sản phẩm
+                </a>
+                <a href="./admin-reviews.html">
+                    <i class="fas fa-comments"></i> Quản lý đánh giá
+                </a>
+                <a href="./admin-models.html">
+                    <i class="fas fa-brain"></i> Quản lý model AI
+                </a>
+                <a href="./admin-settings.html">
+                    <i class="fas fa-cog"></i> Cài đặt
+                </a>
+                <a href="../../index.html">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Quản lý người dùng</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" data-modal="addUserModal">
+                        <i class="fas fa-plus"></i> Thêm người dùng
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-file-export"></i> Xuất dữ liệu
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="filter-role">Vai trò</label>
+                    <select id="filter-role" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="admin">Admin</option>
+                        <option value="moderator">Người kiểm duyệt</option>
+                        <option value="user">Người dùng</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-status">Trạng thái</label>
+                    <select id="filter-status" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="active">Hoạt động</option>
+                        <option value="inactive">Không hoạt động</option>
+                        <option value="suspended">Tạm khóa</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-date">Ngày tạo</label>
+                    <select id="filter-date" class="form-control">
+                        <option value="">Tất cả</option>
+                        <option value="today">Hôm nay</option>
+                        <option value="week">Tuần này</option>
+                        <option value="month">Tháng này</option>
+                        <option value="year">Năm nay</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="search-users">Tìm kiếm</label>
+                    <div class="search-input">
+                        <input type="text" id="search-users" class="form-control" placeholder="Tìm tên, email...">
+                        <button type="button" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="filter-actions">
+                    <button class="btn btn-sm btn-outline">Lọc</button>
+                    <button class="btn btn-sm btn-text">Xóa bộ lọc</button>
+                </div>
+            </div>
+
+            <!-- Users Table -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th class="table-checkbox">
+                                        <input type="checkbox" id="select-all">
+                                    </th>
+                                    <th class="sortable">ID <i class="fas fa-sort"></i></th>
+                                    <th>Ảnh</th>
+                                    <th class="sortable">Họ tên <i class="fas fa-sort"></i></th>
+                                    <th class="sortable">Email <i class="fas fa-sort"></i></th>
+                                    <th class="sortable">Vai trò <i class="fas fa-sort"></i></th>
+                                    <th class="sortable">Đánh giá <i class="fas fa-sort"></i></th>
+                                    <th class="sortable">Ngày tham gia <i class="fas fa-sort"></i></th>
+                                    <th class="sortable">Trạng thái <i class="fas fa-sort"></i></th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="table-checkbox">
+                                        <input type="checkbox" class="row-checkbox">
+                                    </td>
+                                    <td>#001</td>
+                                    <td>
+                                        <img src="../../assets/images/user1.jpg" alt="User" class="user-avatar">
+                                    </td>
+                                    <td>Nguyễn Văn A</td>
+                                    <td>nguyenvana@example.com</td>
+                                    <td>Admin</td>
+                                    <td>85</td>
+                                    <td>15/01/2023</td>
+                                    <td><span class="status status-active">Hoạt động</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                                class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                            data-modal="editUserModal"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn" title="Xóa"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-checkbox">
+                                        <input type="checkbox" class="row-checkbox">
+                                    </td>
+                                    <td>#002</td>
+                                    <td>
+                                        <img src="../../assets/images/user2.jpg" alt="User" class="user-avatar">
+                                    </td>
+                                    <td>Trần Thị B</td>
+                                    <td>tranthib@example.com</td>
+                                    <td>Người kiểm duyệt</td>
+                                    <td>72</td>
+                                    <td>22/02/2023</td>
+                                    <td><span class="status status-active">Hoạt động</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                                class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                            data-modal="editUserModal"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn" title="Xóa"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-checkbox">
+                                        <input type="checkbox" class="row-checkbox">
+                                    </td>
+                                    <td>#003</td>
+                                    <td>
+                                        <img src="../../assets/images/user3.jpg" alt="User" class="user-avatar">
+                                    </td>
+                                    <td>Lê Văn C</td>
+                                    <td>levanc@example.com</td>
+                                    <td>Người dùng</td>
+                                    <td>64</td>
+                                    <td>10/03/2023</td>
+                                    <td><span class="status status-inactive">Không hoạt động</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                                class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                            data-modal="editUserModal"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn" title="Xóa"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-checkbox">
+                                        <input type="checkbox" class="row-checkbox">
+                                    </td>
+                                    <td>#004</td>
+                                    <td>
+                                        <img src="../../assets/images/user4.jpg" alt="User" class="user-avatar">
+                                    </td>
+                                    <td>Phạm Thị D</td>
+                                    <td>phamthid@example.com</td>
+                                    <td>Người dùng</td>
+                                    <td>58</td>
+                                    <td>05/04/2023</td>
+                                    <td><span class="status status-suspended">Tạm khóa</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                                class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                            data-modal="editUserModal"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn" title="Xóa"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-checkbox">
+                                        <input type="checkbox" class="row-checkbox">
+                                    </td>
+                                    <td>#005</td>
+                                    <td>
+                                        <img src="../../assets/images/user5.jpg" alt="User" class="user-avatar">
+                                    </td>
+                                    <td>Hoàng Văn E</td>
+                                    <td>hoangvane@example.com</td>
+                                    <td>Người dùng</td>
+                                    <td>45</td>
+                                    <td>20/05/2023</td>
+                                    <td><span class="status status-active">Hoạt động</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                                class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                            data-modal="editUserModal"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn" title="Xóa"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-checkbox">
+                                        <input type="checkbox" class="row-checkbox">
+                                    </td>
+                                    <td>#006</td>
+                                    <td>
+                                        <img src="../../assets/images/user6.jpg" alt="User" class="user-avatar">
+                                    </td>
+                                    <td>Vũ Thị F</td>
+                                    <td>vuthif@example.com</td>
+                                    <td>Người dùng</td>
+                                    <td>38</td>
+                                    <td>15/06/2023</td>
+                                    <td><span class="status status-active">Hoạt động</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                                class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                            data-modal="editUserModal"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn" title="Xóa"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-checkbox">
+                                        <input type="checkbox" class="row-checkbox">
+                                    </td>
+                                    <td>#007</td>
+                                    <td>
+                                        <img src="../../assets/images/user7.jpg" alt="User" class="user-avatar">
+                                    </td>
+                                    <td>Đỗ Văn G</td>
+                                    <td>dovang@example.com</td>
+                                    <td>Người kiểm duyệt</td>
+                                    <td>32</td>
+                                    <td>07/07/2023</td>
+                                    <td><span class="status status-active">Hoạt động</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                                class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                            data-modal="editUserModal"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn" title="Xóa"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-checkbox">
+                                        <input type="checkbox" class="row-checkbox">
+                                    </td>
+                                    <td>#008</td>
+                                    <td>
+                                        <img src="../../assets/images/user8.jpg" alt="User" class="user-avatar">
+                                    </td>
+                                    <td>Lý Thị H</td>
+                                    <td>lythih@example.com</td>
+                                    <td>Người dùng</td>
+                                    <td>28</td>
+                                    <td>25/08/2023</td>
+                                    <td><span class="status status-inactive">Không hoạt động</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                                class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                            data-modal="editUserModal"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn" title="Xóa"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-checkbox">
+                                        <input type="checkbox" class="row-checkbox">
+                                    </td>
+                                    <td>#009</td>
+                                    <td>
+                                        <img src="../../assets/images/user9.jpg" alt="User" class="user-avatar">
+                                    </td>
+                                    <td>Trịnh Văn I</td>
+                                    <td>trinhvani@example.com</td>
+                                    <td>Người dùng</td>
+                                    <td>24</td>
+                                    <td>12/09/2023</td>
+                                    <td><span class="status status-active">Hoạt động</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                                class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                            data-modal="editUserModal"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn" title="Xóa"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="table-checkbox">
+                                        <input type="checkbox" class="row-checkbox">
+                                    </td>
+                                    <td>#010</td>
+                                    <td>
+                                        <img src="../../assets/images/user10.jpg" alt="User" class="user-avatar">
+                                    </td>
+                                    <td>Ngô Thị K</td>
+                                    <td>ngothik@example.com</td>
+                                    <td>Người dùng</td>
+                                    <td>18</td>
+                                    <td>30/09/2023</td>
+                                    <td><span class="status status-active">Hoạt động</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"><i
+                                                class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit-btn" title="Chỉnh sửa"
+                                            data-modal="editUserModal"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete-btn" title="Xóa"><i
+                                                class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Table Footer -->
+                    <div class="table-footer">
+                        <div class="bulk-actions">
+                            <select class="form-control">
+                                <option value="">Hành động hàng loạt</option>
+                                <option value="delete">Xóa đã chọn</option>
+                                <option value="activate">Kích hoạt đã chọn</option>
+                                <option value="deactivate">Vô hiệu hóa đã chọn</option>
+                            </select>
+                            <button class="btn btn-sm btn-outline">Áp dụng</button>
+                        </div>
+
+                        <div class="pagination">
+                            <button class="pagination-btn" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="pagination-pages">
+                                <button class="pagination-page active">1</button>
+                                <button class="pagination-page">2</button>
+                                <button class="pagination-page">3</button>
+                                <button class="pagination-page">4</button>
+                                <span class="pagination-dots">...</span>
+                                <button class="pagination-page">10</button>
+                            </div>
+                            <button class="pagination-btn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="page-size">
+                            <span>Hiển thị</span>
+                            <select class="form-control">
+                                <option value="10" selected>10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                            <span>trên trang</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add User Modal -->
+    <div class="modal-overlay" id="addUserModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Thêm người dùng mới</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="user-firstname">Tên</label>
+                            <input type="text" id="user-firstname" class="form-control" placeholder="Nhập tên">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="user-lastname">Họ</label>
+                            <input type="text" id="user-lastname" class="form-control" placeholder="Nhập họ">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user-email">Email</label>
+                        <input type="email" id="user-email" class="form-control" placeholder="Nhập email">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="user-password">Mật khẩu</label>
+                            <input type="password" id="user-password" class="form-control" placeholder="Nhập mật khẩu">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="user-confirm-password">Xác nhận mật khẩu</label>
+                            <input type="password" id="user-confirm-password" class="form-control"
+                                placeholder="Xác nhận mật khẩu">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="user-role">Vai trò</label>
+                            <select id="user-role" class="form-control">
+                                <option value="user">Người dùng</option>
+                                <option value="moderator">Người kiểm duyệt</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="user-status">Trạng thái</label>
+                            <select id="user-status" class="form-control">
+                                <option value="active">Hoạt động</option>
+                                <option value="inactive">Không hoạt động</option>
+                                <option value="suspended">Tạm khóa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user-avatar">Ảnh đại diện</label>
+                        <div class="file-upload">
+                            <input type="file" id="user-avatar" class="file-input">
+                            <div class="file-preview">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Nhấp hoặc kéo thả file</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-primary">Thêm người dùng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div class="modal-overlay" id="editUserModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Chỉnh sửa người dùng</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="edit-firstname">Tên</label>
+                            <input type="text" id="edit-firstname" class="form-control" value="Nguyễn Văn">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="edit-lastname">Họ</label>
+                            <input type="text" id="edit-lastname" class="form-control" value="A">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-email">Email</label>
+                        <input type="email" id="edit-email" class="form-control" value="nguyenvana@example.com">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="edit-role">Vai trò</label>
+                            <select id="edit-role" class="form-control">
+                                <option value="user">Người dùng</option>
+                                <option value="moderator">Người kiểm duyệt</option>
+                                <option value="admin" selected>Admin</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="edit-status">Trạng thái</label>
+                            <select id="edit-status" class="form-control">
+                                <option value="active" selected>Hoạt động</option>
+                                <option value="inactive">Không hoạt động</option>
+                                <option value="suspended">Tạm khóa</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-avatar">Ảnh đại diện</label>
+                        <div class="file-upload">
+                            <input type="file" id="edit-avatar" class="file-input">
+                            <div class="file-preview">
+                                <img src="../../assets/images/user1.jpg" alt="User" class="preview-image">
+                                <span class="file-name">user1.jpg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="toggle-container">
+                            <label for="reset-password">Đặt lại mật khẩu</label>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="reset-password">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="reset-password-fields" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="new-password">Mật khẩu mới</label>
+                                <input type="password" id="new-password" class="form-control"
+                                    placeholder="Nhập mật khẩu mới">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="confirm-new-password">Xác nhận mật khẩu</label>
+                                <input type="password" id="confirm-new-password" class="form-control"
+                                    placeholder="Xác nhận mật khẩu mới">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-primary">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="deleteConfirmModal">
+        <div class="modal-container modal-sm">
+            <div class="modal-header">
+                <h3 class="modal-title">Xác nhận xóa</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa người dùng này? Hành động này không thể hoàn tác.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-danger">Xóa</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize modals
+            const modalTriggers = document.querySelectorAll('[data-modal]');
+            const modalCloseButtons = document.querySelectorAll('.modal-close');
+            const modals = document.querySelectorAll('.modal-overlay');
+
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function () {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+
+                    if (modal) {
+                        modal.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const modal = this.closest('.modal-overlay');
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            modals.forEach(modal => {
+                modal.addEventListener('click', function (e) {
+                    if (e.target === this) {
+                        this.classList.remove('show');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            // Delete button functionality
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const deleteModal = document.getElementById('deleteConfirmModal');
+                    deleteModal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Toggle password reset fields
+            const resetPasswordToggle = document.getElementById('reset-password');
+            const resetPasswordFields = document.getElementById('reset-password-fields');
+
+            resetPasswordToggle.addEventListener('change', function () {
+                if (this.checked) {
+                    resetPasswordFields.style.display = 'block';
+                } else {
+                    resetPasswordFields.style.display = 'none';
+                }
+            });
+
+            // Select all functionality
+            const selectAll = document.getElementById('select-all');
+            const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+
+            selectAll.addEventListener('change', function () {
+                rowCheckboxes.forEach(checkbox => {
+                    checkbox.checked = this.checked;
+                });
+            });
+
+            // File upload preview
+            const fileInputs = document.querySelectorAll('.file-input');
+
+            fileInputs.forEach(input => {
+                input.addEventListener('change', function (e) {
+                    const filePreview = this.nextElementSibling;
+
+                    if (this.files && this.files[0]) {
+                        const reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            if (!filePreview.querySelector('.preview-image')) {
+                                filePreview.innerHTML = `
+                  <img src="${e.target.result}" alt="Preview" class="preview-image">
+                  <span class="file-name">${input.files[0].name}</span>
+                `;
+                            } else {
+                                filePreview.querySelector('.preview-image').src = e.target
+                                    .result;
+                                filePreview.querySelector('.file-name').textContent = input
+                                    .files[0].name;
+                            }
+                        }
+
+                        reader.readAsDataURL(this.files[0]);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

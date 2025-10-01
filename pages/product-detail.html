@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sách - Hệ thống đánh giá và review sách</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-book-open"></i> BookReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm sách...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Trang chủ</a></li>
+                    <li><a href="./products.html">Sách</a></li>
+                    <li><a href="./categories.html">Thể loại</a></li>
+                    <li><a href="./authors.html">Tác giả</a></li>
+                    <li><a href="./compare.html">So sánh</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-avatar">
+                                        <img src="../assets/images/product1.jpg" alt="Product">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>To Kill a Mockingbird</strong> vừa có đánh giá mới</p>
+                                        <span class="notification-time">2 giờ trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-avatar">
+                                        <img src="../assets/images/product2.jpg" alt="Book Cover">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>1984</strong> vừa có đánh giá mới</p>
+                                        <span class="notification-time">3 giờ trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-avatar">
+                                        <img src="../assets/images/user1.jpg" alt="User">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>Nguyễn Văn A</strong> đã thích đánh giá của bạn</p>
+                                        <span class="notification-time">1 ngày trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="./profile.html">
+                            <img src="../assets/images/avatar.jpg" alt="Avatar"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="container">
+        <div class="breadcrumb" style="padding: 15px 0;">
+            <a href="../index.html">Trang chủ</a> >
+            <a href="./products.html">Sách</a> >
+            <a href="./categories.html">Tiểu thuyết</a> >
+            <span>To Kill a Mockingbird</span>
+        </div>
+    </div>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="row">
+                <!-- Product Gallery -->
+                <div class="col-6 col-md-12">
+                    <div class="product-gallery">
+                        <div class="main-image">
+                            <img src="../assets/images/product1.jpg" alt="To Kill a Mockingbird">
+                        </div>
+                        <div class="thumbnail-images">
+                            <div class="thumbnail active">
+                                <img src="../assets/images/product1.jpg" alt="To Kill a Mockingbird - Cover">
+                            </div>
+                            <div class="thumbnail">
+                                <img src="../assets/images/product1-2.jpg" alt="To Kill a Mockingbird - Back Cover">
+                            </div>
+                            <div class="thumbnail">
+                                <img src="../assets/images/product1-3.jpg" alt="To Kill a Mockingbird - First Page">
+                            </div>
+                            <div class="thumbnail">
+                                <img src="../assets/images/product1-4.jpg" alt="To Kill a Mockingbird - Illustrations">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Actions -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <button class="btn btn-outline favorite-btn" data-product="b1"
+                                    onclick="addToFavorites('b1', 'To Kill a Mockingbird')">
+                                    <i class="far fa-heart"></i> Thêm vào yêu thích
+                                </button>
+                                <button class="btn btn-outline" onclick="addToCompare('b1', 'To Kill a Mockingbird')">
+                                    <i class="fas fa-exchange-alt"></i> Thêm vào so sánh
+                                </button>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;" data-modal="reviewModal">
+                                <i class="fas fa-edit"></i> Viết đánh giá
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="col-6 col-md-12">
+                    <div class="product-info-detail">
+                        <h1>To Kill a Mockingbird</h1>
+                        <h2 class="book-author">Harper Lee</h2>
+
+                        <div class="product-meta">
+                            <div class="product-rating">
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span>4.5/5</span>
+                            </div>
+                            <div>
+                                <span>320 đánh giá</span>
+                            </div>
+                            <div>
+                                <span>Thể loại: <a href="#">Tiểu thuyết</a>, <a href="#">Văn học Mỹ</a></span>
+                            </div>
+                            <div>
+                                <span>Xuất bản: 1960 | <span>Nhà xuất bản: <a href="#">HarperCollins</a></span></span>
+                            </div>
+                        </div>
+
+                        <div class="product-description mb-4">
+                            <p>"To Kill a Mockingbird" là một tác phẩm kinh điển của văn học Mỹ và là cuốn tiểu thuyết
+                                duy nhất của Harper Lee. Cuốn sách kể về câu chuyện của cô bé Scout Finch sống ở Alabama
+                                trong những năm 1930, với cha là luật sư Atticus Finch, người bảo vệ cho một người đàn
+                                ông da đen bị buộc tội hiếp dâm một phụ nữ da trắng.</p>
+                            <p>Cuốn sách đã được trao giải Pulitzer và được đánh giá cao về việc mô tả sẢu sắc về chủ
+                                nghĩa phân biệt chủng tộc, bất công xã hội và sự trưởng thành của con người. Đây là một
+                                trong những cuốn sách bán chạy nhất mọi thời đại với hơn 40 triệu bản được bán ra trên
+                                toàn thế giới.</p>
+                        </div>
+
+                        <!-- Overall Sentiment -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h3>Thống kê cảm xúc</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="sentiment-overview mb-3">
+                                    <div class="sentiment-stat">
+                                        <span class="sentiment-number sentiment-positive">85%</span>
+                                        <span>Tích cực</span>
+                                    </div>
+                                    <div class="sentiment-stat">
+                                        <span class="sentiment-number sentiment-negative">15%</span>
+                                        <span>Tiêu cực</span>
+                                    </div>
+                                </div>
+
+                                <div class="chart-container">
+                                    <canvas id="sentimentChart" height="200"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Aspect Sentiment -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Đánh giá theo khía cạnh</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- Camera Aspect -->
+                                <div class="aspect-sentiment">
+                                    <div class="aspect-title">
+                                        <span>Camera</span>
+                                        <span>92%</span>
+                                    </div>
+                                    <div class="aspect-progress">
+                                        <div class="aspect-progress-bar" style="width: 92%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Battery Aspect -->
+                                <div class="aspect-sentiment">
+                                    <div class="aspect-title">
+                                        <span>Pin</span>
+                                        <span>88%</span>
+                                    </div>
+                                    <div class="aspect-progress">
+                                        <div class="aspect-progress-bar" style="width: 88%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Display Aspect -->
+                                <div class="aspect-sentiment">
+                                    <div class="aspect-title">
+                                        <span>Màn hình</span>
+                                        <span>95%</span>
+                                    </div>
+                                    <div class="aspect-progress">
+                                        <div class="aspect-progress-bar" style="width: 95%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Performance Aspect -->
+                                <div class="aspect-sentiment">
+                                    <div class="aspect-title">
+                                        <span>Hiệu năng</span>
+                                        <span>90%</span>
+                                    </div>
+                                    <div class="aspect-progress">
+                                        <div class="aspect-progress-bar" style="width: 90%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Price Aspect -->
+                                <div class="aspect-sentiment">
+                                    <div class="aspect-title">
+                                        <span>Giá thành</span>
+                                        <span>65%</span>
+                                    </div>
+                                    <div class="aspect-progress">
+                                        <div class="aspect-progress-bar" style="width: 65%;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Charging Aspect -->
+                                <div class="aspect-sentiment">
+                                    <div class="aspect-title">
+                                        <span>Sạc</span>
+                                        <span>72%</span>
+                                    </div>
+                                    <div class="aspect-progress">
+                                        <div class="aspect-progress-bar" style="width: 72%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews Section -->
+            <div class="review-list mt-4">
+                <h3 class="mb-3">Đánh giá từ độc giả (320)</h3>
+
+                <!-- Filter Reviews -->
+                <div class="filter-chips mb-4">
+                    <div class="chip active" data-filter="all">Tất cả</div>
+                    <div class="chip" data-filter="positive">Tích cực</div>
+                    <div class="chip" data-filter="negative">Tiêu cực</div>
+                    <div class="chip" data-filter="plot">Cốt truyện</div>
+                    <div class="chip" data-filter="characters">Nhân vật</div>
+                    <div class="chip" data-filter="writing">Văn phạm</div>
+                    <div class="chip" data-filter="message">Thông điệp</div>
+                </div>
+
+                <!-- Review Items -->
+                <div class="card review-item" data-sentiment="positive" data-aspects="plot,characters,message">
+                    <div class="card-body">
+                        <div class="review-header">
+                            <div class="reviewer">
+                                <img src="../assets/images/user1.jpg" alt="User"
+                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                Nguyễn Văn A
+                            </div>
+                            <div class="review-date">
+                                28/09/2023
+                            </div>
+                        </div>
+                        <div class="product-rating mb-2">
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>"To Kill a Mockingbird" là một tác phẩm kinh điển tuyệt vời. Cuốn sách khám phá các vấn
+                                đề về phân biệt chủng tộc và bất công xã hội qua góc nhìn trẻ thơ của Scout một cách
+                                tinh tế và sâu sắc. Nhân vật Atticus Finch là hình mẫu về lòng can đảm và chính trực mà
+                                mọi thời đại đều cần. Cách Harper Lee kể chuyện làm tôi hoàn toàn bị cuốn hút từ đầu đến
+                                cuối. Đây là một cuốn sách mà mọi người nên đọc ít nhất một lần trong đời.</p>
+                        </div>
+                        <div class="review-actions">
+                            <div class="review-action" onclick="voteReview('r1', true)" data-review="r1">
+                                <i class="far fa-thumbs-up"></i>
+                                Hữu ích
+                                <span class="count">42</span>
+                            </div>
+                            <div class="review-action" onclick="voteReview('r1', false)" data-review="r1">
+                                <i class="far fa-thumbs-down"></i>
+                                Không hữu ích
+                                <span class="count">5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card review-item" data-sentiment="positive" data-aspects="characters,writing,plot">
+                    <div class="card-body">
+                        <div class="review-header">
+                            <div class="reviewer">
+                                <img src="../assets/images/user2.jpg" alt="User"
+                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                Trần Thị B
+                            </div>
+                            <div class="review-date">
+                                25/09/2023
+                            </div>
+                        </div>
+                        <div class="product-rating mb-2">
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>Đọc "To Kill a Mockingbird" lần đầu tiên vào năm ngoái và đã phải đọc lại ngay lập tức.
+                                Cuốn sách của Harper Lee có sức mạnh lớn trong việc làm sáng tỏ vấn đề phân biệt chủng
+                                tộc. Cách tác giả xây dựng nhân vật rất tinh tế và đầy sức sống. Tôi đặc biệt yêu thích
+                                nhân vật Scout với cách nhìn thế giới đầy ngây thơ nhưng cũng rất sâu sắc. Điểm trừ duy
+                                nhất là đôi khi nhịp truyện hơi chậm, nhất là ở phần đầu.</p>
+                        </div>
+                        <div class="review-actions">
+                            <div class="review-action" onclick="voteReview('r2', true)" data-review="r2">
+                                <i class="far fa-thumbs-up"></i>
+                                Hữu ích
+                                <span class="count">35</span>
+                            </div>
+                            <div class="review-action" onclick="voteReview('r2', false)" data-review="r2">
+                                <i class="far fa-thumbs-down"></i>
+                                Không hữu ích
+                                <span class="count">3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card review-item" data-sentiment="negative" data-aspects="writing,engagement">
+                    <div class="card-body">
+                        <div class="review-header">
+                            <div class="reviewer">
+                                <img src="../assets/images/user3.jpg" alt="User"
+                                    style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                Lê Văn C
+                            </div>
+                            <div class="review-date">
+                                22/09/2023
+                            </div>
+                        </div>
+                        <div class="product-rating mb-2">
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>Tôi cảm thấy cuốn sách "To Kill a Mockingbird" được đánh giá quá cao. Mặc dù nội dung có
+                                giá trị về chủ đề phân biệt chủng tộc, nhưng cách viết khá chậm và nhiều đoạn mô tả dài
+                                dòng không cần thiết. Tôi thấy
+                                tốt nhưng không quá khác biệt so với thế hệ trước. Sạc vẫn rất chậm và không có củ sạc
+                                kèm theo. 120Hz là tốt nhưng đã có trên Android từ lâu. Với mức giá này, tôi kỳ vọng
+                                nhiều hơn từ Apple.</p>
+                        </div>
+                        <div class="review-actions">
+                            <div class="review-action" onclick="voteReview('r3', true)" data-review="r3">
+                                <i class="far fa-thumbs-up"></i>
+                                Hữu ích
+                                <span class="count">28</span>
+                            </div>
+                            <div class="review-action" onclick="voteReview('r3', false)" data-review="r3">
+                                <i class="far fa-thumbs-down"></i>
+                                Không hữu ích
+                                <span class="count">12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <a href="#" class="page-link page-item active">1</a>
+                    <a href="#" class="page-link page-item">2</a>
+                    <a href="#" class="page-link page-item">3</a>
+                    <a href="#" class="page-link page-item">4</a>
+                    <a href="#" class="page-link page-item">5</a>
+                    <a href="#" class="page-link page-item">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review Modal -->
+    <div class="modal-overlay" id="reviewModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Viết đánh giá cho iPhone 13 Pro Max</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="review-form">
+                    <div class="form-group">
+                        <label for="rating">Đánh giá</label>
+                        <div class="star-input">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                        <input type="hidden" id="rating" name="rating">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content">Nội dung đánh giá</label>
+                        <textarea id="content" name="content" class="form-control" rows="5"
+                            placeholder="Chia sẻ trải nghiệm của bạn về sản phẩm này..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-primary" id="submit-review">Đăng đánh giá</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div class="alert-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Về chúng tôi</h3>
+                    <p>Hệ thống tham khảo phản hồi khách hàng giúp bạn đưa ra quyết định mua sắm thông minh dựa trên
+                        đánh giá thực tế.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên kết</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Trang chủ</a></li>
+                        <li><a href="./products.html">Sản phẩm</a></li>
+                        <li><a href="./compare.html">So sánh</a></li>
+                        <li><a href="./contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên hệ</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận XYZ, TP.HCM</li>
+                        <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope"></i> info@productreview.com</li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Theo dõi</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                &copy; 2023 Hệ thống tham khảo phản hồi khách hàng. Tất cả quyền được bảo lưu.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize sentiment chart
+            const sentimentCtx = document.getElementById('sentimentChart');
+            new Chart(sentimentCtx, {
+                type: 'line',
+                data: {
+                    labels: ['T8', 'T9', 'T10', 'T11', 'T12', 'T1'],
+                    datasets: [{
+                            label: 'Tích cực',
+                            data: [75, 78, 82, 85, 88, 85],
+                            borderColor: '#2ecc71',
+                            backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Tiêu cực',
+                            data: [25, 22, 18, 15, 12, 15],
+                            borderColor: '#e74c3c',
+                            backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function (value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Filter reviews
+            const filterChips = document.querySelectorAll('.filter-chips .chip');
+            const reviewItems = document.querySelectorAll('.review-item');
+
+            filterChips.forEach(chip => {
+                chip.addEventListener('click', function () {
+                    const filter = this.getAttribute('data-filter');
+
+                    // Update active chip
+                    filterChips.forEach(c => {
+                        c.classList.remove('active');
+                    });
+                    this.classList.add('active');
+
+                    // Filter reviews
+                    reviewItems.forEach(item => {
+                        if (filter === 'all') {
+                            item.style.display = 'block';
+                        } else if (filter === 'positive') {
+                            if (item.getAttribute('data-sentiment') === 'positive') {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        } else if (filter === 'negative') {
+                            if (item.getAttribute('data-sentiment') === 'negative') {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        } else {
+                            // Filter by aspect
+                            const aspects = item.getAttribute('data-aspects').split(
+                                ',');
+                            if (aspects.includes(filter)) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Handle review submission
+            const submitBtn = document.getElementById('submit-review');
+            const reviewForm = document.getElementById('review-form');
+            const reviewModal = document.getElementById('reviewModal');
+
+            submitBtn.addEventListener('click', function () {
+                const rating = document.getElementById('rating').value;
+                const content = document.getElementById('content').value;
+
+                if (!rating) {
+                    alert('Vui lòng chọn số sao đánh giá');
+                    return;
+                }
+
+                if (!content || content.trim() === '') {
+                    alert('Vui lòng nhập nội dung đánh giá');
+                    return;
+                }
+
+                // Simulate API call
+                setTimeout(function () {
+                    // Close modal
+                    reviewModal.classList.remove('show');
+                    document.body.style.overflow = '';
+
+                    // Reset form
+                    reviewForm.reset();
+                    document.querySelectorAll('.star-input i').forEach(star => {
+                        star.classList.remove('active');
+                    });
+
+                    // Show success message
+                    showAlert('Đánh giá của bạn đã được gửi thành công và đang chờ xét duyệt!',
+                        'success');
+                }, 1000);
+            });
+
+            // Star rating in review form
+            const stars = document.querySelectorAll('.star-input i');
+            const ratingInput = document.getElementById('rating');
+
+            stars.forEach((star, index) => {
+                star.addEventListener('click', function () {
+                    ratingInput.value = index + 1;
+
+                    // Update stars UI
+                    stars.forEach((s, i) => {
+                        if (i <= index) {
+                            s.classList.remove('far');
+                            s.classList.add('fas');
+                        } else {
+                            s.classList.remove('fas');
+                            s.classList.add('far');
+                        }
+                    });
+                });
+            });
+        });
+
+        function showAlert(message, type = 'info') {
+            const alertContainer = document.querySelector('.alert-container');
+
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+
+            alertContainer.appendChild(alert);
+
+            setTimeout(function () {
+                alert.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

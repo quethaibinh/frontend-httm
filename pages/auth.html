@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập/Đăng ký - Hệ thống đánh giá và review sách</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="auth-page">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-book-open"></i> BookReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm sách...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Trang chủ</a></li>
+                    <li><a href="./products.html">Sách</a></li>
+                    <li><a href="./categories.html">Thể loại</a></li>
+                    <li><a href="./authors.html">Tác giả</a></li>
+                    <li><a href="./compare.html">So sánh</a></li>
+                    <li><a href="./auth.html" class="btn btn-primary">Đăng nhập</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Authentication Section -->
+    <section class="auth-container">
+        <div class="card auth-card">
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-form="login-form">Đăng nhập</div>
+                <div class="auth-tab" data-form="register-form">Đăng ký</div>
+            </div>
+
+            <!-- Login Form -->
+            <div class="auth-form" id="login-form">
+                <div class="social-login">
+                    <div class="social-btn facebook-btn">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </div>
+                    <div class="social-btn google-btn">
+                        <i class="fab fa-google"></i> Google
+                    </div>
+                </div>
+
+                <div class="divider">
+                    <span>Hoặc đăng nhập bằng email</span>
+                </div>
+
+                <form>
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" class="form-control" placeholder="Nhập email của bạn"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Mật khẩu</label>
+                        <input type="password" id="login-password" class="form-control" placeholder="Nhập mật khẩu"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="d-flex justify-content-between">
+                            <label>
+                                <input type="checkbox" id="remember-me"> Nhớ đăng nhập
+                            </label>
+                            <a href="./forgot-password.html" class="forgot-password">Quên mật khẩu?</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Đăng nhập</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Register Form -->
+            <div class="auth-form" id="register-form" style="display: none;">
+                <div class="social-login">
+                    <div class="social-btn facebook-btn">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </div>
+                    <div class="social-btn google-btn">
+                        <i class="fab fa-google"></i> Google
+                    </div>
+                </div>
+
+                <div class="divider">
+                    <span>Hoặc đăng ký bằng email</span>
+                </div>
+
+                <form>
+                    <div class="form-group">
+                        <label for="register-name">Họ tên</label>
+                        <input type="text" id="register-name" class="form-control" placeholder="Nhập họ tên của bạn"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" class="form-control" placeholder="Nhập email của bạn"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-password">Mật khẩu</label>
+                        <input type="password" id="register-password" class="form-control" placeholder="Nhập mật khẩu"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="register-confirm-password">Xác nhận mật khẩu</label>
+                        <input type="password" id="register-confirm-password" class="form-control"
+                            placeholder="Nhập lại mật khẩu" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="terms"> Tôi đồng ý với <a href="#">Điều khoản dịch vụ</a> và <a
+                                href="#">Chính sách bảo mật</a>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Đăng ký</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Về chúng tôi</h3>
+                    <p>Hệ thống tham khảo phản hồi khách hàng giúp bạn đưa ra quyết định mua sắm thông minh dựa trên
+                        đánh giá thực tế.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên kết</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Trang chủ</a></li>
+                        <li><a href="./products.html">Sản phẩm</a></li>
+                        <li><a href="./compare.html">So sánh</a></li>
+                        <li><a href="./contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên hệ</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận XYZ, TP.HCM</li>
+                        <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope"></i> info@productreview.com</li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Theo dõi</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                &copy; 2023 Hệ thống tham khảo phản hồi khách hàng. Tất cả quyền được bảo lưu.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

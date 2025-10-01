@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài đặt hệ thống - Quản trị - Hệ thống tham khảo phản hồi khách hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../../index.html" class="logo">
+                    <i class="fas fa-comment-dots"></i> ProductReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../../index.html">Trang chủ</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Cấu hình hệ thống</strong> đã được cập nhật</p>
+                                        <span class="notification-time">5 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Người dùng mới</strong> đã đăng ký</p>
+                                        <span class="notification-time">30 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Báo cáo lỗi</strong> đã được gửi</p>
+                                        <span class="notification-time">1 giờ trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">
+                            <img src="../../assets/images/admin-avatar.jpg" alt="Admin"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="./admin-dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i> Tổng quan
+                </a>
+                <a href="./admin-users.html">
+                    <i class="fas fa-users"></i> Quản lý người dùng
+                </a>
+                <a href="./admin-products.html">
+                    <i class="fas fa-box"></i> Quản lý sản phẩm
+                </a>
+                <a href="./admin-reviews.html">
+                    <i class="fas fa-comments"></i> Quản lý đánh giá
+                </a>
+                <a href="./admin-models.html">
+                    <i class="fas fa-brain"></i> Quản lý model AI
+                </a>
+                <a href="./admin-settings.html" class="active">
+                    <i class="fas fa-cog"></i> Cài đặt
+                </a>
+                <a href="../../index.html">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Cài đặt hệ thống</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" id="save-all-settings">
+                        <i class="fas fa-save"></i> Lưu tất cả thay đổi
+                    </button>
+                </div>
+            </div>
+
+            <!-- Settings Tabs -->
+            <div class="settings-tabs">
+                <button class="settings-tab active" data-tab="general">Tổng quan</button>
+                <button class="settings-tab" data-tab="appearance">Giao diện</button>
+                <button class="settings-tab" data-tab="emails">Email</button>
+                <button class="settings-tab" data-tab="integrations">Tích hợp</button>
+                <button class="settings-tab" data-tab="api">API & Webhook</button>
+                <button class="settings-tab" data-tab="permissions">Phân quyền</button>
+                <button class="settings-tab" data-tab="backup">Sao lưu & Phục hồi</button>
+            </div>
+
+            <!-- Settings Content -->
+            <div class="settings-content">
+                <!-- General Settings -->
+                <div class="settings-panel active" id="general-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Thông tin trang web</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="site-name">Tên trang web</label>
+                                    <input type="text" id="site-name" class="form-control" value="ProductReview">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="site-tagline">Khẩu hiệu</label>
+                                    <input type="text" id="site-tagline" class="form-control"
+                                        value="Nền tảng tham khảo phản hồi khách hàng hàng đầu">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-12">
+                                    <label for="site-description">Mô tả</label>
+                                    <textarea id="site-description" class="form-control"
+                                        rows="3">ProductReview là nền tảng tham khảo phản hồi khách hàng hàng đầu, giúp người dùng đưa ra quyết định mua sắm thông minh dựa trên trải nghiệm thực tế của người dùng khác.</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="site-email">Email liên hệ</label>
+                                    <input type="email" id="site-email" class="form-control"
+                                        value="contact@productreview.example.com">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="site-phone">Số điện thoại liên hệ</label>
+                                    <input type="tel" id="site-phone" class="form-control" value="0901234567">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-12">
+                                    <label for="site-address">Địa chỉ</label>
+                                    <input type="text" id="site-address" class="form-control"
+                                        value="123 Đường ABC, Phường XYZ, Quận Cầu Giấy, Hà Nội">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h3>Logo & Favicon</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label>Logo</label>
+                                    <div class="image-upload-container">
+                                        <div class="current-image">
+                                            <img src="../../assets/images/logo.png" alt="Logo">
+                                        </div>
+                                        <div class="image-upload-actions">
+                                            <button class="btn btn-sm btn-outline">
+                                                <i class="fas fa-upload"></i> Tải lên
+                                            </button>
+                                            <button class="btn btn-sm btn-outline btn-danger">
+                                                <i class="fas fa-trash"></i> Xóa
+                                            </button>
+                                        </div>
+                                        <p class="image-upload-info">Kích thước khuyến nghị: 200x50px. Định dạng: PNG,
+                                            SVG</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label>Favicon</label>
+                                    <div class="image-upload-container">
+                                        <div class="current-image favicon">
+                                            <img src="../../assets/images/favicon.ico" alt="Favicon">
+                                        </div>
+                                        <div class="image-upload-actions">
+                                            <button class="btn btn-sm btn-outline">
+                                                <i class="fas fa-upload"></i> Tải lên
+                                            </button>
+                                            <button class="btn btn-sm btn-outline btn-danger">
+                                                <i class="fas fa-trash"></i> Xóa
+                                            </button>
+                                        </div>
+                                        <p class="image-upload-info">Kích thước khuyến nghị: 32x32px. Định dạng: ICO,
+                                            PNG</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h3>Cài đặt hệ thống</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="site-language">Ngôn ngữ mặc định</label>
+                                    <select id="site-language" class="form-control">
+                                        <option value="vi" selected>Tiếng Việt</option>
+                                        <option value="en">Tiếng Anh</option>
+                                        <option value="fr">Tiếng Pháp</option>
+                                        <option value="ja">Tiếng Nhật</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="site-timezone">Múi giờ</label>
+                                    <select id="site-timezone" class="form-control">
+                                        <option value="Asia/Ho_Chi_Minh" selected>Asia/Ho_Chi_Minh (GMT+7)</option>
+                                        <option value="UTC">UTC</option>
+                                        <option value="Asia/Bangkok">Asia/Bangkok (GMT+7)</option>
+                                        <option value="Asia/Tokyo">Asia/Tokyo (GMT+9)</option>
+                                        <option value="America/New_York">America/New_York (GMT-4)</option>
+                                        <option value="Europe/London">Europe/London (GMT+1)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="date-format">Định dạng ngày</label>
+                                    <select id="date-format" class="form-control">
+                                        <option value="DD/MM/YYYY" selected>DD/MM/YYYY</option>
+                                        <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                        <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                                        <option value="DD-MM-YYYY">DD-MM-YYYY</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="time-format">Định dạng giờ</label>
+                                    <select id="time-format" class="form-control">
+                                        <option value="24h" selected>24 giờ (14:30)</option>
+                                        <option value="12h">12 giờ (2:30 PM)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="currency">Đơn vị tiền tệ</label>
+                                    <select id="currency" class="form-control">
+                                        <option value="VND" selected>Việt Nam Đồng (VND)</option>
+                                        <option value="USD">US Dollar (USD)</option>
+                                        <option value="EUR">Euro (EUR)</option>
+                                        <option value="JPY">Japanese Yen (JPY)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="currency-format">Định dạng tiền tệ</label>
+                                    <select id="currency-format" class="form-control">
+                                        <option value="dot-comma" selected>1.000.000,00 ₫</option>
+                                        <option value="comma-dot">1,000,000.00 ₫</option>
+                                        <option value="space-comma">1 000 000,00 ₫</option>
+                                        <option value="none">1000000 ₫</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="toggle-container">
+                                    <label for="maintenance-mode">Chế độ bảo trì</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="maintenance-mode">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <p class="form-text">Khi bật chế độ bảo trì, người dùng thông thường sẽ thấy thông báo
+                                    bảo trì thay vì nội dung trang web. Quản trị viên vẫn có thể đăng nhập bình thường.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h3>Cài đặt SEO</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="meta-title">Meta Title</label>
+                                <input type="text" id="meta-title" class="form-control"
+                                    value="ProductReview - Nền tảng tham khảo phản hồi khách hàng hàng đầu">
+                                <div class="character-count">
+                                    <span id="meta-title-count">75</span>/70 ký tự
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="meta-description">Meta Description</label>
+                                <textarea id="meta-description" class="form-control"
+                                    rows="3">ProductReview cung cấp các đánh giá sản phẩm từ người dùng thực tế, phân tích cảm xúc, so sánh sản phẩm giúp bạn đưa ra quyết định mua sắm thông minh.</textarea>
+                                <div class="character-count">
+                                    <span id="meta-description-count">155</span>/160 ký tự
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="meta-keywords">Meta Keywords</label>
+                                <input type="text" id="meta-keywords" class="form-control"
+                                    value="đánh giá sản phẩm, phản hồi khách hàng, so sánh sản phẩm, phân tích cảm xúc">
+                                <p class="form-text">Các từ khóa cách nhau bằng dấu phẩy</p>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="toggle-container">
+                                    <label for="enable-sitemap">Tạo sitemap tự động</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="enable-sitemap" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <p class="form-text">Tự động tạo và cập nhật sitemap khi có nội dung mới</p>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="toggle-container">
+                                    <label for="enable-robots">Cho phép robot index</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="enable-robots" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <p class="form-text">Cho phép các công cụ tìm kiếm như Google, Bing index trang web của
+                                    bạn</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appearance Settings -->
+                <div class="settings-panel" id="appearance-panel">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Cài đặt giao diện</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="theme-select">Giao diện</label>
+                                    <select id="theme-select" class="form-control">
+                                        <option value="default" selected>Mặc định</option>
+                                        <option value="dark">Tối</option>
+                                        <option value="light">Sáng</option>
+                                        <option value="custom">Tùy chỉnh</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="layout-select">Bố cục</label>
+                                    <select id="layout-select" class="form-control">
+                                        <option value="default" selected>Mặc định</option>
+                                        <option value="compact">Gọn gàng</option>
+                                        <option value="wide">Rộng</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row color-pickers">
+                                <div class="form-group col-4">
+                                    <label for="primary-color">Màu chính</label>
+                                    <div class="color-picker-container">
+                                        <input type="color" id="primary-color" class="color-picker" value="#4a90e2">
+                                        <input type="text" class="color-value" value="#4a90e2">
+                                    </div>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label for="secondary-color">Màu phụ</label>
+                                    <div class="color-picker-container">
+                                        <input type="color" id="secondary-color" class="color-picker" value="#2ecc71">
+                                        <input type="text" class="color-value" value="#2ecc71">
+                                    </div>
+                                </div>
+                                <div class="form-group col-4">
+                                    <label for="accent-color">Màu nhấn</label>
+                                    <div class="color-picker-container">
+                                        <input type="color" id="accent-color" class="color-picker" value="#f39c12">
+                                        <input type="text" class="color-value" value="#f39c12">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="font-family">Font chữ</label>
+                                    <select id="font-family" class="form-control">
+                                        <option value="Roboto" selected>Roboto</option>
+                                        <option value="Open Sans">Open Sans</option>
+                                        <option value="Lato">Lato</option>
+                                        <option value="Montserrat">Montserrat</option>
+                                        <option value="Noto Sans">Noto Sans</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="font-size">Kích thước chữ cơ bản</label>
+                                    <select id="font-size" class="form-control">
+                                        <option value="14px">14px</option>
+                                        <option value="16px" selected>16px</option>
+                                        <option value="18px">18px</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="toggle-container">
+                                    <label for="enable-animations">Hiệu ứng chuyển động</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="enable-animations" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <p class="form-text">Bật/tắt hiệu ứng chuyển động trong giao diện người dùng</p>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="toggle-container">
+                                    <label for="responsive-design">Thiết kế đáp ứng</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="responsive-design" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <p class="form-text">Tự động điều chỉnh giao diện cho các thiết bị khác nhau</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h3>Tùy chỉnh trang chủ</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="hero-title">Tiêu đề banner chính</label>
+                                <input type="text" id="hero-title" class="form-control"
+                                    value="Tham khảo phản hồi khách hàng thực tế">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="hero-subtitle">Mô tả banner chính</label>
+                                <textarea id="hero-subtitle" class="form-control"
+                                    rows="2">Đưa ra quyết định mua sắm thông minh với phân tích cảm xúc từ đánh giá thực tế</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Ảnh banner chính</label>
+                                <div class="image-upload-container">
+                                    <div class="current-image">
+                                        <img src="../../assets/images/hero-banner.jpg" alt="Hero banner">
+                                    </div>
+                                    <div class="image-upload-actions">
+                                        <button class="btn btn-sm btn-outline">
+                                            <i class="fas fa-upload"></i> Tải lên
+                                        </button>
+                                        <button class="btn btn-sm btn-outline btn-danger">
+                                            <i class="fas fa-trash"></i> Xóa
+                                        </button>
+                                    </div>
+                                    <p class="image-upload-info">Kích thước khuyến nghị: 1920x600px</p>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="featured-products">Số lượng sản phẩm nổi bật</label>
+                                    <input type="number" id="featured-products" class="form-control" value="6" min="0"
+                                        max="20">
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="latest-reviews">Số lượng đánh giá mới nhất</label>
+                                    <input type="number" id="latest-reviews" class="form-control" value="4" min="0"
+                                        max="20">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="toggle-container">
+                                    <label for="show-categories">Hiển thị danh mục nổi bật</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="show-categories" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="toggle-container">
+                                    <label for="show-trending">Hiển thị sản phẩm xu hướng</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="show-trending" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h3>Footer & Social Media</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="footer-text">Nội dung footer</label>
+                                <textarea id="footer-text" class="form-control"
+                                    rows="2">© 2025 ProductReview. Đã đăng ký bản quyền.</textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="facebook-url">Facebook</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fab fa-facebook-f"></i></span>
+                                        </div>
+                                        <input type="url" id="facebook-url" class="form-control"
+                                            value="https://facebook.com/productreview">
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="twitter-url">Twitter</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fab fa-twitter"></i></span>
+                                        </div>
+                                        <input type="url" id="twitter-url" class="form-control"
+                                            value="https://twitter.com/productreview">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="instagram-url">Instagram</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fab fa-instagram"></i></span>
+                                        </div>
+                                        <input type="url" id="instagram-url" class="form-control"
+                                            value="https://instagram.com/productreview">
+                                    </div>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="youtube-url">YouTube</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fab fa-youtube"></i></span>
+                                        </div>
+                                        <input type="url" id="youtube-url" class="form-control"
+                                            value="https://youtube.com/productreview">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="toggle-container">
+                                    <label for="show-payment-methods">Hiển thị phương thức thanh toán</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="show-payment-methods" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="toggle-container">
+                                    <label for="show-newsletter">Hiển thị form đăng ký nhận tin</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="show-newsletter" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other panels content -->
+                <div class="settings-panel" id="emails-panel">
+                    <!-- Emails content -->
+                </div>
+
+                <div class="settings-panel" id="integrations-panel">
+                    <!-- Integrations content -->
+                </div>
+
+                <div class="settings-panel" id="api-panel">
+                    <!-- API content -->
+                </div>
+
+                <div class="settings-panel" id="permissions-panel">
+                    <!-- Permissions content -->
+                </div>
+
+                <div class="settings-panel" id="backup-panel">
+                    <!-- Backup content -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Save Settings Modal -->
+    <div class="modal-overlay" id="saveSettingsModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Lưu thay đổi</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="saving-indicator">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Đang lưu các thay đổi...</p>
+                    <div class="progress-bar">
+                        <div class="progress-value" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="save-success" style="display: none;">
+                    <i class="fas fa-check-circle success-icon"></i>
+                    <h4>Đã lưu thành công</h4>
+                    <p>Tất cả các thay đổi đã được lưu thành công.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="close-save-modal" style="display: none;">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Settings tab switching
+            const settingsTabs = document.querySelectorAll('.settings-tab');
+            settingsTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const tabId = this.getAttribute('data-tab');
+
+                    // Hide all panels
+                    document.querySelectorAll('.settings-panel').forEach(panel => {
+                        panel.classList.remove('active');
+                    });
+
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.settings-tab').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+
+                    // Show selected panel and mark tab as active
+                    document.getElementById(tabId + '-panel').classList.add('active');
+                    this.classList.add('active');
+                });
+            });
+
+            // Character count for meta fields
+            const metaTitle = document.getElementById('meta-title');
+            const metaTitleCount = document.getElementById('meta-title-count');
+            if (metaTitle && metaTitleCount) {
+                metaTitle.addEventListener('input', function () {
+                    metaTitleCount.textContent = this.value.length;
+                    if (this.value.length > 70) {
+                        metaTitleCount.style.color = 'red';
+                    } else {
+                        metaTitleCount.style.color = '';
+                    }
+                });
+            }
+
+            const metaDescription = document.getElementById('meta-description');
+            const metaDescriptionCount = document.getElementById('meta-description-count');
+            if (metaDescription && metaDescriptionCount) {
+                metaDescription.addEventListener('input', function () {
+                    metaDescriptionCount.textContent = this.value.length;
+                    if (this.value.length > 160) {
+                        metaDescriptionCount.style.color = 'red';
+                    } else {
+                        metaDescriptionCount.style.color = '';
+                    }
+                });
+            }
+
+            // Color picker sync
+            const colorPickers = document.querySelectorAll('.color-picker');
+            colorPickers.forEach(picker => {
+                picker.addEventListener('input', function () {
+                    const valueInput = this.nextElementSibling;
+                    valueInput.value = this.value;
+                });
+            });
+
+            const colorValues = document.querySelectorAll('.color-value');
+            colorValues.forEach(value => {
+                value.addEventListener('input', function () {
+                    const picker = this.previousElementSibling;
+                    picker.value = this.value;
+                });
+            });
+
+            // Save Settings
+            const saveAllButton = document.getElementById('save-all-settings');
+            const saveModal = document.getElementById('saveSettingsModal');
+            const saveProgress = document.querySelector('#saveSettingsModal .progress-value');
+            const savingIndicator = document.querySelector('#saveSettingsModal .saving-indicator');
+            const saveSuccess = document.querySelector('#saveSettingsModal .save-success');
+            const closeModalButton = document.getElementById('close-save-modal');
+
+            if (saveAllButton && saveModal) {
+                saveAllButton.addEventListener('click', function () {
+                    // Show modal
+                    saveModal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+
+                    // Simulate saving process
+                    let progress = 0;
+                    const interval = setInterval(() => {
+                        progress += 5;
+                        saveProgress.style.width = progress + '%';
+
+                        if (progress >= 100) {
+                            clearInterval(interval);
+
+                            // Show success message after a small delay
+                            setTimeout(() => {
+                                savingIndicator.style.display = 'none';
+                                saveSuccess.style.display = 'block';
+                                closeModalButton.style.display = 'block';
+                            }, 500);
+                        }
+                    }, 100);
+                });
+            }
+
+            // Close modal
+            const modalCloseButtons = document.querySelectorAll('.modal-close, #close-save-modal');
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const modal = document.querySelector('.modal-overlay.show');
+                    if (modal) {
+                        modal.classList.remove('show');
+                        document.body.style.overflow = '';
+
+                        // Reset modal state for next use
+                        savingIndicator.style.display = 'block';
+                        saveSuccess.style.display = 'none';
+                        closeModalButton.style.display = 'none';
+                        saveProgress.style.width = '0%';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

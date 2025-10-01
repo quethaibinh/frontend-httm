@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài đặt tài khoản - Hệ thống tham khảo phản hồi khách hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/user.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../../index.html" class="logo">
+                    <i class="fas fa-comment-dots"></i> ProductReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../../index.html">Trang chủ</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Phản hồi mới</strong> cho đánh giá của bạn</p>
+                                        <span class="notification-time">5 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Ai đó</strong> đã thích đánh giá của bạn</p>
+                                        <span class="notification-time">30 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Sản phẩm mới</strong> phù hợp với sở thích của bạn</p>
+                                        <span class="notification-time">1 giờ trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="user-dropdown active">
+                        <a href="profile.html">
+                            <img src="../../assets/images/user-avatar.jpg" alt="User"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a>
+                        <div class="user-dropdown-menu">
+                            <a href="profile.html">
+                                <i class="fas fa-user"></i> Hồ sơ
+                            </a>
+                            <a href="settings.html" class="active">
+                                <i class="fas fa-cog"></i> Cài đặt
+                            </a>
+                            <a href="../login.html">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="settings-page">
+        <div class="container">
+            <div class="page-title">
+                <h1>Cài đặt tài khoản</h1>
+            </div>
+
+            <div class="settings-wrapper">
+                <div class="settings-sidebar">
+                    <div class="settings-nav">
+                        <a href="#profile" class="settings-nav-item active" data-tab="profile">
+                            <i class="fas fa-user"></i>
+                            <span>Thông tin cá nhân</span>
+                        </a>
+                        <a href="#security" class="settings-nav-item" data-tab="security">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Bảo mật</span>
+                        </a>
+                        <a href="#notifications" class="settings-nav-item" data-tab="notifications">
+                            <i class="fas fa-bell"></i>
+                            <span>Thông báo</span>
+                        </a>
+                        <a href="#preferences" class="settings-nav-item" data-tab="preferences">
+                            <i class="fas fa-sliders-h"></i>
+                            <span>Tùy chọn</span>
+                        </a>
+                        <a href="#connected-accounts" class="settings-nav-item" data-tab="connected-accounts">
+                            <i class="fas fa-link"></i>
+                            <span>Tài khoản liên kết</span>
+                        </a>
+                        <a href="#privacy" class="settings-nav-item" data-tab="privacy">
+                            <i class="fas fa-user-shield"></i>
+                            <span>Quyền riêng tư</span>
+                        </a>
+                        <a href="#data" class="settings-nav-item" data-tab="data">
+                            <i class="fas fa-database"></i>
+                            <span>Dữ liệu của tôi</span>
+                        </a>
+                        <a href="#deactivate" class="settings-nav-item danger" data-tab="deactivate">
+                            <i class="fas fa-user-slash"></i>
+                            <span>Vô hiệu hóa tài khoản</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="settings-content">
+                    <!-- Profile Settings Tab -->
+                    <div class="settings-tab active" id="profile-tab">
+                        <div class="settings-card">
+                            <div class="settings-card-header">
+                                <h3>Thông tin cá nhân</h3>
+                                <p>Cập nhật thông tin cá nhân của bạn</p>
+                            </div>
+
+                            <div class="settings-card-body">
+                                <form class="settings-form">
+                                    <div class="avatar-section">
+                                        <div class="current-avatar">
+                                            <img src="../../assets/images/user-avatar.jpg" alt="Avatar">
+                                        </div>
+                                        <div class="avatar-actions">
+                                            <button type="button" class="btn btn-sm btn-outline">
+                                                <i class="fas fa-upload"></i> Tải ảnh lên
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-outline btn-danger">
+                                                <i class="fas fa-trash"></i> Xóa
+                                            </button>
+                                        </div>
+                                        <p class="avatar-info">Cho phép JPG, GIF hoặc PNG. Kích thước tối đa 800K.</p>
+                                    </div>
+
+                                    <div class="form-divider"></div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-6">
+                                            <label for="firstName">Họ</label>
+                                            <input type="text" id="firstName" class="form-control" value="Nguyễn">
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="lastName">Tên</label>
+                                            <input type="text" id="lastName" class="form-control" value="Văn Khách">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-6">
+                                            <label for="email">Email</label>
+                                            <input type="email" id="email" class="form-control"
+                                                value="nguyenvan.khach@example.com" disabled>
+                                            <span class="form-text">Email không thể thay đổi</span>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="phone">Số điện thoại</label>
+                                            <input type="tel" id="phone" class="form-control" value="0901234567">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-12">
+                                            <label for="address">Địa chỉ</label>
+                                            <input type="text" id="address" class="form-control"
+                                                value="123 Đường ABC, Phường XYZ">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-4">
+                                            <label for="city">Thành phố</label>
+                                            <input type="text" id="city" class="form-control" value="Hà Nội">
+                                        </div>
+                                        <div class="form-group col-4">
+                                            <label for="district">Quận/Huyện</label>
+                                            <input type="text" id="district" class="form-control" value="Cầu Giấy">
+                                        </div>
+                                        <div class="form-group col-4">
+                                            <label for="postal">Mã bưu điện</label>
+                                            <input type="text" id="postal" class="form-control" value="100000">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-12">
+                                            <label for="bio">Giới thiệu</label>
+                                            <textarea id="bio" class="form-control"
+                                                rows="4">Tôi là một người đam mê công nghệ và thích khám phá những sản phẩm mới.</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button type="button" class="btn btn-outline">Hủy</button>
+                                        <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Settings Tab -->
+                    <div class="settings-tab" id="security-tab">
+                        <div class="settings-card">
+                            <div class="settings-card-header">
+                                <h3>Thay đổi mật khẩu</h3>
+                                <p>Cập nhật mật khẩu của bạn</p>
+                            </div>
+
+                            <div class="settings-card-body">
+                                <form class="settings-form">
+                                    <div class="form-group">
+                                        <label for="currentPassword">Mật khẩu hiện tại</label>
+                                        <div class="input-group">
+                                            <input type="password" id="currentPassword" class="form-control">
+                                            <i class="far fa-eye password-toggle"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="newPassword">Mật khẩu mới</label>
+                                        <div class="input-group">
+                                            <input type="password" id="newPassword" class="form-control">
+                                            <i class="far fa-eye password-toggle"></i>
+                                        </div>
+                                        <div class="password-strength">
+                                            <div class="strength-bar">
+                                                <div class="strength-value" style="width: 75%;"></div>
+                                            </div>
+                                            <span class="strength-text">Khá</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="confirmPassword">Xác nhận mật khẩu mới</label>
+                                        <div class="input-group">
+                                            <input type="password" id="confirmPassword" class="form-control">
+                                            <i class="far fa-eye password-toggle"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <button type="button" class="btn btn-outline">Hủy</button>
+                                        <button type="submit" class="btn btn-primary">Cập nhật mật khẩu</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="settings-card mt-4">
+                            <div class="settings-card-header">
+                                <h3>Xác thực hai yếu tố</h3>
+                                <p>Tăng cường bảo mật cho tài khoản của bạn</p>
+                            </div>
+
+                            <div class="settings-card-body">
+                                <div class="two-factor-auth">
+                                    <div class="two-factor-header">
+                                        <div class="two-factor-icon">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                        <div class="two-factor-info">
+                                            <h4>Xác thực qua SMS</h4>
+                                            <p>Nhận mã xác thực qua tin nhắn SMS</p>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="smsAuth">
+                                            <label for="smsAuth"></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="two-factor-header">
+                                        <div class="two-factor-icon">
+                                            <i class="fas fa-key"></i>
+                                        </div>
+                                        <div class="two-factor-info">
+                                            <h4>Ứng dụng xác thực</h4>
+                                            <p>Sử dụng ứng dụng xác thực như Google Authenticator</p>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="appAuth">
+                                            <label for="appAuth"></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="two-factor-header">
+                                        <div class="two-factor-icon">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </div>
+                                        <div class="two-factor-info">
+                                            <h4>Khóa bảo mật</h4>
+                                            <p>Sử dụng thiết bị khóa bảo mật vật lý (USB)</p>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="securityKey">
+                                            <label for="securityKey"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications Settings Tab -->
+                    <div class="settings-tab" id="notifications-tab">
+                        <div class="settings-card">
+                            <div class="settings-card-header">
+                                <h3>Cài đặt thông báo</h3>
+                                <p>Quản lý thông báo mà bạn nhận được</p>
+                            </div>
+
+                            <div class="settings-card-body">
+                                <div class="notification-settings">
+                                    <h4>Thông báo Email</h4>
+
+                                    <div class="notification-option">
+                                        <div class="notification-info">
+                                            <h5>Phản hồi đánh giá</h5>
+                                            <p>Nhận email khi có người phản hồi đánh giá của bạn</p>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="emailComments" checked>
+                                            <label for="emailComments"></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-option">
+                                        <div class="notification-info">
+                                            <h5>Lượt thích</h5>
+                                            <p>Nhận email khi có người thích đánh giá của bạn</p>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="emailLikes">
+                                            <label for="emailLikes"></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-option">
+                                        <div class="notification-info">
+                                            <h5>Sản phẩm mới</h5>
+                                            <p>Nhận email khi có sản phẩm mới phù hợp với sở thích</p>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="emailNewProducts" checked>
+                                            <label for="emailNewProducts"></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-option">
+                                        <div class="notification-info">
+                                            <h5>Bản tin</h5>
+                                            <p>Nhận bản tin hàng tuần về xu hướng sản phẩm</p>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="emailNewsletter" checked>
+                                            <label for="emailNewsletter"></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="divider"></div>
+
+                                    <h4>Thông báo trên web</h4>
+
+                                    <div class="notification-option">
+                                        <div class="notification-info">
+                                            <h5>Phản hồi đánh giá</h5>
+                                            <p>Hiện thông báo khi có người phản hồi đánh giá của bạn</p>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="webComments" checked>
+                                            <label for="webComments"></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-option">
+                                        <div class="notification-info">
+                                            <h5>Lượt thích</h5>
+                                            <p>Hiện thông báo khi có người thích đánh giá của bạn</p>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="webLikes" checked>
+                                            <label for="webLikes"></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-option">
+                                        <div class="notification-info">
+                                            <h5>Sản phẩm mới</h5>
+                                            <p>Hiện thông báo khi có sản phẩm mới phù hợp với sở thích</p>
+                                        </div>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" id="webNewProducts" checked>
+                                            <label for="webNewProducts"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-outline">Đặt lại về mặc định</button>
+                                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preferences Settings Tab -->
+                    <div class="settings-tab" id="preferences-tab">
+                        <!-- Preferences content -->
+                    </div>
+
+                    <!-- Connected Accounts Tab -->
+                    <div class="settings-tab" id="connected-accounts-tab">
+                        <!-- Connected accounts content -->
+                    </div>
+
+                    <!-- Privacy Tab -->
+                    <div class="settings-tab" id="privacy-tab">
+                        <!-- Privacy content -->
+                    </div>
+
+                    <!-- Data Tab -->
+                    <div class="settings-tab" id="data-tab">
+                        <!-- Data content -->
+                    </div>
+
+                    <!-- Deactivate Tab -->
+                    <div class="settings-tab" id="deactivate-tab">
+                        <div class="settings-card">
+                            <div class="settings-card-header">
+                                <h3>Vô hiệu hóa tài khoản</h3>
+                                <p>Khi bạn vô hiệu hóa tài khoản, tất cả dữ liệu của bạn sẽ bị ẩn khỏi nền tảng</p>
+                            </div>
+
+                            <div class="settings-card-body">
+                                <div class="deactivate-warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <div class="warning-content">
+                                        <h4>Cảnh báo: Hành động này không thể hoàn tác</h4>
+                                        <p>Vui lòng đọc kỹ thông tin bên dưới trước khi tiếp tục</p>
+                                    </div>
+                                </div>
+
+                                <div class="deactivate-info">
+                                    <p>Khi vô hiệu hóa tài khoản của bạn:</p>
+                                    <ul>
+                                        <li>Hồ sơ và tất cả đánh giá của bạn sẽ bị ẩn</li>
+                                        <li>Bạn không thể đăng nhập vào tài khoản</li>
+                                        <li>Không thể tạo đánh giá mới hoặc tương tác với người dùng khác</li>
+                                        <li>Dữ liệu của bạn sẽ được giữ lại trong hệ thống trong vòng 30 ngày</li>
+                                        <li>Bạn có thể kích hoạt lại tài khoản trong vòng 30 ngày bằng cách đăng nhập
+                                        </li>
+                                        <li>Sau 30 ngày, tài khoản và tất cả dữ liệu liên quan sẽ bị xóa vĩnh viễn</li>
+                                    </ul>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="deactivateReason">Lý do vô hiệu hóa tài khoản</label>
+                                    <select id="deactivateReason" class="form-control">
+                                        <option value="">Chọn một lý do</option>
+                                        <option value="not-useful">Tôi không thấy hữu ích</option>
+                                        <option value="another-account">Tôi có tài khoản khác</option>
+                                        <option value="privacy">Vấn đề về quyền riêng tư</option>
+                                        <option value="too-many-emails">Quá nhiều email</option>
+                                        <option value="other">Lý do khác</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" id="otherReasonGroup" style="display: none;">
+                                    <label for="otherReason">Vui lòng nêu rõ lý do</label>
+                                    <textarea id="otherReason" class="form-control" rows="3"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Nhập mật khẩu để xác nhận</label>
+                                    <div class="input-group">
+                                        <input type="password" id="password" class="form-control">
+                                        <i class="far fa-eye password-toggle"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="confirm-checkbox">
+                                        <input type="checkbox" id="confirmDeactivation">
+                                        <label for="confirmDeactivation">Tôi hiểu rằng sau 30 ngày, tài khoản của tôi sẽ
+                                            bị xóa vĩnh viễn</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-outline">Hủy</button>
+                                    <button type="button" class="btn btn-danger" disabled>Vô hiệu hóa tài khoản</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="../../index.html" class="logo">
+                        <i class="fas fa-comment-dots"></i> ProductReview
+                    </a>
+                    <p>Nền tảng tham khảo phản hồi khách hàng hàng đầu</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h3>Sản phẩm</h3>
+                        <ul>
+                            <li><a href="#">Điện thoại</a></li>
+                            <li><a href="#">Laptop</a></li>
+                            <li><a href="#">Máy tính bảng</a></li>
+                            <li><a href="#">Phụ kiện</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>Về chúng tôi</h3>
+                        <ul>
+                            <li><a href="#">Giới thiệu</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Tuyển dụng</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>Hỗ trợ</h3>
+                        <ul>
+                            <li><a href="#">Trung tâm trợ giúp</a></li>
+                            <li><a href="#">Hướng dẫn sử dụng</a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Điều khoản sử dụng</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-subscribe">
+                    <h3>Đăng ký nhận tin</h3>
+                    <p>Nhận thông tin mới nhất về sản phẩm và đánh giá</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Email của bạn">
+                        <button type="submit" class="btn btn-primary">Đăng ký</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 ProductReview. Đã đăng ký bản quyền.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Settings tab switching
+            const settingsTabs = document.querySelectorAll('.settings-nav-item');
+            settingsTabs.forEach(tab => {
+                tab.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const tabId = this.getAttribute('data-tab');
+
+                    // Hide all tab contents
+                    document.querySelectorAll('.settings-tab').forEach(content => {
+                        content.classList.remove('active');
+                    });
+
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.settings-nav-item').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+
+                    // Show selected tab content and mark tab as active
+                    document.getElementById(tabId + '-tab').classList.add('active');
+                    this.classList.add('active');
+                });
+            });
+
+            // Password visibility toggle
+            const togglePasswords = document.querySelectorAll('.password-toggle');
+            togglePasswords.forEach(toggle => {
+                toggle.addEventListener('click', function () {
+                    const passwordField = this.previousElementSibling;
+                    const type = passwordField.getAttribute('type') === 'password' ? 'text' :
+                        'password';
+                    passwordField.setAttribute('type', type);
+                    this.classList.toggle('fa-eye');
+                    this.classList.toggle('fa-eye-slash');
+                });
+            });
+
+            // Deactivation reason dropdown
+            const deactivateReason = document.getElementById('deactivateReason');
+            const otherReasonGroup = document.getElementById('otherReasonGroup');
+
+            if (deactivateReason && otherReasonGroup) {
+                deactivateReason.addEventListener('change', function () {
+                    if (this.value === 'other') {
+                        otherReasonGroup.style.display = 'block';
+                    } else {
+                        otherReasonGroup.style.display = 'none';
+                    }
+                });
+            }
+
+            // Deactivation checkbox
+            const confirmCheckbox = document.getElementById('confirmDeactivation');
+            const deactivateButton = document.querySelector('.btn-danger');
+
+            if (confirmCheckbox && deactivateButton) {
+                confirmCheckbox.addEventListener('change', function () {
+                    deactivateButton.disabled = !this.checked;
+                });
+            }
+
+            // User dropdown
+            const userDropdown = document.querySelector('.user-dropdown');
+            if (userDropdown) {
+                userDropdown.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    this.classList.toggle('show');
+                });
+
+                document.addEventListener('click', function () {
+                    userDropdown.classList.remove('show');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Hệ thống tham khảo phản hồi khách hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-comment-dots"></i> ProductReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Trang chủ</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">5</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Đánh giá mới</strong> cần xét duyệt</p>
+                                        <span class="notification-time">5 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Người dùng mới</strong> đã đăng ký</p>
+                                        <span class="notification-time">30 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Báo cáo vi phạm</strong> đã được gửi đến</p>
+                                        <span class="notification-time">1 giờ trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">
+                            <img src="../assets/images/admin-avatar.jpg" alt="Admin"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="./admin-dashboard.html" class="active">
+                    <i class="fas fa-tachometer-alt"></i> Tổng quan
+                </a>
+                <a href="./admin-users.html">
+                    <i class="fas fa-users"></i> Quản lý người dùng
+                </a>
+                <a href="./admin-products.html">
+                    <i class="fas fa-box"></i> Quản lý sản phẩm
+                </a>
+                <a href="./admin-reviews.html">
+                    <i class="fas fa-comments"></i> Quản lý đánh giá
+                </a>
+                <a href="./admin-models.html">
+                    <i class="fas fa-brain"></i> Quản lý model AI
+                </a>
+                <a href="./admin-settings.html">
+                    <i class="fas fa-cog"></i> Cài đặt
+                </a>
+                <a href="../index.html">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Tổng quan</h1>
+
+            <!-- Stats Overview -->
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="card-icon blue">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>1,254</h3>
+                        <p>Người dùng</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-icon orange">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>352</h3>
+                        <p>Sản phẩm</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-icon green">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>8,521</h3>
+                        <p>Đánh giá</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-icon red">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>25</h3>
+                        <p>Báo cáo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- User Activity Chart -->
+                <div class="col-8 col-md-12">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Hoạt động người dùng</h3>
+                            <div class="chart-period">
+                                <select>
+                                    <option value="day">Ngày</option>
+                                    <option value="week">Tuần</option>
+                                    <option value="month" selected>Tháng</option>
+                                    <option value="year">Năm</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-canvas">
+                            <canvas id="userActivityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sentiment Distribution -->
+                <div class="col-4 col-md-12">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3 class="chart-title">Phân bố cảm xúc</h3>
+                        </div>
+                        <div class="chart-canvas">
+                            <canvas id="sentimentChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <!-- Recent Reviews -->
+                <div class="col-6 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Đánh giá gần đây</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Người dùng</th>
+                                            <th>Sản phẩm</th>
+                                            <th>Đánh giá</th>
+                                            <th>Cảm xúc</th>
+                                            <th>Thời gian</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Nguyễn Văn A</td>
+                                            <td>iPhone 13 Pro Max</td>
+                                            <td>
+                                                <div class="star-rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </td>
+                                            <td><span class="status status-active">Tích cực</span></td>
+                                            <td>5 phút trước</td>
+                                            <td class="table-actions">
+                                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn delete-btn"><i
+                                                        class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Trần Thị B</td>
+                                            <td>Samsung Galaxy S21</td>
+                                            <td>
+                                                <div class="star-rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+                                            </td>
+                                            <td><span class="status status-active">Tích cực</span></td>
+                                            <td>30 phút trước</td>
+                                            <td class="table-actions">
+                                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn delete-btn"><i
+                                                        class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lê Văn C</td>
+                                            <td>MacBook Pro M1</td>
+                                            <td>
+                                                <div class="star-rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+                                            </td>
+                                            <td><span class="status status-inactive">Tiêu cực</span></td>
+                                            <td>1 giờ trước</td>
+                                            <td class="table-actions">
+                                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn delete-btn"><i
+                                                        class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phạm Thị D</td>
+                                            <td>iPad Pro 2021</td>
+                                            <td>
+                                                <div class="star-rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                            </td>
+                                            <td><span class="status status-active">Tích cực</span></td>
+                                            <td>2 giờ trước</td>
+                                            <td class="table-actions">
+                                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn delete-btn"><i
+                                                        class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hoàng Văn E</td>
+                                            <td>Google Pixel 6</td>
+                                            <td>
+                                                <div class="star-rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+                                            </td>
+                                            <td><span class="status status-active">Tích cực</span></td>
+                                            <td>3 giờ trước</td>
+                                            <td class="table-actions">
+                                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                                <button class="action-btn edit-btn"><i class="fas fa-edit"></i></button>
+                                                <button class="action-btn delete-btn"><i
+                                                        class="fas fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center mt-3">
+                                <a href="./admin-reviews.html" class="btn btn-outline">Xem tất cả đánh giá</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Users -->
+                <div class="col-6 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Người dùng hoạt động tích cực nhất</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Người dùng</th>
+                                            <th>Đánh giá</th>
+                                            <th>Lượt thích</th>
+                                            <th>Trạng thái</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="../assets/images/user1.jpg" alt="User"
+                                                        style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                    Nguyễn Văn A
+                                                </div>
+                                            </td>
+                                            <td>85</td>
+                                            <td>320</td>
+                                            <td><span class="status status-active">Hoạt động</span></td>
+                                            <td class="table-actions">
+                                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="../assets/images/user2.jpg" alt="User"
+                                                        style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                    Trần Thị B
+                                                </div>
+                                            </td>
+                                            <td>72</td>
+                                            <td>286</td>
+                                            <td><span class="status status-active">Hoạt động</span></td>
+                                            <td class="table-actions">
+                                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="../assets/images/user3.jpg" alt="User"
+                                                        style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                    Lê Văn C
+                                                </div>
+                                            </td>
+                                            <td>64</td>
+                                            <td>245</td>
+                                            <td><span class="status status-active">Hoạt động</span></td>
+                                            <td class="table-actions">
+                                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="../assets/images/user4.jpg" alt="User"
+                                                        style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                    Phạm Thị D
+                                                </div>
+                                            </td>
+                                            <td>58</td>
+                                            <td>212</td>
+                                            <td><span class="status status-inactive">Không hoạt động</span></td>
+                                            <td class="table-actions">
+                                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="../assets/images/user5.jpg" alt="User"
+                                                        style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                    Hoàng Văn E
+                                                </div>
+                                            </td>
+                                            <td>45</td>
+                                            <td>178</td>
+                                            <td><span class="status status-active">Hoạt động</span></td>
+                                            <td class="table-actions">
+                                                <button class="action-btn view-btn"><i class="fas fa-eye"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center mt-3">
+                                <a href="./admin-users.html" class="btn btn-outline">Xem tất cả người dùng</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Performance -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3>Hiệu suất model</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4 col-md-12">
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h3 class="chart-title">Độ chính xác model</h3>
+                                </div>
+                                <div class="chart-canvas">
+                                    <canvas id="accuracyChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-8 col-md-12">
+                            <div class="version-panel">
+                                <h4 class="mb-3">Các phiên bản model</h4>
+
+                                <div class="version-card version-active">
+                                    <div class="version-info">
+                                        <div class="version-name">Sentiment Analysis Model v2.3</div>
+                                        <div class="version-details">Đang hoạt động • Độ chính xác: 92% • Cập nhật:
+                                            15/09/2023</div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-outline btn-sm">Xem chi tiết</button>
+                                    </div>
+                                </div>
+
+                                <div class="version-card">
+                                    <div class="version-info">
+                                        <div class="version-name">Sentiment Analysis Model v2.2</div>
+                                        <div class="version-details">Không hoạt động • Độ chính xác: 89% • Cập nhật:
+                                            01/08/2023</div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-outline btn-sm">Kích hoạt</button>
+                                        <button class="btn btn-outline btn-sm">Xem chi tiết</button>
+                                    </div>
+                                </div>
+
+                                <div class="version-card">
+                                    <div class="version-info">
+                                        <div class="version-name">Sentiment Analysis Model v2.1</div>
+                                        <div class="version-details">Không hoạt động • Độ chính xác: 86% • Cập nhật:
+                                            15/06/2023</div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-outline btn-sm">Kích hoạt</button>
+                                        <button class="btn btn-outline btn-sm">Xem chi tiết</button>
+                                    </div>
+                                </div>
+
+                                <div class="text-right mt-3">
+                                    <button class="btn btn-primary" data-modal="addModelModal">
+                                        <i class="fas fa-plus"></i> Thêm phiên bản mới
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Model Modal -->
+    <div class="modal-overlay" id="addModelModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Thêm phiên bản model mới</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="model-name">Tên phiên bản</label>
+                        <input type="text" id="model-name" class="form-control"
+                            placeholder="Ví dụ: Sentiment Analysis Model v2.4">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="model-path">Đường dẫn checkpoint</label>
+                        <input type="text" id="model-path" class="form-control"
+                            placeholder="Ví dụ: /models/sentiment_v2.4/checkpoint">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="model-description">Mô tả</label>
+                        <textarea id="model-description" class="form-control" rows="3"
+                            placeholder="Mô tả về phiên bản model mới..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="model-activate"> Kích hoạt phiên bản này ngay khi thêm
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-primary">Thêm phiên bản</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // User Activity Chart
+            const userActivityCtx = document.getElementById('userActivityChart');
+            new Chart(userActivityCtx, {
+                type: 'line',
+                data: {
+                    labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
+                    datasets: [{
+                            label: 'Người dùng mới',
+                            data: [65, 78, 82, 75, 92, 88, 95, 110, 102, 120, 135, 142],
+                            borderColor: '#4a90e2',
+                            backgroundColor: 'rgba(74, 144, 226, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Đánh giá mới',
+                            data: [120, 135, 150, 142, 168, 172, 185, 190, 205, 218, 240, 252],
+                            borderColor: '#f39c12',
+                            backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Sentiment Chart
+            const sentimentCtx = document.getElementById('sentimentChart');
+            new Chart(sentimentCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Tích cực', 'Trung tính', 'Tiêu cực'],
+                    datasets: [{
+                        data: [65, 23, 12],
+                        backgroundColor: ['#2ecc71', '#f39c12', '#e74c3c'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Accuracy Chart
+            const accuracyCtx = document.getElementById('accuracyChart');
+            new Chart(accuracyCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['v2.1', 'v2.2', 'v2.3'],
+                    datasets: [{
+                        label: 'Độ chính xác',
+                        data: [86, 89, 92],
+                        backgroundColor: '#4a90e2',
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function (value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Initialize modals
+            const modalTriggers = document.querySelectorAll('[data-modal]');
+            const modalCloseButtons = document.querySelectorAll('.modal-close');
+            const modals = document.querySelectorAll('.modal-overlay');
+
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function () {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+
+                    if (modal) {
+                        modal.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const modal = this.closest('.modal-overlay');
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            modals.forEach(modal => {
+                modal.addEventListener('click', function (e) {
+                    if (e.target === this) {
+                        this.classList.remove('show');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

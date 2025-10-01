@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>So sánh sản phẩm - Hệ thống tham khảo phản hồi khách hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-comment-dots"></i> ProductReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Trang chủ</a></li>
+                    <li><a href="./products.html">Sản phẩm</a></li>
+                    <li><a href="./compare.html" class="active">So sánh</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-avatar">
+                                        <img src="../assets/images/product1.jpg" alt="Product">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>iPhone 13</strong> vừa có đánh giá mới</p>
+                                        <span class="notification-time">2 giờ trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-avatar">
+                                        <img src="../assets/images/product2.jpg" alt="Product">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>Samsung Galaxy S21</strong> vừa có đánh giá mới</p>
+                                        <span class="notification-time">3 giờ trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-avatar">
+                                        <img src="../assets/images/user1.jpg" alt="User">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>Nguyễn Văn A</strong> đã thích đánh giá của bạn</p>
+                                        <span class="notification-time">1 ngày trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="./profile.html">
+                            <img src="../assets/images/avatar.jpg" alt="Avatar"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="container">
+        <div class="breadcrumb" style="padding: 15px 0;">
+            <a href="../index.html">Trang chủ</a> >
+            <span>So sánh sản phẩm</span>
+        </div>
+    </div>
+
+    <!-- Compare Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">So sánh sản phẩm</h2>
+            <p class="section-subtitle">So sánh các sản phẩm theo nhiều tiêu chí khác nhau để đưa ra quyết định mua sắm
+                thông minh</p>
+
+            <!-- Product Selection -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3>Sản phẩm đang so sánh</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <img src="../assets/images/product1.jpg" alt="iPhone 13 Pro Max"
+                                style="max-width: 100px; margin-bottom: 10px;">
+                            <h4>iPhone 13 Pro Max</h4>
+                            <button class="btn btn-danger btn-sm" onclick="removeFromCompare('p1')">
+                                <i class="fas fa-times"></i> Xóa
+                            </button>
+                        </div>
+                        <div class="col-4 text-center">
+                            <img src="../assets/images/product2.jpg" alt="Samsung Galaxy S21 Ultra"
+                                style="max-width: 100px; margin-bottom: 10px;">
+                            <h4>Samsung Galaxy S21 Ultra</h4>
+                            <button class="btn btn-danger btn-sm" onclick="removeFromCompare('p2')">
+                                <i class="fas fa-times"></i> Xóa
+                            </button>
+                        </div>
+                        <div class="col-4 text-center">
+                            <div style="border: 2px dashed #ddd; padding: 20px; border-radius: 8px; cursor: pointer;"
+                                data-modal="addProductModal">
+                                <i class="fas fa-plus" style="font-size: 2rem; color: #ddd; margin-bottom: 10px;"></i>
+                                <p>Thêm sản phẩm để so sánh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="table-responsive">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Tiêu chí</th>
+                            <th>iPhone 13 Pro Max</th>
+                            <th>Samsung Galaxy S21 Ultra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Images -->
+                        <tr>
+                            <td class="comparison-feature">Hình ảnh</td>
+                            <td>
+                                <img src="../assets/images/product1.jpg" alt="iPhone 13 Pro Max">
+                            </td>
+                            <td>
+                                <img src="../assets/images/product2.jpg" alt="Samsung Galaxy S21 Ultra">
+                            </td>
+                        </tr>
+
+                        <!-- Rating -->
+                        <tr>
+                            <td class="comparison-feature">Đánh giá</td>
+                            <td>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span>4.5/5 (120 đánh giá)</span>
+                            </td>
+                            <td>
+                                <div class="star-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span>4.0/5 (98 đánh giá)</span>
+                            </td>
+                        </tr>
+
+                        <!-- Overall Sentiment -->
+                        <tr>
+                            <td class="comparison-feature">Cảm xúc tổng thể</td>
+                            <td>
+                                <div class="sentiment-overview">
+                                    <div class="sentiment-stat">
+                                        <span class="sentiment-number sentiment-positive">85%</span>
+                                        <span>Tích cực</span>
+                                    </div>
+                                    <div class="sentiment-stat">
+                                        <span class="sentiment-number sentiment-negative">15%</span>
+                                        <span>Tiêu cực</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="sentiment-overview">
+                                    <div class="sentiment-stat">
+                                        <span class="sentiment-number sentiment-positive">78%</span>
+                                        <span>Tích cực</span>
+                                    </div>
+                                    <div class="sentiment-stat">
+                                        <span class="sentiment-number sentiment-negative">22%</span>
+                                        <span>Tiêu cực</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Camera Aspect -->
+                        <tr>
+                            <td class="comparison-feature">Camera</td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 92%;"></div>
+                                </div>
+                                <span>92% tích cực</span>
+                            </td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 88%;"></div>
+                                </div>
+                                <span>88% tích cực</span>
+                            </td>
+                        </tr>
+
+                        <!-- Battery Aspect -->
+                        <tr>
+                            <td class="comparison-feature">Pin</td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 88%;"></div>
+                                </div>
+                                <span>88% tích cực</span>
+                            </td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 85%;"></div>
+                                </div>
+                                <span>85% tích cực</span>
+                            </td>
+                        </tr>
+
+                        <!-- Display Aspect -->
+                        <tr>
+                            <td class="comparison-feature">Màn hình</td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 95%;"></div>
+                                </div>
+                                <span>95% tích cực</span>
+                            </td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 96%;"></div>
+                                </div>
+                                <span>96% tích cực</span>
+                            </td>
+                        </tr>
+
+                        <!-- Performance Aspect -->
+                        <tr>
+                            <td class="comparison-feature">Hiệu năng</td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 90%;"></div>
+                                </div>
+                                <span>90% tích cực</span>
+                            </td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 86%;"></div>
+                                </div>
+                                <span>86% tích cực</span>
+                            </td>
+                        </tr>
+
+                        <!-- Price Aspect -->
+                        <tr>
+                            <td class="comparison-feature">Giá thành</td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 65%;"></div>
+                                </div>
+                                <span>65% tích cực</span>
+                            </td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 70%;"></div>
+                                </div>
+                                <span>70% tích cực</span>
+                            </td>
+                        </tr>
+
+                        <!-- Charging Aspect -->
+                        <tr>
+                            <td class="comparison-feature">Sạc</td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 72%;"></div>
+                                </div>
+                                <span>72% tích cực</span>
+                            </td>
+                            <td>
+                                <div class="aspect-progress mb-2">
+                                    <div class="aspect-progress-bar" style="width: 82%;"></div>
+                                </div>
+                                <span>82% tích cực</span>
+                            </td>
+                        </tr>
+
+                        <!-- Top Pros -->
+                        <tr>
+                            <td class="comparison-feature">Điểm mạnh nổi bật</td>
+                            <td>
+                                <ul>
+                                    <li>Camera chụp đẹp mọi điều kiện ánh sáng</li>
+                                    <li>Pin trâu, dùng được 1-2 ngày</li>
+                                    <li>Màn hình 120Hz siêu mượt</li>
+                                    <li>Hiệu năng mạnh mẽ nhất thị trường</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Camera zoom xa cực tốt</li>
+                                    <li>Màn hình độ phân giải cực cao</li>
+                                    <li>Sạc nhanh hơn iPhone</li>
+                                    <li>Khả năng tùy biến cao</li>
+                                </ul>
+                            </td>
+                        </tr>
+
+                        <!-- Top Cons -->
+                        <tr>
+                            <td class="comparison-feature">Điểm yếu nổi bật</td>
+                            <td>
+                                <ul>
+                                    <li>Giá cao</li>
+                                    <li>Tốc độ sạc chậm</li>
+                                    <li>Không có củ sạc đi kèm</li>
+                                    <li>Khả năng tùy biến thấp</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Pin không bền bằng iPhone</li>
+                                    <li>Hệ điều hành đôi khi lag</li>
+                                    <li>Cập nhật phần mềm chậm hơn</li>
+                                    <li>Máy nóng khi chơi game nặng</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sentiment Chart -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3>So sánh cảm xúc theo thời gian</h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container">
+                        <canvas id="compareChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Similar Products -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3>Sản phẩm tương tự</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3 col-md-6 col-sm-12">
+                            <div class="card product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product3.jpg" alt="Product">
+                                </div>
+                                <div class="product-info">
+                                    <h4>Xiaomi Mi 11</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>4.0 (85 đánh giá)</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline" onclick="addToCompare('p3', 'Xiaomi Mi 11')">
+                                        <i class="fas fa-exchange-alt"></i> So sánh
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 col-md-6 col-sm-12">
+                            <div class="card product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product4.jpg" alt="Product">
+                                </div>
+                                <div class="product-info">
+                                    <h4>Google Pixel 6</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span>4.5 (72 đánh giá)</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline" onclick="addToCompare('p4', 'Google Pixel 6')">
+                                        <i class="fas fa-exchange-alt"></i> So sánh
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 col-md-6 col-sm-12">
+                            <div class="card product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product5.jpg" alt="Product">
+                                </div>
+                                <div class="product-info">
+                                    <h4>OnePlus 9 Pro</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>4.0 (65 đánh giá)</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline" onclick="addToCompare('p5', 'OnePlus 9 Pro')">
+                                        <i class="fas fa-exchange-alt"></i> So sánh
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 col-md-6 col-sm-12">
+                            <div class="card product-card">
+                                <div class="product-img">
+                                    <img src="../assets/images/product6.jpg" alt="Product">
+                                </div>
+                                <div class="product-info">
+                                    <h4>Oppo Find X3 Pro</h4>
+                                    <div class="product-rating">
+                                        <div class="star-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>3.5 (58 đánh giá)</span>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline" onclick="addToCompare('p6', 'Oppo Find X3 Pro')">
+                                        <i class="fas fa-exchange-alt"></i> So sánh
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Product Modal -->
+    <div class="modal-overlay" id="addProductModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Thêm sản phẩm để so sánh</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+                </div>
+
+                <div class="product-list mt-3">
+                    <div class="product-item d-flex align-items-center p-2 border-bottom">
+                        <img src="../assets/images/product3.jpg" alt="Product"
+                            style="width: 50px; height: 50px; object-fit: cover; margin-right: 15px;">
+                        <div>
+                            <h4>Xiaomi Mi 11</h4>
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline ms-auto" onclick="addToCompare('p3', 'Xiaomi Mi 11')">
+                            <i class="fas fa-plus"></i> Thêm
+                        </button>
+                    </div>
+
+                    <div class="product-item d-flex align-items-center p-2 border-bottom">
+                        <img src="../assets/images/product4.jpg" alt="Product"
+                            style="width: 50px; height: 50px; object-fit: cover; margin-right: 15px;">
+                        <div>
+                            <h4>Google Pixel 6</h4>
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline ms-auto" onclick="addToCompare('p4', 'Google Pixel 6')">
+                            <i class="fas fa-plus"></i> Thêm
+                        </button>
+                    </div>
+
+                    <div class="product-item d-flex align-items-center p-2 border-bottom">
+                        <img src="../assets/images/product5.jpg" alt="Product"
+                            style="width: 50px; height: 50px; object-fit: cover; margin-right: 15px;">
+                        <div>
+                            <h4>OnePlus 9 Pro</h4>
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline ms-auto" onclick="addToCompare('p5', 'OnePlus 9 Pro')">
+                            <i class="fas fa-plus"></i> Thêm
+                        </button>
+                    </div>
+
+                    <div class="product-item d-flex align-items-center p-2">
+                        <img src="../assets/images/product6.jpg" alt="Product"
+                            style="width: 50px; height: 50px; object-fit: cover; margin-right: 15px;">
+                        <div>
+                            <h4>Oppo Find X3 Pro</h4>
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline ms-auto" onclick="addToCompare('p6', 'Oppo Find X3 Pro')">
+                            <i class="fas fa-plus"></i> Thêm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div class="alert-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Về chúng tôi</h3>
+                    <p>Hệ thống tham khảo phản hồi khách hàng giúp bạn đưa ra quyết định mua sắm thông minh dựa trên
+                        đánh giá thực tế.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên kết</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Trang chủ</a></li>
+                        <li><a href="./products.html">Sản phẩm</a></li>
+                        <li><a href="./compare.html">So sánh</a></li>
+                        <li><a href="./contact.html">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên hệ</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận XYZ, TP.HCM</li>
+                        <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope"></i> info@productreview.com</li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Theo dõi</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                &copy; 2023 Hệ thống tham khảo phản hồi khách hàng. Tất cả quyền được bảo lưu.
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize comparison chart
+            const compareCtx = document.getElementById('compareChart');
+            new Chart(compareCtx, {
+                type: 'line',
+                data: {
+                    labels: ['T7', 'T8', 'T9', 'T10', 'T11', 'T12'],
+                    datasets: [{
+                            label: 'iPhone 13 Pro Max',
+                            data: [70, 75, 78, 82, 85, 85],
+                            borderColor: '#4a90e2',
+                            backgroundColor: 'rgba(74, 144, 226, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Samsung Galaxy S21 Ultra',
+                            data: [75, 76, 74, 76, 78, 78],
+                            borderColor: '#f39c12',
+                            backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function (value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        function showAlert(message, type = 'info') {
+            const alertContainer = document.querySelector('.alert-container');
+
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.textContent = message;
+
+            alertContainer.appendChild(alert);
+
+            setTimeout(function () {
+                alert.remove();
+            }, 3000);
+        }
+
+        // Handle adding product from modal
+        function addToCompare(productId, productName) {
+            // Simulate adding to comparison
+            const modal = document.getElementById('addProductModal');
+
+            // Close modal
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            // Show success message
+            showAlert(`${productName} đã được thêm vào danh sách so sánh`, 'success');
+
+            // In a real app, this would update the comparison table dynamically
+            // For this demo, we'll just reload after 1 second
+            setTimeout(function () {
+                //window.location.reload();
+            }, 1000);
+        }
+
+        // Handle removing product from comparison
+        function removeFromCompare(productId) {
+            // Simulate removing from comparison
+            showAlert('Sản phẩm đã được xóa khỏi danh sách so sánh', 'info');
+
+            // In a real app, this would update the comparison table dynamically
+            // For this demo, we'll just reload after 1 second
+            setTimeout(function () {
+                //window.location.reload();
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

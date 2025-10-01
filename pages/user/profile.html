@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ người dùng - Hệ thống tham khảo phản hồi khách hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/user.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-comment-dots"></i> ProductReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Trang chủ</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Phản hồi mới</strong> cho đánh giá của bạn</p>
+                                        <span class="notification-time">5 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Ai đó</strong> đã thích đánh giá của bạn</p>
+                                        <span class="notification-time">30 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Sản phẩm mới</strong> phù hợp với sở thích của bạn</p>
+                                        <span class="notification-time">1 giờ trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="user-dropdown active">
+                        <a href="user/profile.html">
+                            <img src="../assets/images/user-avatar.jpg" alt="User"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a>
+                        <div class="user-dropdown-menu">
+                            <a href="user/profile.html">
+                                <i class="fas fa-user"></i> Hồ sơ
+                            </a>
+                            <a href="user/settings.html">
+                                <i class="fas fa-cog"></i> Cài đặt
+                            </a>
+                            <a href="login.html">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="profile-page">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-cover">
+                    <img src="../assets/images/profile-cover.jpg" alt="Cover">
+                    <button class="btn btn-sm btn-outline edit-cover-btn">
+                        <i class="fas fa-camera"></i> Thay đổi ảnh bìa
+                    </button>
+                </div>
+
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img src="../assets/images/user-avatar.jpg" alt="User">
+                        <div class="avatar-edit">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+
+                    <div class="profile-name">
+                        <h2>Nguyễn Văn Khách</h2>
+                        <p>@nguyenvankhach</p>
+                    </div>
+
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">42</span>
+                            <span class="stat-label">Đánh giá</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">18</span>
+                            <span class="stat-label">Sản phẩm đã mua</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">156</span>
+                            <span class="stat-label">Đánh giá hữu ích</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-actions">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-edit"></i> Chỉnh sửa hồ sơ
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-sidebar">
+                    <div class="profile-card">
+                        <h3>Thông tin cá nhân</h3>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>nguyenvan.khach@example.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Hà Nội, Việt Nam</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Tham gia từ tháng 3, 2024</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <h3>Danh mục quan tâm</h3>
+                        <div class="tag-cloud">
+                            <span class="tag">Điện thoại</span>
+                            <span class="tag">Máy tính</span>
+                            <span class="tag">Camera</span>
+                            <span class="tag">Tai nghe</span>
+                            <span class="tag">Sạc dự phòng</span>
+                            <span class="tag">Màn hình</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <h3>Cấp độ người dùng</h3>
+                        <div class="user-level">
+                            <div class="level-badge">
+                                <i class="fas fa-award"></i>
+                                <span>Chuyên gia</span>
+                            </div>
+
+                            <div class="level-progress">
+                                <div class="level-label">
+                                    <span>Tiến trình lên cấp</span>
+                                    <span>1500 / 2000</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-value" style="width: 75%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="next-level">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Còn 500 điểm để lên "Chuyên gia cấp cao"</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-main">
+                    <div class="profile-tabs">
+                        <button class="profile-tab active" data-tab="reviews">Đánh giá của tôi</button>
+                        <button class="profile-tab" data-tab="products">Sản phẩm đã mua</button>
+                        <button class="profile-tab" data-tab="saved">Đánh giá đã lưu</button>
+                        <button class="profile-tab" data-tab="activity">Hoạt động gần đây</button>
+                    </div>
+
+                    <div class="tab-content active" id="reviews">
+                        <!-- Review Filter -->
+                        <div class="reviews-header">
+                            <h3>Đánh giá của tôi</h3>
+                            <div class="reviews-filter">
+                                <select class="form-control">
+                                    <option value="recent">Mới nhất</option>
+                                    <option value="popular">Phổ biến nhất</option>
+                                    <option value="positive">Tích cực</option>
+                                    <option value="negative">Tiêu cực</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Review Items -->
+                        <div class="review-list">
+                            <!-- Review Item -->
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="review-product">
+                                        <img src="../assets/images/products/phone-1.jpg" alt="Product">
+                                        <div class="product-info">
+                                            <h4>iPhone 15 Pro Max</h4>
+                                            <div class="product-meta">
+                                                <span class="category">Điện thoại</span>
+                                                <span class="date">Đánh giá vào 20/09/2025</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span>5.0</span>
+                                    </div>
+                                </div>
+
+                                <div class="review-content">
+                                    <h5>Chiếc điện thoại tuyệt vời nhất mà tôi từng sử dụng</h5>
+                                    <p>iPhone 15 Pro Max mang lại trải nghiệm tuyệt vời về mọi mặt từ hiệu năng, camera,
+                                        thời lượng pin đến chất lượng hoàn thiện. Tôi đặc biệt ấn tượng với hệ thống
+                                        camera mới, cho phép chụp ảnh chất lượng cao trong mọi điều kiện ánh sáng.</p>
+
+                                    <div class="review-aspects">
+                                        <div class="aspect-item">
+                                            <div class="aspect-name">Hiệu năng</div>
+                                            <div class="aspect-rating positive">
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span>Rất tốt</span>
+                                            </div>
+                                        </div>
+                                        <div class="aspect-item">
+                                            <div class="aspect-name">Camera</div>
+                                            <div class="aspect-rating positive">
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span>Xuất sắc</span>
+                                            </div>
+                                        </div>
+                                        <div class="aspect-item">
+                                            <div class="aspect-name">Pin</div>
+                                            <div class="aspect-rating positive">
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span>Rất tốt</span>
+                                            </div>
+                                        </div>
+                                        <div class="aspect-item">
+                                            <div class="aspect-name">Giá</div>
+                                            <div class="aspect-rating neutral">
+                                                <i class="fas fa-minus"></i>
+                                                <span>Chấp nhận được</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="review-images">
+                                        <div class="image-item">
+                                            <img src="../assets/images/products/phone-1-review-1.jpg"
+                                                alt="Review image">
+                                        </div>
+                                        <div class="image-item">
+                                            <img src="../assets/images/products/phone-1-review-2.jpg"
+                                                alt="Review image">
+                                        </div>
+                                        <div class="image-item">
+                                            <img src="../assets/images/products/phone-1-review-3.jpg"
+                                                alt="Review image">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="review-footer">
+                                    <div class="review-stats">
+                                        <div class="stat">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            <span>28</span>
+                                        </div>
+                                        <div class="stat">
+                                            <i class="fas fa-comment"></i>
+                                            <span>12</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="review-actions">
+                                        <button class="btn btn-sm btn-outline">
+                                            <i class="fas fa-edit"></i> Chỉnh sửa
+                                        </button>
+                                        <button class="btn btn-sm btn-outline btn-danger">
+                                            <i class="fas fa-trash"></i> Xóa
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Review Item 2 -->
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="review-product">
+                                        <img src="../assets/images/products/laptop-1.jpg" alt="Product">
+                                        <div class="product-info">
+                                            <h4>MacBook Pro 16-inch</h4>
+                                            <div class="product-meta">
+                                                <span class="category">Máy tính xách tay</span>
+                                                <span class="date">Đánh giá vào 15/09/2025</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>4.0</span>
+                                    </div>
+                                </div>
+
+                                <div class="review-content">
+                                    <h5>Máy tính chuyên nghiệp với hiệu năng ấn tượng</h5>
+                                    <p>MacBook Pro 16-inch là một công cụ tuyệt vời cho công việc chuyên nghiệp. Hiệu
+                                        năng xử lý mạnh mẽ, màn hình sắc nét và bàn phím thoải mái. Tuy nhiên, giá thành
+                                        khá cao và cổng kết nối còn hạn chế. Vẫn là một lựa chọn tốt cho người dùng
+                                        chuyên nghiệp.</p>
+
+                                    <div class="review-aspects">
+                                        <div class="aspect-item">
+                                            <div class="aspect-name">Hiệu năng</div>
+                                            <div class="aspect-rating positive">
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span>Xuất sắc</span>
+                                            </div>
+                                        </div>
+                                        <div class="aspect-item">
+                                            <div class="aspect-name">Màn hình</div>
+                                            <div class="aspect-rating positive">
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span>Rất tốt</span>
+                                            </div>
+                                        </div>
+                                        <div class="aspect-item">
+                                            <div class="aspect-name">Pin</div>
+                                            <div class="aspect-rating positive">
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span>Tốt</span>
+                                            </div>
+                                        </div>
+                                        <div class="aspect-item">
+                                            <div class="aspect-name">Giá</div>
+                                            <div class="aspect-rating negative">
+                                                <i class="fas fa-thumbs-down"></i>
+                                                <span>Đắt</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="review-footer">
+                                    <div class="review-stats">
+                                        <div class="stat">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            <span>19</span>
+                                        </div>
+                                        <div class="stat">
+                                            <i class="fas fa-comment"></i>
+                                            <span>7</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="review-actions">
+                                        <button class="btn btn-sm btn-outline">
+                                            <i class="fas fa-edit"></i> Chỉnh sửa
+                                        </button>
+                                        <button class="btn btn-sm btn-outline btn-danger">
+                                            <i class="fas fa-trash"></i> Xóa
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- More review items -->
+                        </div>
+
+                        <div class="pagination">
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <button class="page-btn next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="products" style="display: none;">
+                        <!-- Products content -->
+                        <div class="products-header">
+                            <h3>Sản phẩm đã mua</h3>
+                            <div class="products-filter">
+                                <select class="form-control">
+                                    <option value="recent">Mới nhất</option>
+                                    <option value="price-high">Giá cao đến thấp</option>
+                                    <option value="price-low">Giá thấp đến cao</option>
+                                    <option value="rating">Đánh giá cao nhất</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="products-grid">
+                            <!-- Product items -->
+                            <div class="product-card">
+                                <div class="product-badge new">Mới</div>
+                                <div class="product-image">
+                                    <img src="../assets/images/products/phone-1.jpg" alt="iPhone 15 Pro Max">
+                                </div>
+                                <div class="product-info">
+                                    <h4>iPhone 15 Pro Max</h4>
+                                    <div class="product-rating">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span>5.0</span>
+                                    </div>
+                                    <div class="product-price">
+                                        <span class="price">28,990,000 ₫</span>
+                                    </div>
+                                    <div class="product-actions">
+                                        <a href="../pages/product-detail.html" class="btn btn-sm btn-outline">Xem chi
+                                            tiết</a>
+                                        <a href="#" class="btn btn-sm btn-primary">Viết đánh giá</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img src="../assets/images/products/laptop-1.jpg" alt="MacBook Pro">
+                                </div>
+                                <div class="product-info">
+                                    <h4>MacBook Pro 16-inch</h4>
+                                    <div class="product-rating">
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span>4.0</span>
+                                    </div>
+                                    <div class="product-price">
+                                        <span class="price">52,990,000 ₫</span>
+                                    </div>
+                                    <div class="product-actions">
+                                        <a href="../pages/product-detail.html" class="btn btn-sm btn-outline">Xem chi
+                                            tiết</a>
+                                        <a href="#" class="btn btn-sm btn-primary">Viết đánh giá</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- More product cards -->
+                        </div>
+
+                        <div class="pagination">
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="saved" style="display: none;">
+                        <!-- Saved reviews content -->
+                    </div>
+
+                    <div class="tab-content" id="activity" style="display: none;">
+                        <!-- Activity content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="../index.html" class="logo">
+                        <i class="fas fa-comment-dots"></i> ProductReview
+                    </a>
+                    <p>Nền tảng tham khảo phản hồi khách hàng hàng đầu</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h3>Sản phẩm</h3>
+                        <ul>
+                            <li><a href="#">Điện thoại</a></li>
+                            <li><a href="#">Laptop</a></li>
+                            <li><a href="#">Máy tính bảng</a></li>
+                            <li><a href="#">Phụ kiện</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>Về chúng tôi</h3>
+                        <ul>
+                            <li><a href="#">Giới thiệu</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Tuyển dụng</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>Hỗ trợ</h3>
+                        <ul>
+                            <li><a href="#">Trung tâm trợ giúp</a></li>
+                            <li><a href="#">Hướng dẫn sử dụng</a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Điều khoản sử dụng</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-subscribe">
+                    <h3>Đăng ký nhận tin</h3>
+                    <p>Nhận thông tin mới nhất về sản phẩm và đánh giá</p>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Email của bạn">
+                        <button type="submit" class="btn btn-primary">Đăng ký</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 ProductReview. Đã đăng ký bản quyền.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Profile tab switching
+            const profileTabs = document.querySelectorAll('.profile-tab');
+            profileTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const tabId = this.getAttribute('data-tab');
+
+                    // Hide all tab contents
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.style.display = 'none';
+                    });
+
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.profile-tab').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+
+                    // Show selected tab content and mark tab as active
+                    document.getElementById(tabId).style.display = 'block';
+                    this.classList.add('active');
+                });
+            });
+
+            // Avatar edit functionality
+            const avatarEdit = document.querySelector('.avatar-edit');
+            if (avatarEdit) {
+                avatarEdit.addEventListener('click', function () {
+                    // Placeholder for avatar edit functionality
+                    alert('Tính năng thay đổi ảnh đại diện sẽ được cập nhật trong thời gian tới.');
+                });
+            }
+
+            // Cover edit functionality
+            const editCoverBtn = document.querySelector('.edit-cover-btn');
+            if (editCoverBtn) {
+                editCoverBtn.addEventListener('click', function () {
+                    // Placeholder for cover edit functionality
+                    alert('Tính năng thay đổi ảnh bìa sẽ được cập nhật trong thời gian tới.');
+                });
+            }
+
+            // User dropdown
+            const userDropdown = document.querySelector('.user-dropdown');
+            if (userDropdown) {
+                userDropdown.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    this.classList.toggle('show');
+                });
+
+                document.addEventListener('click', function () {
+                    userDropdown.classList.remove('show');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,363 @@
+/* CSS cho các trang người dùng */
+@import 'common.css';
+
+/* User Profile */
+.user-profile {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 30px;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.profile-info .user-details {
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.profile-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.profile-stat {
+  padding: 10px 15px;
+  background-color: var(--light-color);
+  border-radius: 4px;
+}
+
+.profile-stat .number {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--dark-color);
+}
+
+.profile-stat .label {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* User Navigation */
+.user-nav {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+  overflow-x: auto;
+}
+
+.user-nav a {
+  padding: 15px 20px;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.user-nav a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.user-nav a.active {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* Reviews */
+.user-reviews {
+  margin-bottom: 30px;
+}
+
+.review-item {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.review-header .product {
+  display: flex;
+  align-items: center;
+}
+
+.review-header .product img {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+.review-header .product-info .name {
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.review-header .product-info .category {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.review-header .date {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.review-content {
+  margin-bottom: 15px;
+}
+
+.review-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.review-rating .stars {
+  color: #ffc107;
+  margin-right: 10px;
+}
+
+.review-rating .text {
+  font-weight: 500;
+}
+
+.review-text {
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-likes {
+  display: flex;
+  align-items: center;
+}
+
+.review-likes button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.review-likes button i {
+  margin-right: 5px;
+}
+
+.review-likes button.liked {
+  color: var(--primary-color);
+}
+
+.review-actions a {
+  color: #777;
+  margin-left: 15px;
+  font-size: 0.9rem;
+}
+
+.review-actions a:hover {
+  color: var(--primary-color);
+}
+
+/* User Settings */
+.settings-section {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.settings-header h2 {
+  font-size: 1.5rem;
+}
+
+.settings-form {
+  max-width: 600px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+  margin-bottom: 15px;
+}
+
+.form-col {
+  flex: 1;
+  padding: 0 10px;
+  min-width: 250px;
+}
+
+.avatar-upload {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.avatar-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.avatar-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toggle-switch {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-right: 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-avatar {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .profile-stats {
+    justify-content: center;
+  }
+
+  .user-nav {
+    justify-content: flex-start;
+  }
+
+  .review-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .review-header .date {
+    margin-top: 10px;
+  }
+
+  .review-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .review-actions {
+    margin-top: 15px;
+  }
+
+  .review-actions a {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+}

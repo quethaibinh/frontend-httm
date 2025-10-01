@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Model AI - Hệ thống tham khảo phản hồi khách hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../../index.html" class="logo">
+                    <i class="fas fa-comment-dots"></i> ProductReview
+                </a>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../../index.html">Trang chủ</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Huấn luyện model</strong> đã hoàn tất</p>
+                                        <span class="notification-time">5 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Model mới</strong> đã sẵn sàng triển khai</p>
+                                        <span class="notification-time">30 phút trước</span>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notification-content">
+                                        <p><strong>Báo cáo hiệu suất</strong> hàng tuần đã sẵn sàng</p>
+                                        <span class="notification-time">1 giờ trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">Xem tất cả thông báo</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#">
+                            <img src="../../assets/images/admin-avatar.jpg" alt="Admin"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                        </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-menu">
+                <a href="./admin-dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i> Tổng quan
+                </a>
+                <a href="./admin-users.html">
+                    <i class="fas fa-users"></i> Quản lý người dùng
+                </a>
+                <a href="./admin-products.html">
+                    <i class="fas fa-box"></i> Quản lý sản phẩm
+                </a>
+                <a href="./admin-reviews.html">
+                    <i class="fas fa-comments"></i> Quản lý đánh giá
+                </a>
+                <a href="./admin-models.html" class="active">
+                    <i class="fas fa-brain"></i> Quản lý model AI
+                </a>
+                <a href="./admin-settings.html">
+                    <i class="fas fa-cog"></i> Cài đặt
+                </a>
+                <a href="../../index.html">
+                    <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Quản lý Model AI</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" data-modal="addModelModal">
+                        <i class="fas fa-plus"></i> Thêm model mới
+                    </button>
+                    <button class="btn btn-outline">
+                        <i class="fas fa-file-export"></i> Xuất dữ liệu
+                    </button>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="row">
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="summary-card">
+                        <div class="summary-icon blue">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="summary-info">
+                            <span class="summary-value">7</span>
+                            <span class="summary-label">Tổng số model</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="summary-card">
+                        <div class="summary-icon green">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="summary-info">
+                            <span class="summary-value">1</span>
+                            <span class="summary-label">Model đang hoạt động</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="summary-card">
+                        <div class="summary-icon purple">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="summary-info">
+                            <span class="summary-value">2</span>
+                            <span class="summary-label">Model đang huấn luyện</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="summary-card">
+                        <div class="summary-icon orange">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="summary-info">
+                            <span class="summary-value">92%</span>
+                            <span class="summary-label">Độ chính xác cao nhất</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Performance Card -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3>Hiệu suất model đang hoạt động</h3>
+                    <div class="card-actions">
+                        <select id="performance-period" class="form-control">
+                            <option value="day">Hôm nay</option>
+                            <option value="week">Tuần này</option>
+                            <option value="month" selected>Tháng này</option>
+                            <option value="year">Năm nay</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-8 col-md-12">
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h3 class="chart-title">Độ chính xác theo thời gian</h3>
+                                </div>
+                                <div class="chart-canvas">
+                                    <canvas id="accuracyTimeChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-md-12">
+                            <div class="metrics-container">
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <h4>Độ chính xác</h4>
+                                        <i class="fas fa-percentage"></i>
+                                    </div>
+                                    <div class="metric-value">92.4%</div>
+                                    <div class="metric-trend positive">
+                                        <i class="fas fa-arrow-up"></i> 1.5% so với phiên bản trước
+                                    </div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <h4>Độ chính xác (Tích cực)</h4>
+                                        <i class="fas fa-smile"></i>
+                                    </div>
+                                    <div class="metric-value">94.2%</div>
+                                    <div class="metric-trend positive">
+                                        <i class="fas fa-arrow-up"></i> 0.8% so với phiên bản trước
+                                    </div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <h4>Độ chính xác (Tiêu cực)</h4>
+                                        <i class="fas fa-frown"></i>
+                                    </div>
+                                    <div class="metric-value">89.7%</div>
+                                    <div class="metric-trend positive">
+                                        <i class="fas fa-arrow-up"></i> 2.3% so với phiên bản trước
+                                    </div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <h4>Thời gian phản hồi</h4>
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="metric-value">125ms</div>
+                                    <div class="metric-trend negative">
+                                        <i class="fas fa-arrow-up"></i> 15ms so với phiên bản trước
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-6 col-md-12">
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h3 class="chart-title">Ma trận nhầm lẫn</h3>
+                                </div>
+                                <div class="chart-canvas">
+                                    <canvas id="confusionMatrixChart"></canvas>
+                                </div>
+                                <div class="chart-legend">
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: rgba(46, 204, 113, 0.6);">
+                                        </div>
+                                        <span>Tích cực (Thực tế) / Tích cực (Dự đoán)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: rgba(231, 76, 60, 0.4);">
+                                        </div>
+                                        <span>Tích cực (Thực tế) / Tiêu cực (Dự đoán)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: rgba(231, 76, 60, 0.4);">
+                                        </div>
+                                        <span>Tiêu cực (Thực tế) / Tích cực (Dự đoán)</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: rgba(46, 204, 113, 0.6);">
+                                        </div>
+                                        <span>Tiêu cực (Thực tế) / Tiêu cực (Dự đoán)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 col-md-12">
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h3 class="chart-title">Các khía cạnh phân tích</h3>
+                                </div>
+                                <div class="chart-canvas">
+                                    <canvas id="aspectsChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Versions -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3>Các phiên bản model</h3>
+                    <div class="card-actions">
+                        <div class="form-group mb-0">
+                            <select id="model-filter" class="form-control">
+                                <option value="all">Tất cả trạng thái</option>
+                                <option value="active">Đang hoạt động</option>
+                                <option value="training">Đang huấn luyện</option>
+                                <option value="archived">Đã lưu trữ</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th class="sortable">Tên phiên bản <i class="fas fa-sort"></i></th>
+                                    <th class="sortable">Ngày tạo <i class="fas fa-sort"></i></th>
+                                    <th>Kiến trúc</th>
+                                    <th class="sortable">Độ chính xác <i class="fas fa-sort"></i></th>
+                                    <th>Kích thước</th>
+                                    <th class="sortable">Trạng thái <i class="fas fa-sort"></i></th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sentiment Analysis v2.3</td>
+                                    <td>15/09/2025</td>
+                                    <td>BERT Fine-tuned</td>
+                                    <td>
+                                        <div class="progress-bar">
+                                            <div class="progress-value" style="width: 92%;">92%</div>
+                                        </div>
+                                    </td>
+                                    <td>438MB</td>
+                                    <td><span class="status status-active">Đang hoạt động</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"
+                                            data-modal="viewModelModal"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn download-btn" title="Tải xuống"><i
+                                                class="fas fa-download"></i></button>
+                                        <button class="action-btn options-btn" title="Tùy chọn"><i
+                                                class="fas fa-ellipsis-v"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Sentiment Analysis v3.0-beta</td>
+                                    <td>25/09/2025</td>
+                                    <td>RoBERTa Large</td>
+                                    <td>
+                                        <div class="progress-bar">
+                                            <div class="progress-value in-progress" style="width: 65%;">Đang huấn luyện
+                                                (65%)</div>
+                                        </div>
+                                    </td>
+                                    <td>875MB</td>
+                                    <td><span class="status status-training">Đang huấn luyện</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"
+                                            data-modal="viewModelModal"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn pause-btn" title="Tạm dừng"><i
+                                                class="fas fa-pause"></i></button>
+                                        <button class="action-btn options-btn" title="Tùy chọn"><i
+                                                class="fas fa-ellipsis-v"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Aspect Extraction v1.5</td>
+                                    <td>20/09/2025</td>
+                                    <td>BiLSTM-CRF</td>
+                                    <td>
+                                        <div class="progress-bar">
+                                            <div class="progress-value in-progress" style="width: 42%;">Đang huấn luyện
+                                                (42%)</div>
+                                        </div>
+                                    </td>
+                                    <td>215MB</td>
+                                    <td><span class="status status-training">Đang huấn luyện</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"
+                                            data-modal="viewModelModal"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn pause-btn" title="Tạm dừng"><i
+                                                class="fas fa-pause"></i></button>
+                                        <button class="action-btn options-btn" title="Tùy chọn"><i
+                                                class="fas fa-ellipsis-v"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Sentiment Analysis v2.2</td>
+                                    <td>01/08/2025</td>
+                                    <td>BERT Fine-tuned</td>
+                                    <td>
+                                        <div class="progress-bar">
+                                            <div class="progress-value" style="width: 89%;">89%</div>
+                                        </div>
+                                    </td>
+                                    <td>438MB</td>
+                                    <td><span class="status status-archived">Đã lưu trữ</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"
+                                            data-modal="viewModelModal"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn activate-btn" title="Kích hoạt"><i
+                                                class="fas fa-play"></i></button>
+                                        <button class="action-btn options-btn" title="Tùy chọn"><i
+                                                class="fas fa-ellipsis-v"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Sentiment Analysis v2.1</td>
+                                    <td>15/06/2025</td>
+                                    <td>BERT Fine-tuned</td>
+                                    <td>
+                                        <div class="progress-bar">
+                                            <div class="progress-value" style="width: 86%;">86%</div>
+                                        </div>
+                                    </td>
+                                    <td>438MB</td>
+                                    <td><span class="status status-archived">Đã lưu trữ</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"
+                                            data-modal="viewModelModal"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn activate-btn" title="Kích hoạt"><i
+                                                class="fas fa-play"></i></button>
+                                        <button class="action-btn options-btn" title="Tùy chọn"><i
+                                                class="fas fa-ellipsis-v"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Sentiment Analysis v2.0</td>
+                                    <td>05/04/2025</td>
+                                    <td>BERT Fine-tuned</td>
+                                    <td>
+                                        <div class="progress-bar">
+                                            <div class="progress-value" style="width: 84%;">84%</div>
+                                        </div>
+                                    </td>
+                                    <td>438MB</td>
+                                    <td><span class="status status-archived">Đã lưu trữ</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"
+                                            data-modal="viewModelModal"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn activate-btn" title="Kích hoạt"><i
+                                                class="fas fa-play"></i></button>
+                                        <button class="action-btn options-btn" title="Tùy chọn"><i
+                                                class="fas fa-ellipsis-v"></i></button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Sentiment Analysis v1.0</td>
+                                    <td>15/01/2025</td>
+                                    <td>CNN-BiLSTM</td>
+                                    <td>
+                                        <div class="progress-bar">
+                                            <div class="progress-value" style="width: 78%;">78%</div>
+                                        </div>
+                                    </td>
+                                    <td>156MB</td>
+                                    <td><span class="status status-archived">Đã lưu trữ</span></td>
+                                    <td class="table-actions">
+                                        <button class="action-btn view-btn" title="Xem chi tiết"
+                                            data-modal="viewModelModal"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn activate-btn" title="Kích hoạt"><i
+                                                class="fas fa-play"></i></button>
+                                        <button class="action-btn options-btn" title="Tùy chọn"><i
+                                                class="fas fa-ellipsis-v"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Management -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3>Quản lý dữ liệu huấn luyện</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4 col-md-12">
+                            <div class="data-stats-card">
+                                <h4>Tổng quan dữ liệu</h4>
+                                <div class="data-stat-item">
+                                    <div class="data-stat-label">Tổng số mẫu</div>
+                                    <div class="data-stat-value">124,568</div>
+                                </div>
+                                <div class="data-stat-item">
+                                    <div class="data-stat-label">Mẫu đã gán nhãn</div>
+                                    <div class="data-stat-value">108,342</div>
+                                </div>
+                                <div class="data-stat-item">
+                                    <div class="data-stat-label">Mẫu chưa gán nhãn</div>
+                                    <div class="data-stat-value">16,226</div>
+                                </div>
+                                <div class="data-chart">
+                                    <canvas id="dataDistributionChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-8 col-md-12">
+                            <div class="data-actions">
+                                <div class="data-action-item">
+                                    <div class="data-action-icon blue">
+                                        <i class="fas fa-file-upload"></i>
+                                    </div>
+                                    <div class="data-action-info">
+                                        <h4>Nhập dữ liệu mới</h4>
+                                        <p>Tải lên dữ liệu mới từ tệp CSV, JSON hoặc Excel</p>
+                                    </div>
+                                    <button class="btn btn-outline btn-sm" data-modal="uploadDataModal">
+                                        Tải lên
+                                    </button>
+                                </div>
+
+                                <div class="data-action-item">
+                                    <div class="data-action-icon green">
+                                        <i class="fas fa-tag"></i>
+                                    </div>
+                                    <div class="data-action-info">
+                                        <h4>Gán nhãn dữ liệu</h4>
+                                        <p>Gán nhãn cho dữ liệu mới hoặc chưa được gán nhãn</p>
+                                    </div>
+                                    <button class="btn btn-outline btn-sm" data-modal="labelDataModal">
+                                        Gán nhãn
+                                    </button>
+                                </div>
+
+                                <div class="data-action-item">
+                                    <div class="data-action-icon orange">
+                                        <i class="fas fa-dumbbell"></i>
+                                    </div>
+                                    <div class="data-action-info">
+                                        <h4>Huấn luyện model mới</h4>
+                                        <p>Tạo và huấn luyện model mới từ dữ liệu hiện có</p>
+                                    </div>
+                                    <button class="btn btn-outline btn-sm" data-modal="trainModelModal">
+                                        Huấn luyện
+                                    </button>
+                                </div>
+
+                                <div class="data-action-item">
+                                    <div class="data-action-icon purple">
+                                        <i class="fas fa-file-export"></i>
+                                    </div>
+                                    <div class="data-action-info">
+                                        <h4>Xuất dữ liệu</h4>
+                                        <p>Xuất dữ liệu đã gán nhãn ra tệp CSV, JSON hoặc Excel</p>
+                                    </div>
+                                    <button class="btn btn-outline btn-sm" data-modal="exportDataModal">
+                                        Xuất
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Logs -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h3>Nhật ký API</h3>
+                    <div class="card-actions">
+                        <button class="btn btn-sm btn-outline">Xem tất cả</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th class="sortable">Thời gian <i class="fas fa-sort"></i></th>
+                                    <th>Endpoint</th>
+                                    <th>Model</th>
+                                    <th>Thời gian phản hồi</th>
+                                    <th class="sortable">Trạng thái <i class="fas fa-sort"></i></th>
+                                    <th>IP</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01/10/2025 10:45:12</td>
+                                    <td><code>/api/v1/analyze</code></td>
+                                    <td>Sentiment Analysis v2.3</td>
+                                    <td>124ms</td>
+                                    <td><span class="status status-success">Thành công</span></td>
+                                    <td>192.168.1.105</td>
+                                </tr>
+                                <tr>
+                                    <td>01/10/2025 10:43:55</td>
+                                    <td><code>/api/v1/analyze</code></td>
+                                    <td>Sentiment Analysis v2.3</td>
+                                    <td>118ms</td>
+                                    <td><span class="status status-success">Thành công</span></td>
+                                    <td>192.168.1.105</td>
+                                </tr>
+                                <tr>
+                                    <td>01/10/2025 10:42:38</td>
+                                    <td><code>/api/v1/extract-aspects</code></td>
+                                    <td>Aspect Extraction v1.4</td>
+                                    <td>231ms</td>
+                                    <td><span class="status status-success">Thành công</span></td>
+                                    <td>192.168.1.108</td>
+                                </tr>
+                                <tr>
+                                    <td>01/10/2025 10:41:12</td>
+                                    <td><code>/api/v1/analyze</code></td>
+                                    <td>Sentiment Analysis v2.3</td>
+                                    <td>156ms</td>
+                                    <td><span class="status status-warning">Cảnh báo</span></td>
+                                    <td>192.168.1.110</td>
+                                </tr>
+                                <tr>
+                                    <td>01/10/2025 10:40:05</td>
+                                    <td><code>/api/v1/analyze-batch</code></td>
+                                    <td>Sentiment Analysis v2.3</td>
+                                    <td>1245ms</td>
+                                    <td><span class="status status-success">Thành công</span></td>
+                                    <td>192.168.1.105</td>
+                                </tr>
+                                <tr>
+                                    <td>01/10/2025 10:35:42</td>
+                                    <td><code>/api/v1/analyze</code></td>
+                                    <td>Sentiment Analysis v2.3</td>
+                                    <td>-</td>
+                                    <td><span class="status status-error">Lỗi</span></td>
+                                    <td>192.168.1.114</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- View Model Modal -->
+    <div class="modal-overlay" id="viewModelModal">
+        <div class="modal-container modal-lg">
+            <div class="modal-header">
+                <h3 class="modal-title">Chi tiết model</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="model-detail">
+                    <div class="model-header">
+                        <h4>Sentiment Analysis v2.3</h4>
+                        <span class="model-status active">Đang hoạt động</span>
+                    </div>
+
+                    <div class="model-tabs">
+                        <button class="model-tab active" data-tab="overview">Tổng quan</button>
+                        <button class="model-tab" data-tab="performance">Hiệu suất</button>
+                        <button class="model-tab" data-tab="params">Tham số</button>
+                        <button class="model-tab" data-tab="history">Lịch sử thay đổi</button>
+                    </div>
+
+                    <div class="model-tab-content active" id="overview">
+                        <div class="model-info-grid">
+                            <div class="model-info-card">
+                                <h5>Thông tin chung</h5>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Tên model</div>
+                                    <div class="model-info-value">Sentiment Analysis v2.3</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Kiến trúc</div>
+                                    <div class="model-info-value">BERT Fine-tuned</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Ngày tạo</div>
+                                    <div class="model-info-value">15/09/2025</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Trạng thái</div>
+                                    <div class="model-info-value"><span class="status status-active">Đang hoạt
+                                            động</span></div>
+                                </div>
+                            </div>
+
+                            <div class="model-info-card">
+                                <h5>Thông số kỹ thuật</h5>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Kích thước</div>
+                                    <div class="model-info-value">438MB</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Tốc độ xử lý</div>
+                                    <div class="model-info-value">125ms/mẫu</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Ngôn ngữ hỗ trợ</div>
+                                    <div class="model-info-value">Tiếng Việt</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Giấy phép</div>
+                                    <div class="model-info-value">MIT</div>
+                                </div>
+                            </div>
+
+                            <div class="model-info-card">
+                                <h5>Độ chính xác</h5>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Độ chính xác tổng thể</div>
+                                    <div class="model-info-value">92%</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Precision</div>
+                                    <div class="model-info-value">91.5%</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Recall</div>
+                                    <div class="model-info-value">93.2%</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">F1-Score</div>
+                                    <div class="model-info-value">92.3%</div>
+                                </div>
+                            </div>
+
+                            <div class="model-info-card">
+                                <h5>Huấn luyện</h5>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Dữ liệu huấn luyện</div>
+                                    <div class="model-info-value">85,427 mẫu</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Dữ liệu kiểm thử</div>
+                                    <div class="model-info-value">10,678 mẫu</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Thời gian huấn luyện</div>
+                                    <div class="model-info-value">4 giờ 32 phút</div>
+                                </div>
+                                <div class="model-info-item">
+                                    <div class="model-info-label">Số lượng epochs</div>
+                                    <div class="model-info-value">15</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="model-description">
+                            <h5>Mô tả</h5>
+                            <p>Model phân tích cảm xúc dựa trên kiến trúc BERT được fine-tuned trên dữ liệu đánh giá sản
+                                phẩm tiếng Việt. Model này có khả năng phân loại cảm xúc thành 3 loại: tích cực, trung
+                                tính và tiêu cực với độ chính xác cao. Ngoài ra, model còn có khả năng phân tích cảm xúc
+                                theo từng khía cạnh của sản phẩm.</p>
+                            <p>Phiên bản v2.3 đã được cải tiến so với v2.2 với việc bổ sung thêm dữ liệu huấn luyện và
+                                tinh chỉnh hyperparameters để nâng cao hiệu suất. Đặc biệt, model đã được cải thiện
+                                trong việc phân biệt giữa cảm xúc trung tính và tiêu cực nhẹ.</p>
+                        </div>
+                    </div>
+
+                    <div class="model-tab-content" id="performance" style="display: none;">
+                        <!-- Performance content -->
+                    </div>
+
+                    <div class="model-tab-content" id="params" style="display: none;">
+                        <!-- Parameters content -->
+                    </div>
+
+                    <div class="model-tab-content" id="history" style="display: none;">
+                        <!-- History content -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Đóng</button>
+                <button class="btn btn-primary">Tải xuống</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Model Modal -->
+    <div class="modal-overlay" id="addModelModal">
+        <div class="modal-container modal-lg">
+            <div class="modal-header">
+                <h3 class="modal-title">Thêm model mới</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-tabs">
+                        <button type="button" class="form-tab active" data-tab="basic-settings">Cài đặt cơ bản</button>
+                        <button type="button" class="form-tab" data-tab="advanced-settings">Cài đặt nâng cao</button>
+                        <button type="button" class="form-tab" data-tab="training-data">Dữ liệu huấn luyện</button>
+                    </div>
+
+                    <div class="form-tab-content active" id="basic-settings">
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="model-name">Tên model</label>
+                                <input type="text" id="model-name" class="form-control"
+                                    placeholder="Ví dụ: Sentiment Analysis v3.0">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="model-architecture">Kiến trúc</label>
+                                <select id="model-architecture" class="form-control">
+                                    <option value="">Chọn kiến trúc</option>
+                                    <option value="bert">BERT Fine-tuned</option>
+                                    <option value="roberta">RoBERTa</option>
+                                    <option value="xlm-roberta">XLM-RoBERTa</option>
+                                    <option value="bilstm">BiLSTM-CRF</option>
+                                    <option value="cnn-lstm">CNN-BiLSTM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="model-type">Loại model</label>
+                                <select id="model-type" class="form-control">
+                                    <option value="sentiment">Phân tích cảm xúc</option>
+                                    <option value="aspect">Trích xuất khía cạnh</option>
+                                    <option value="combined">Kết hợp</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="model-language">Ngôn ngữ</label>
+                                <select id="model-language" class="form-control">
+                                    <option value="vi">Tiếng Việt</option>
+                                    <option value="en">Tiếng Anh</option>
+                                    <option value="multi">Đa ngôn ngữ</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="model-description">Mô tả</label>
+                            <textarea id="model-description" class="form-control" rows="4"
+                                placeholder="Mô tả về model..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-tab-content" id="advanced-settings" style="display: none;">
+                        <h5 class="mb-3">Tham số huấn luyện</h5>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="learning-rate">Tốc độ học</label>
+                                <input type="number" id="learning-rate" class="form-control" value="0.00002"
+                                    step="0.00001">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="epochs">Số lượng epochs</label>
+                                <input type="number" id="epochs" class="form-control" value="15" min="1">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="batch-size">Kích thước batch</label>
+                                <input type="number" id="batch-size" class="form-control" value="32" min="1">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="weight-decay">Weight decay</label>
+                                <input type="number" id="weight-decay" class="form-control" value="0.01" step="0.01">
+                            </div>
+                        </div>
+
+                        <h5 class="mb-3 mt-4">Cấu hình model</h5>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="hidden-size">Kích thước hidden layer</label>
+                                <input type="number" id="hidden-size" class="form-control" value="768" min="1">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="num-layers">Số lượng layers</label>
+                                <input type="number" id="num-layers" class="form-control" value="12" min="1">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="toggle-container">
+                                <label for="use-pretrained">Sử dụng pretrained weights</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="use-pretrained" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-tab-content" id="training-data" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="data-source">Nguồn dữ liệu</label>
+                                <select id="data-source" class="form-control">
+                                    <option value="existing">Dữ liệu có sẵn</option>
+                                    <option value="upload">Tải lên dữ liệu mới</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="split-ratio">Tỷ lệ chia dữ liệu (train/val/test)</label>
+                                <input type="text" id="split-ratio" class="form-control" value="80/10/10">
+                            </div>
+                        </div>
+
+                        <div id="existing-data-select" class="form-group">
+                            <label for="data-select">Chọn bộ dữ liệu</label>
+                            <select id="data-select" class="form-control">
+                                <option value="reviews">Đánh giá sản phẩm (108,342 mẫu)</option>
+                                <option value="aspects">Dữ liệu khía cạnh sản phẩm (56,785 mẫu)</option>
+                                <option value="combined">Dữ liệu kết hợp (85,427 mẫu)</option>
+                            </select>
+                        </div>
+
+                        <div id="upload-data" class="form-group" style="display: none;">
+                            <label>Tải lên dữ liệu huấn luyện</label>
+                            <div class="file-upload">
+                                <input type="file" id="training-data-file" class="file-input" accept=".csv,.json,.xlsx">
+                                <div class="file-preview">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Nhấp hoặc kéo thả file CSV, JSON, XLSX</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="toggle-container">
+                                <label for="use-augmentation">Sử dụng data augmentation</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="use-augmentation">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="toggle-container">
+                                <label for="use-class-weights">Sử dụng class weights</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="use-class-weights" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-primary">Tạo model</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Train Model Modal -->
+    <div class="modal-overlay" id="trainModelModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Huấn luyện model mới</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Training form content -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-close">Hủy</button>
+                <button class="btn btn-primary">Bắt đầu huấn luyện</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize modals
+            const modalTriggers = document.querySelectorAll('[data-modal]');
+            const modalCloseButtons = document.querySelectorAll('.modal-close');
+            const modals = document.querySelectorAll('.modal-overlay');
+
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function () {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+
+                    if (modal) {
+                        modal.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            modalCloseButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const modal = this.closest('.modal-overlay');
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            modals.forEach(modal => {
+                modal.addEventListener('click', function (e) {
+                    if (e.target === this) {
+                        this.classList.remove('show');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+
+            // Tab switching in modals
+            const formTabs = document.querySelectorAll('.form-tab');
+            formTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const tabId = this.getAttribute('data-tab');
+
+                    // Hide all tab contents
+                    document.querySelectorAll('.form-tab-content').forEach(content => {
+                        content.style.display = 'none';
+                    });
+
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.form-tab').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+
+                    // Show selected tab content and mark tab as active
+                    document.getElementById(tabId).style.display = 'block';
+                    this.classList.add('active');
+                });
+            });
+
+            // Model detail tabs
+            const modelTabs = document.querySelectorAll('.model-tab');
+            modelTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const tabId = this.getAttribute('data-tab');
+
+                    // Hide all tab contents
+                    document.querySelectorAll('.model-tab-content').forEach(content => {
+                        content.style.display = 'none';
+                    });
+
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.model-tab').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+
+                    // Show selected tab content and mark tab as active
+                    document.getElementById(tabId).style.display = 'block';
+                    this.classList.add('active');
+                });
+            });
+
+            // Data source toggle
+            const dataSourceSelect = document.getElementById('data-source');
+            const existingDataSelect = document.getElementById('existing-data-select');
+            const uploadData = document.getElementById('upload-data');
+
+            if (dataSourceSelect) {
+                dataSourceSelect.addEventListener('change', function () {
+                    if (this.value === 'existing') {
+                        existingDataSelect.style.display = 'block';
+                        uploadData.style.display = 'none';
+                    } else {
+                        existingDataSelect.style.display = 'none';
+                        uploadData.style.display = 'block';
+                    }
+                });
+            }
+
+            // File upload preview
+            const fileInput = document.getElementById('training-data-file');
+            if (fileInput) {
+                fileInput.addEventListener('change', function (e) {
+                    const filePreview = this.nextElementSibling;
+
+                    if (this.files && this.files[0]) {
+                        filePreview.innerHTML = `
+              <i class="fas fa-file"></i>
+              <span class="file-name">${this.files[0].name}</span>
+            `;
+                    }
+                });
+            }
+
+            // Initialize charts
+            // Accuracy Time Chart
+            const accuracyTimeCtx = document.getElementById('accuracyTimeChart');
+            if (accuracyTimeCtx) {
+                new Chart(accuracyTimeCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11',
+                            'T12'
+                        ],
+                        datasets: [{
+                            label: 'Độ chính xác',
+                            data: [84, 85, 86, 88, 87, 89, 90, 91, 90, 91, 92, 92.4],
+                            borderColor: '#4a90e2',
+                            backgroundColor: 'rgba(74, 144, 226, 0.1)',
+                            tension: 0.3,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                min: 80,
+                                max: 100,
+                                ticks: {
+                                    callback: function (value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Confusion Matrix Chart
+            const confusionMatrixCtx = document.getElementById('confusionMatrixChart');
+            if (confusionMatrixCtx) {
+                new Chart(confusionMatrixCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Tích cực/Tích cực', 'Tích cực/Tiêu cực', 'Tiêu cực/Tích cực',
+                            'Tiêu cực/Tiêu cực'
+                        ],
+                        datasets: [{
+                            label: 'Số lượng dự đoán',
+                            data: [4250, 245, 320, 3985],
+                            backgroundColor: [
+                                'rgba(46, 204, 113, 0.6)',
+                                'rgba(231, 76, 60, 0.4)',
+                                'rgba(231, 76, 60, 0.4)',
+                                'rgba(46, 204, 113, 0.6)'
+                            ],
+                            borderColor: [
+                                'rgba(46, 204, 113, 1)',
+                                'rgba(231, 76, 60, 1)',
+                                'rgba(231, 76, 60, 1)',
+                                'rgba(46, 204, 113, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Aspects Chart
+            const aspectsCtx = document.getElementById('aspectsChart');
+            if (aspectsCtx) {
+                new Chart(aspectsCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Màn hình', 'Pin', 'Hiệu năng', 'Camera', 'Thiết kế', 'Giá'],
+                        datasets: [{
+                            label: 'Độ chính xác',
+                            data: [95, 90, 94, 96, 92, 86],
+                            backgroundColor: 'rgba(74, 144, 226, 0.2)',
+                            borderColor: 'rgba(74, 144, 226, 1)',
+                            pointBackgroundColor: 'rgba(74, 144, 226, 1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(74, 144, 226, 1)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                angleLines: {
+                                    display: true
+                                },
+                                suggestedMin: 80,
+                                suggestedMax: 100,
+                                ticks: {
+                                    callback: function (value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Data Distribution Chart
+            const dataDistributionCtx = document.getElementById('dataDistributionChart');
+            if (dataDistributionCtx) {
+                new Chart(dataDistributionCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Tích cực', 'Trung tính', 'Tiêu cực'],
+                        datasets: [{
+                            data: [58, 27, 15],
+                            backgroundColor: ['#2ecc71', '#f39c12', '#e74c3c'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
