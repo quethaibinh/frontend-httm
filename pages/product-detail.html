@@ -7,6 +7,7 @@
     <title>Chi tiết sách - Hệ thống đánh giá và review sách</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/product-detail.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -79,7 +80,7 @@
                     </li>
                     <li class="user-dropdown">
                         <a href="javascript:void(0);" class="avatar-link">
-                            <img src="../assets/images/avatar.jpg" alt="Avatar"
+                            <img src="../assets/images/avatar.png" alt="Avatar"
                                 style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
                             <i class="fas fa-chevron-down"></i>
                         </a>
@@ -118,20 +119,20 @@
                 <div class="col-6 col-md-12">
                     <div class="product-gallery">
                         <div class="main-image">
-                            <img src="../assets/images/product1.jpg" alt="To Kill a Mockingbird">
+                            <img src="../assets/images/image.png" alt="To Kill a Mockingbird">
                         </div>
                         <div class="thumbnail-images">
                             <div class="thumbnail active">
-                                <img src="../assets/images/product1.jpg" alt="To Kill a Mockingbird - Cover">
+                                <img src="../assets/images/image.png" alt="To Kill a Mockingbird - Cover">
                             </div>
                             <div class="thumbnail">
-                                <img src="../assets/images/product1-2.jpg" alt="To Kill a Mockingbird - Back Cover">
+                                <img src="../assets/images/image.png" alt="To Kill a Mockingbird - Back Cover">
                             </div>
                             <div class="thumbnail">
-                                <img src="../assets/images/product1-3.jpg" alt="To Kill a Mockingbird - First Page">
+                                <img src="../assets/images/image.png" alt="To Kill a Mockingbird - First Page">
                             </div>
                             <div class="thumbnail">
-                                <img src="../assets/images/product1-4.jpg" alt="To Kill a Mockingbird - Illustrations">
+                                <img src="../assets/images/image.png" alt="To Kill a Mockingbird - Illustrations">
                             </div>
                         </div>
                     </div>
@@ -194,98 +195,113 @@
                                 toàn thế giới.</p>
                         </div>
 
-                        <!-- Overall Sentiment -->
+                        <!-- Analytics Selector -->
                         <div class="card mb-4">
                             <div class="card-header">
-                                <h3>Thống kê cảm xúc</h3>
+                                <h3>Thống kê & Phân tích</h3>
                             </div>
                             <div class="card-body">
-                                <div class="sentiment-overview mb-3">
-                                    <div class="sentiment-stat">
-                                        <span class="sentiment-number sentiment-positive">85%</span>
-                                        <span>Tích cực</span>
-                                    </div>
-                                    <div class="sentiment-stat">
-                                        <span class="sentiment-number sentiment-negative">15%</span>
-                                        <span>Tiêu cực</span>
-                                    </div>
+                                <!-- Tabs selection -->
+                                <div class="analytics-tabs">
+                                    <button class="analytics-tab active" data-target="none">
+                                        <i class="fas fa-book"></i> Tổng quan
+                                    </button>
+                                    <button class="analytics-tab" data-target="sentiment">
+                                        <i class="fas fa-chart-line"></i> Thống kê cảm xúc
+                                    </button>
+                                    <button class="analytics-tab" data-target="aspect">
+                                        <i class="fas fa-list-ul"></i> Đánh giá khía cạnh
+                                    </button>
                                 </div>
 
-                                <div class="chart-container">
-                                    <canvas id="sentimentChart" height="200"></canvas>
-                                </div>
-                            </div>
-                        </div>
+                                <div id="analytics-content">
+                                    <div class="analytics-message">
+                                        <i class="fas fa-info-circle"></i>
+                                        <p>Chọn loại phân tích bạn muốn xem ở trên.</p>
+                                    </div>
 
-                        <!-- Aspect Sentiment -->
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Đánh giá theo khía cạnh</h3>
-                            </div>
-                            <div class="card-body">
-                                <!-- Camera Aspect -->
-                                <div class="aspect-sentiment">
-                                    <div class="aspect-title">
-                                        <span>Camera</span>
-                                        <span>92%</span>
-                                    </div>
-                                    <div class="aspect-progress">
-                                        <div class="aspect-progress-bar" style="width: 92%;"></div>
-                                    </div>
-                                </div>
+                                    <!-- Overall Sentiment (Hidden by default) -->
+                                    <div class="analytics-panel" id="sentiment-panel" style="display: none;">
+                                        <h4>Thống kê cảm xúc</h4>
+                                        <div class="sentiment-overview mb-3">
+                                            <div class="sentiment-stat">
+                                                <span class="sentiment-number sentiment-positive">85%</span>
+                                                <span>Tích cực</span>
+                                            </div>
+                                            <div class="sentiment-stat">
+                                                <span class="sentiment-number sentiment-negative">15%</span>
+                                                <span>Tiêu cực</span>
+                                            </div>
+                                        </div>
 
-                                <!-- Battery Aspect -->
-                                <div class="aspect-sentiment">
-                                    <div class="aspect-title">
-                                        <span>Pin</span>
-                                        <span>88%</span>
+                                        <div class="chart-container">
+                                            <canvas id="sentimentChart" height="200"></canvas>
+                                        </div>
                                     </div>
-                                    <div class="aspect-progress">
-                                        <div class="aspect-progress-bar" style="width: 88%;"></div>
-                                    </div>
-                                </div>
 
-                                <!-- Display Aspect -->
-                                <div class="aspect-sentiment">
-                                    <div class="aspect-title">
-                                        <span>Màn hình</span>
-                                        <span>95%</span>
-                                    </div>
-                                    <div class="aspect-progress">
-                                        <div class="aspect-progress-bar" style="width: 95%;"></div>
-                                    </div>
-                                </div>
+                                    <!-- Aspect Sentiment (Hidden by default) -->
+                                    <div class="analytics-panel" id="aspect-panel" style="display: none;">
+                                        <h4>Đánh giá theo khía cạnh</h4>
+                                        <!-- Nội dung -->
+                                        <div class="aspect-sentiment">
+                                            <div class="aspect-title">
+                                                <span>Cốt truyện</span>
+                                                <span>92%</span>
+                                            </div>
+                                            <div class="aspect-progress">
+                                                <div class="aspect-progress-bar" style="width: 92%;"></div>
+                                            </div>
+                                        </div>
 
-                                <!-- Performance Aspect -->
-                                <div class="aspect-sentiment">
-                                    <div class="aspect-title">
-                                        <span>Hiệu năng</span>
-                                        <span>90%</span>
-                                    </div>
-                                    <div class="aspect-progress">
-                                        <div class="aspect-progress-bar" style="width: 90%;"></div>
-                                    </div>
-                                </div>
+                                        <div class="aspect-sentiment">
+                                            <div class="aspect-title">
+                                                <span>Phát triển nhân vật</span>
+                                                <span>88%</span>
+                                            </div>
+                                            <div class="aspect-progress">
+                                                <div class="aspect-progress-bar" style="width: 88%;"></div>
+                                            </div>
+                                        </div>
 
-                                <!-- Price Aspect -->
-                                <div class="aspect-sentiment">
-                                    <div class="aspect-title">
-                                        <span>Giá thành</span>
-                                        <span>65%</span>
-                                    </div>
-                                    <div class="aspect-progress">
-                                        <div class="aspect-progress-bar" style="width: 65%;"></div>
-                                    </div>
-                                </div>
+                                        <div class="aspect-sentiment">
+                                            <div class="aspect-title">
+                                                <span>Văn phong</span>
+                                                <span>95%</span>
+                                            </div>
+                                            <div class="aspect-progress">
+                                                <div class="aspect-progress-bar" style="width: 95%;"></div>
+                                            </div>
+                                        </div>
 
-                                <!-- Charging Aspect -->
-                                <div class="aspect-sentiment">
-                                    <div class="aspect-title">
-                                        <span>Sạc</span>
-                                        <span>72%</span>
-                                    </div>
-                                    <div class="aspect-progress">
-                                        <div class="aspect-progress-bar" style="width: 72%;"></div>
+                                        <div class="aspect-sentiment">
+                                            <div class="aspect-title">
+                                                <span>Thông điệp/Ý nghĩa</span>
+                                                <span>90%</span>
+                                            </div>
+                                            <div class="aspect-progress">
+                                                <div class="aspect-progress-bar" style="width: 90%;"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="aspect-sentiment">
+                                            <div class="aspect-title">
+                                                <span>Giá trị lịch sử</span>
+                                                <span>85%</span>
+                                            </div>
+                                            <div class="aspect-progress">
+                                                <div class="aspect-progress-bar" style="width: 85%;"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="aspect-sentiment">
+                                            <div class="aspect-title">
+                                                <span>Tính phù hợp đại chúng</span>
+                                                <span>72%</span>
+                                            </div>
+                                            <div class="aspect-progress">
+                                                <div class="aspect-progress-bar" style="width: 72%;"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -541,46 +557,82 @@
     <script src="../assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Initialize sentiment chart
-            const sentimentCtx = document.getElementById('sentimentChart');
-            new Chart(sentimentCtx, {
-                type: 'line',
-                data: {
-                    labels: ['T8', 'T9', 'T10', 'T11', 'T12', 'T1'],
-                    datasets: [{
-                            label: 'Tích cực',
-                            data: [75, 78, 82, 85, 88, 85],
-                            borderColor: '#2ecc71',
-                            backgroundColor: 'rgba(46, 204, 113, 0.1)',
-                            tension: 0.3,
-                            fill: true
-                        },
-                        {
-                            label: 'Tiêu cực',
-                            data: [25, 22, 18, 15, 12, 15],
-                            borderColor: '#e74c3c',
-                            backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                            tension: 0.3,
-                            fill: true
+            // Window variable to track if sentiment chart is initialized
+            window.sentimentChartInitialized = false;
+
+            // Analytics Tabs
+            const analyticsTabs = document.querySelectorAll('.analytics-tab');
+            const analyticsPanels = document.querySelectorAll('.analytics-panel');
+            const analyticsMessage = document.querySelector('.analytics-message');
+
+            analyticsTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Update active tab
+                    analyticsTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Show/hide panels
+                    const target = this.getAttribute('data-target');
+
+                    // Hide all panels first
+                    analyticsPanels.forEach(panel => panel.style.display = 'none');
+
+                    if (target === 'none') {
+                        analyticsMessage.style.display = 'flex';
+                    } else {
+                        analyticsMessage.style.display = 'none';
+                        document.getElementById(target + '-panel').style.display = 'block';
+
+                        // Initialize chart if sentiment panel is shown
+                        if (target === 'sentiment' && !window.sentimentChartInitialized) {
+                            initSentimentChart();
+                            window.sentimentChartInitialized = true;
                         }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
-                                callback: function (value) {
-                                    return value + '%';
+                    }
+                });
+            });
+
+            function initSentimentChart() {
+                const sentimentCtx = document.getElementById('sentimentChart');
+                new Chart(sentimentCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['T8', 'T9', 'T10', 'T11', 'T12', 'T1'],
+                        datasets: [{
+                                label: 'Tích cực',
+                                data: [75, 78, 82, 85, 88, 85],
+                                borderColor: '#2ecc71',
+                                backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                                tension: 0.3,
+                                fill: true
+                            },
+                            {
+                                label: 'Tiêu cực',
+                                data: [25, 22, 18, 15, 12, 15],
+                                borderColor: '#e74c3c',
+                                backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                                tension: 0.3,
+                                fill: true
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    callback: function (value) {
+                                        return value + '%';
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            });
+                });
+            }
 
             // Filter reviews
             const filterChips = document.querySelectorAll('.filter-chips .chip');
