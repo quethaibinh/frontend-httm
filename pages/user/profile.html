@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hồ sơ người dùng - Hệ thống tham khảo phản hồi khách hàng</title>
+    <title>Hồ sơ người dùng - Hệ thống đánh giá và review sách</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/user.css">
@@ -15,8 +15,8 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="../index.html" class="logo">
-                    <i class="fas fa-comment-dots"></i> ProductReview
+                <a href="../../index.html" class="logo">
+                    <i class="fas fa-book-open"></i> BookReview
                 </a>
 
                 <div class="search-bar">
@@ -27,7 +27,11 @@
                 </div>
 
                 <ul class="nav-menu">
-                    <li><a href="../index.html">Trang chủ</a></li>
+                    <li><a href="../../index.html">Trang chủ</a></li>
+                    <li><a href="../products.html">Sách</a></li>
+                    <li><a href="../categories.html">Thể loại</a></li>
+                    <li><a href="../authors.html">Tác giả</a></li>
+                    <li><a href="../compare.html">So sánh</a></li>
                     <li class="notification-dropdown">
                         <div class="notification-icon">
                             <i class="fas fa-bell"></i>
@@ -41,19 +45,19 @@
                             <div class="notification-list">
                                 <div class="notification-item unread">
                                     <div class="notification-content">
-                                        <p><strong>Phản hồi mới</strong> cho đánh giá của bạn</p>
+                                        <p><strong>Phản hồi mới</strong> cho bài review sách của bạn</p>
                                         <span class="notification-time">5 phút trước</span>
                                     </div>
                                 </div>
                                 <div class="notification-item unread">
                                     <div class="notification-content">
-                                        <p><strong>Ai đó</strong> đã thích đánh giá của bạn</p>
+                                        <p><strong>Nguyễn Văn A</strong> đã thích bài review sách của bạn</p>
                                         <span class="notification-time">30 phút trước</span>
                                     </div>
                                 </div>
                                 <div class="notification-item unread">
                                     <div class="notification-content">
-                                        <p><strong>Sản phẩm mới</strong> phù hợp với sở thích của bạn</p>
+                                        <p><strong>Sách mới</strong> phù hợp với thể loại bạn quan tâm</p>
                                         <span class="notification-time">1 giờ trước</span>
                                     </div>
                                 </div>
@@ -64,18 +68,19 @@
                         </div>
                     </li>
                     <li class="user-dropdown active">
-                        <a href="user/profile.html">
-                            <img src="../assets/images/user-avatar.jpg" alt="User"
+                        <a href="javascript:void(0);" class="avatar-link">
+                            <img src="../../assets/images/user-avatar.jpg" alt="User"
                                 style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                            <i class="fas fa-chevron-down"></i>
                         </a>
                         <div class="user-dropdown-menu">
-                            <a href="user/profile.html">
+                            <a href="./profile.html">
                                 <i class="fas fa-user"></i> Hồ sơ
                             </a>
-                            <a href="user/settings.html">
+                            <a href="./settings.html">
                                 <i class="fas fa-cog"></i> Cài đặt
                             </a>
-                            <a href="login.html">
+                            <a href="../auth.html">
                                 <i class="fas fa-sign-out-alt"></i> Đăng xuất
                             </a>
                         </div>
@@ -90,7 +95,7 @@
         <div class="container">
             <div class="profile-header">
                 <div class="profile-cover">
-                    <img src="../assets/images/profile-cover.jpg" alt="Cover">
+                    <img src="../../assets/images/profile-cover.jpg" alt="Cover">
                     <button class="btn btn-sm btn-outline edit-cover-btn">
                         <i class="fas fa-camera"></i> Thay đổi ảnh bìa
                     </button>
@@ -98,7 +103,7 @@
 
                 <div class="profile-info">
                     <div class="profile-avatar">
-                        <img src="../assets/images/user-avatar.jpg" alt="User">
+                        <img src="../../assets/images/user-avatar.jpg" alt="User">
                         <div class="avatar-edit">
                             <i class="fas fa-camera"></i>
                         </div>
@@ -112,15 +117,19 @@
                     <div class="profile-stats">
                         <div class="stat-item">
                             <span class="stat-value">42</span>
-                            <span class="stat-label">Đánh giá</span>
+                            <span class="stat-label">Reviews</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-value">18</span>
-                            <span class="stat-label">Sản phẩm đã mua</span>
+                            <span class="stat-label">Sách đã đọc</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-value">156</span>
-                            <span class="stat-label">Đánh giá hữu ích</span>
+                            <span class="stat-label">Lượt thích</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">35</span>
+                            <span class="stat-label">Sách đang đọc</span>
                         </div>
                     </div>
 
@@ -151,38 +160,51 @@
                     </div>
 
                     <div class="profile-card">
-                        <h3>Danh mục quan tâm</h3>
+                        <h3>Thể loại yêu thích</h3>
                         <div class="tag-cloud">
-                            <span class="tag">Điện thoại</span>
-                            <span class="tag">Máy tính</span>
-                            <span class="tag">Camera</span>
-                            <span class="tag">Tai nghe</span>
-                            <span class="tag">Sạc dự phòng</span>
-                            <span class="tag">Màn hình</span>
+                            <span class="tag">Tiểu thuyết</span>
+                            <span class="tag">Kỹ năng sống</span>
+                            <span class="tag">Văn học</span>
+                            <span class="tag">Lịch sử</span>
+                            <span class="tag">Khoa học</span>
+                            <span class="tag">Tâm lý học</span>
+                            <span class="tag">Kinh doanh</span>
+                            <span class="tag">Huyền bí</span>
                         </div>
                     </div>
 
                     <div class="profile-card">
-                        <h3>Cấp độ người dùng</h3>
+                        <h3>Cấp độ đọc giả</h3>
                         <div class="user-level">
                             <div class="level-badge">
-                                <i class="fas fa-award"></i>
-                                <span>Chuyên gia</span>
+                                <i class="fas fa-book-reader"></i>
+                                <span>Nhà phê bình</span>
                             </div>
 
                             <div class="level-progress">
                                 <div class="level-label">
                                     <span>Tiến trình lên cấp</span>
-                                    <span>1500 / 2000</span>
+                                    <span>42 sách / 50 sách</span>
                                 </div>
                                 <div class="progress-bar">
-                                    <div class="progress-value" style="width: 75%;"></div>
+                                    <div class="progress-value" style="width: 84%;"></div>
                                 </div>
                             </div>
 
                             <div class="next-level">
                                 <i class="fas fa-info-circle"></i>
-                                <span>Còn 500 điểm để lên "Chuyên gia cấp cao"</span>
+                                <span>Còn 8 review sách để lên "Nhà phê bình văn học"</span>
+                            </div>
+                        </div>
+
+                        <div class="reading-stats">
+                            <div class="reading-stat">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>35 ngày đọc liên tiếp</span>
+                            </div>
+                            <div class="reading-stat">
+                                <i class="fas fa-clock"></i>
+                                <span>Tổng: 480 giờ đọc sách</span>
                             </div>
                         </div>
                     </div>
@@ -190,22 +212,24 @@
 
                 <div class="profile-main">
                     <div class="profile-tabs">
-                        <button class="profile-tab active" data-tab="reviews">Đánh giá của tôi</button>
-                        <button class="profile-tab" data-tab="products">Sản phẩm đã mua</button>
-                        <button class="profile-tab" data-tab="saved">Đánh giá đã lưu</button>
-                        <button class="profile-tab" data-tab="activity">Hoạt động gần đây</button>
+                        <button class="profile-tab active" data-tab="reviews">Review của tôi</button>
+                        <button class="profile-tab" data-tab="reading">Sách đang đọc</button>
+                        <button class="profile-tab" data-tab="readlist">Đã đọc</button>
+                        <button class="profile-tab" data-tab="wishlist">Muốn đọc</button>
+                        <button class="profile-tab" data-tab="activity">Hoạt động</button>
                     </div>
 
                     <div class="tab-content active" id="reviews">
                         <!-- Review Filter -->
                         <div class="reviews-header">
-                            <h3>Đánh giá của tôi</h3>
+                            <h3>Review sách của tôi</h3>
                             <div class="reviews-filter">
                                 <select class="form-control">
                                     <option value="recent">Mới nhất</option>
                                     <option value="popular">Phổ biến nhất</option>
-                                    <option value="positive">Tích cực</option>
-                                    <option value="negative">Tiêu cực</option>
+                                    <option value="rating-high">Đánh giá cao nhất</option>
+                                    <option value="rating-low">Đánh giá thấp nhất</option>
+                                    <option value="genre">Theo thể loại</option>
                                 </select>
                             </div>
                         </div>
@@ -216,12 +240,13 @@
                             <div class="review-item">
                                 <div class="review-header">
                                     <div class="review-product">
-                                        <img src="../assets/images/products/phone-1.jpg" alt="Product">
+                                        <img src="https://via.placeholder.com/120x180" alt="Book cover">
                                         <div class="product-info">
-                                            <h4>iPhone 15 Pro Max</h4>
+                                            <h4>Tôi Thấy Hoa Vàng Trên Cỏ Xanh</h4>
                                             <div class="product-meta">
-                                                <span class="category">Điện thoại</span>
-                                                <span class="date">Đánh giá vào 20/09/2025</span>
+                                                <span class="author">Nguyễn Nhật Ánh</span>
+                                                <span class="category">Văn học</span>
+                                                <span class="date">Review vào 20/09/2025</span>
                                             </div>
                                         </div>
                                     </div>
@@ -231,62 +256,57 @@
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
                                         </div>
-                                        <span>5.0</span>
+                                        <span>4.5</span>
                                     </div>
                                 </div>
 
                                 <div class="review-content">
-                                    <h5>Chiếc điện thoại tuyệt vời nhất mà tôi từng sử dụng</h5>
-                                    <p>iPhone 15 Pro Max mang lại trải nghiệm tuyệt vời về mọi mặt từ hiệu năng, camera,
-                                        thời lượng pin đến chất lượng hoàn thiện. Tôi đặc biệt ấn tượng với hệ thống
-                                        camera mới, cho phép chụp ảnh chất lượng cao trong mọi điều kiện ánh sáng.</p>
+                                    <h5>Câu chuyện tuổi thơ đầy xúc động và hoài niệm</h5>
+                                    <p>"Tôi thấy hoa vàng trên cỏ xanh" là một tác phẩm đậm chất tự truyện của Nguyễn
+                                        Nhật Ánh, kể về tuổi thơ của những đứa trẻ ở miền quê Việt Nam. Tác giả đã dẫn
+                                        dắt người đọc vào thế giới của hai nhân vật chính là Thiên và Tường với những
+                                        cảm xúc trong sáng, ngây thơ nhưng cũng rất đời thực.</p>
 
                                     <div class="review-aspects">
                                         <div class="aspect-item">
-                                            <div class="aspect-name">Hiệu năng</div>
-                                            <div class="aspect-rating positive">
-                                                <i class="fas fa-thumbs-up"></i>
-                                                <span>Rất tốt</span>
-                                            </div>
-                                        </div>
-                                        <div class="aspect-item">
-                                            <div class="aspect-name">Camera</div>
+                                            <div class="aspect-name">Cốt truyện</div>
                                             <div class="aspect-rating positive">
                                                 <i class="fas fa-thumbs-up"></i>
                                                 <span>Xuất sắc</span>
                                             </div>
                                         </div>
                                         <div class="aspect-item">
-                                            <div class="aspect-name">Pin</div>
+                                            <div class="aspect-name">Nhân vật</div>
                                             <div class="aspect-rating positive">
                                                 <i class="fas fa-thumbs-up"></i>
-                                                <span>Rất tốt</span>
+                                                <span>Gần gũi, chân thật</span>
                                             </div>
                                         </div>
                                         <div class="aspect-item">
-                                            <div class="aspect-name">Giá</div>
-                                            <div class="aspect-rating neutral">
-                                                <i class="fas fa-minus"></i>
-                                                <span>Chấp nhận được</span>
+                                            <div class="aspect-name">Văn phong</div>
+                                            <div class="aspect-rating positive">
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span>Giản dị, sâu lắng</span>
+                                            </div>
+                                        </div>
+                                        <div class="aspect-item">
+                                            <div class="aspect-name">Sự lôi cuốn</div>
+                                            <div class="aspect-rating positive">
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span>Cuốn hút</span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="review-images">
-                                        <div class="image-item">
-                                            <img src="../assets/images/products/phone-1-review-1.jpg"
-                                                alt="Review image">
-                                        </div>
-                                        <div class="image-item">
-                                            <img src="../assets/images/products/phone-1-review-2.jpg"
-                                                alt="Review image">
-                                        </div>
-                                        <div class="image-item">
-                                            <img src="../assets/images/products/phone-1-review-3.jpg"
-                                                alt="Review image">
-                                        </div>
+                                    <div class="review-quotes">
+                                        <blockquote>
+                                            <i class="fas fa-quote-left"></i>
+                                            <p>"Bầu trời tuổi thơ đầy sắc màu rực rỡ của tôi đã khép lại từ lâu, nhưng
+                                                những kỷ niệm đẹp về tình bạn, tình anh em, về một thời mái ấm và vô tư
+                                                thì còn mãi..."</p>
+                                        </blockquote>
                                     </div>
                                 </div>
 
@@ -294,7 +314,7 @@
                                     <div class="review-stats">
                                         <div class="stat">
                                             <i class="fas fa-thumbs-up"></i>
-                                            <span>28</span>
+                                            <span>42</span>
                                         </div>
                                         <div class="stat">
                                             <i class="fas fa-comment"></i>
@@ -578,7 +598,7 @@
         </div>
     </footer>
 
-    <script src="../assets/js/main.js"></script>
+    <script src="../../assets/js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Profile tab switching
@@ -621,18 +641,7 @@
                 });
             }
 
-            // User dropdown
-            const userDropdown = document.querySelector('.user-dropdown');
-            if (userDropdown) {
-                userDropdown.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    this.classList.toggle('show');
-                });
-
-                document.addEventListener('click', function () {
-                    userDropdown.classList.remove('show');
-                });
-            }
+            // User dropdown functionality is now in main.js
         });
     </script>
 </body>

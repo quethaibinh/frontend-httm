@@ -63,10 +63,24 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="#">
+                    <li class="user-dropdown">
+                        <a href="javascript:void(0);" class="avatar-link">
                             <img src="../../assets/images/admin-avatar.jpg" alt="Admin"
                                 style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
-                        </a></li>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="user-dropdown-menu">
+                            <a href="../user/profile.html">
+                                <i class="fas fa-user"></i> Hồ sơ
+                            </a>
+                            <a href="../user/settings.html">
+                                <i class="fas fa-cog"></i> Cài đặt
+                            </a>
+                            <a href="../auth.html">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -752,6 +766,7 @@
             });
         });
     </script>
+    <script src="../../assets/js/main.js"></script>
 </body>
 
 </html>

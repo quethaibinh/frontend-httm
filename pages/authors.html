@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tác Giả | Book Review</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/categories-authors.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo">
+                    <h1>Book<span>Review</span></h1>
+                </a>
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm sách..." />
+                    <button type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Trang chủ</a></li>
+                    <li><a href="./products.html">Sách</a></li>
+                    <li><a href="./categories.html">Thể loại</a></li>
+                    <li class="active"><a href="./authors.html">Tác giả</a></li>
+                    <li><a href="./compare.html">So sánh</a></li>
+                    <li class="notification-dropdown">
+                        <div class="notification-icon">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                        <div class="notification-menu">
+                            <div class="notification-header">
+                                <h3>Thông báo</h3>
+                                <span class="notification-clear">Đánh dấu đã đọc</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-avatar">
+                                        <img src="../assets/images/product1.jpg" alt="Book Cover">
+                                    </div>
+                                    <div class="notification-content">
+                                        <p><strong>To Kill a Mockingbird</strong> vừa có đánh giá mới</p>
+                                        <span class="notification-time">2 giờ trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="user-dropdown">
+                        <a href="javascript:void(0);" class="avatar-link">
+                            <img src="../assets/images/avatar.jpg" alt="Avatar"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="user-dropdown-menu">
+                            <a href="./user/profile.html">
+                                <i class="fas fa-user"></i> Hồ sơ
+                            </a>
+                            <a href="./user/settings.html">
+                                <i class="fas fa-cog"></i> Cài đặt
+                            </a>
+                            <a href="./auth.html">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h2>Danh Sách Tác Giả</h2>
+                <p>Khám phá những tác giả nổi tiếng và tác phẩm của họ</p>
+            </div>
+
+            <div class="authors-filter">
+                <div class="filter-container">
+                    <label for="sort-by">Sắp xếp theo:</label>
+                    <select id="sort-by">
+                        <option value="popularity">Phổ biến nhất</option>
+                        <option value="name-asc">Tên (A-Z)</option>
+                        <option value="name-desc">Tên (Z-A)</option>
+                        <option value="books-count">Số lượng sách</option>
+                    </select>
+                </div>
+                <div class="filter-container">
+                    <label for="filter-country">Quốc gia:</label>
+                    <select id="filter-country">
+                        <option value="all">Tất cả</option>
+                        <option value="vietnam">Việt Nam</option>
+                        <option value="usa">Hoa Kỳ</option>
+                        <option value="uk">Anh</option>
+                        <option value="japan">Nhật Bản</option>
+                        <option value="france">Pháp</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="authors-grid">
+                <div class="author-card">
+                    <div class="author-image">
+                        <img src="../assets/images/authors/author1.jpg" alt="Nguyễn Nhật Ánh">
+                    </div>
+                    <h3>Nguyễn Nhật Ánh</h3>
+                    <p class="author-country">Việt Nam</p>
+                    <p class="author-books">42 tác phẩm</p>
+                    <p class="author-bio">Nhà văn nổi tiếng với những tác phẩm về tuổi học trò và tình yêu đầu đời...
+                    </p>
+                    <a href="#" class="btn-view-profile">Xem chi tiết</a>
+                </div>
+
+                <div class="author-card">
+                    <div class="author-image">
+                        <img src="../assets/images/authors/author2.jpg" alt="J.K. Rowling">
+                    </div>
+                    <h3>J.K. Rowling</h3>
+                    <p class="author-country">Anh</p>
+                    <p class="author-books">15 tác phẩm</p>
+                    <p class="author-bio">Tác giả nổi tiếng với bộ truyện Harry Potter đình đám toàn thế giới...</p>
+                    <a href="#" class="btn-view-profile">Xem chi tiết</a>
+                </div>
+
+                <div class="author-card">
+                    <div class="author-image">
+                        <img src="../assets/images/authors/author3.jpg" alt="Haruki Murakami">
+                    </div>
+                    <h3>Haruki Murakami</h3>
+                    <p class="author-country">Nhật Bản</p>
+                    <p class="author-books">23 tác phẩm</p>
+                    <p class="author-bio">Nhà văn với phong cách viết siêu thực độc đáo, nổi tiếng với nhiều tác phẩm...
+                    </p>
+                    <a href="#" class="btn-view-profile">Xem chi tiết</a>
+                </div>
+
+                <div class="author-card">
+                    <div class="author-image">
+                        <img src="../assets/images/authors/author4.jpg" alt="Stephen King">
+                    </div>
+                    <h3>Stephen King</h3>
+                    <p class="author-country">Hoa Kỳ</p>
+                    <p class="author-books">64 tác phẩm</p>
+                    <p class="author-bio">Ông hoàng của thể loại kinh dị với hàng trăm tác phẩm đã được chuyển thể...
+                    </p>
+                    <a href="#" class="btn-view-profile">Xem chi tiết</a>
+                </div>
+
+                <div class="author-card">
+                    <div class="author-image">
+                        <img src="../assets/images/authors/author5.jpg" alt="Tô Hoài">
+                    </div>
+                    <h3>Tô Hoài</h3>
+                    <p class="author-country">Việt Nam</p>
+                    <p class="author-books">37 tác phẩm</p>
+                    <p class="author-bio">Nhà văn của nhiều thế hệ độc giả Việt Nam với Dế Mèn Phiêu Lưu Ký...</p>
+                    <a href="#" class="btn-view-profile">Xem chi tiết</a>
+                </div>
+
+                <div class="author-card">
+                    <div class="author-image">
+                        <img src="../assets/images/authors/author6.jpg" alt="George R. R. Martin">
+                    </div>
+                    <h3>George R. R. Martin</h3>
+                    <p class="author-country">Hoa Kỳ</p>
+                    <p class="author-books">28 tác phẩm</p>
+                    <p class="author-bio">Tác giả nổi tiếng với bộ truyện A Song of Ice and Fire (Game of Thrones)...
+                    </p>
+                    <a href="#" class="btn-view-profile">Xem chi tiết</a>
+                </div>
+
+                <div class="author-card">
+                    <div class="author-image">
+                        <img src="../assets/images/authors/author7.jpg" alt="Paulo Coelho">
+                    </div>
+                    <h3>Paulo Coelho</h3>
+                    <p class="author-country">Brazil</p>
+                    <p class="author-books">31 tác phẩm</p>
+                    <p class="author-bio">Tác giả của Nhà Giả Kim và nhiều tác phẩm triết lý sâu sắc khác...</p>
+                    <a href="#" class="btn-view-profile">Xem chi tiết</a>
+                </div>
+
+                <div class="author-card">
+                    <div class="author-image">
+                        <img src="../assets/images/authors/author8.jpg" alt="Agatha Christie">
+                    </div>
+                    <h3>Agatha Christie</h3>
+                    <p class="author-country">Anh</p>
+                    <p class="author-books">72 tác phẩm</p>
+                    <p class="author-bio">Nữ hoàng của thể loại trinh thám với các nhân vật nổi tiếng như Hercule
+                        Poirot...</p>
+                    <a href="#" class="btn-view-profile">Xem chi tiết</a>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#" class="next">&raquo;</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Book<span>Review</span></h2>
+                    <p>Đánh giá sách - Kết nối đam mê đọc</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h3>Liên kết</h3>
+                        <ul>
+                            <li><a href="../index.html">Trang chủ</a></li>
+                            <li><a href="products.html">Sách</a></li>
+                            <li><a href="categories.html">Thể loại</a></li>
+                            <li><a href="authors.html">Tác giả</a></li>
+                            <li><a href="compare.html">So sánh</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Tài khoản</h3>
+                        <ul>
+                            <li><a href="./user/profile.html">Hồ sơ</a></li>
+                            <li><a href="./user/settings.html">Cài đặt</a></li>
+                            <li><a href="./auth.html">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Hỗ trợ</h3>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Điều khoản</a></li>
+                            <li><a href="#">Chính sách</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Đăng ký nhận tin</h3>
+                    <p>Cập nhật sách mới và đánh giá hàng tuần</p>
+                    <form>
+                        <input type="email" placeholder="Email của bạn">
+                        <button type="submit">Đăng ký</button>
+                    </form>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BookReview. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

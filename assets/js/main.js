@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize notifications dropdown
     initNotifications();
 
+    // Initialize user dropdown
+    initUserDropdown();
+
     // Initialize product image gallery
     initProductGallery();
 
@@ -59,6 +62,35 @@ function initNotifications() {
                 notificationItems.forEach(item => {
                     item.classList.remove('unread');
                 });
+            });
+        }
+    }
+}
+
+// User dropdown toggle
+function initUserDropdown() {
+    const userDropdown = document.querySelector('.user-dropdown');
+    const avatarLink = document.querySelector('.avatar-link');
+
+    if (userDropdown && avatarLink) {
+        avatarLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            userDropdown.classList.toggle('show');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!userDropdown.contains(e.target)) {
+                userDropdown.classList.remove('show');
+            }
+        });
+
+        // Prevent dropdown from closing when clicking on menu items
+        const dropdownMenu = document.querySelector('.user-dropdown-menu');
+        if (dropdownMenu) {
+            dropdownMenu.addEventListener('click', function (e) {
+                e.stopPropagation();
             });
         }
     }

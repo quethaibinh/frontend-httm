@@ -28,6 +28,10 @@
 
                 <ul class="nav-menu">
                     <li><a href="../../index.html">Trang chủ</a></li>
+                    <li><a href="../products.html">Sách</a></li>
+                    <li><a href="../categories.html">Thể loại</a></li>
+                    <li><a href="../authors.html">Tác giả</a></li>
+                    <li><a href="../compare.html">So sánh</a></li>
                     <li class="notification-dropdown">
                         <div class="notification-icon">
                             <i class="fas fa-bell"></i>
@@ -64,18 +68,19 @@
                         </div>
                     </li>
                     <li class="user-dropdown active">
-                        <a href="profile.html">
+                        <a href="javascript:void(0);" class="avatar-link">
                             <img src="../../assets/images/user-avatar.jpg" alt="User"
                                 style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
+                            <i class="fas fa-chevron-down"></i>
                         </a>
                         <div class="user-dropdown-menu">
-                            <a href="profile.html">
+                            <a href="./profile.html">
                                 <i class="fas fa-user"></i> Hồ sơ
                             </a>
-                            <a href="settings.html" class="active">
+                            <a href="./settings.html" class="active">
                                 <i class="fas fa-cog"></i> Cài đặt
                             </a>
-                            <a href="../login.html">
+                            <a href="../auth.html">
                                 <i class="fas fa-sign-out-alt"></i> Đăng xuất
                             </a>
                         </div>
@@ -655,18 +660,7 @@
                 });
             }
 
-            // User dropdown
-            const userDropdown = document.querySelector('.user-dropdown');
-            if (userDropdown) {
-                userDropdown.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    this.classList.toggle('show');
-                });
-
-                document.addEventListener('click', function () {
-                    userDropdown.classList.remove('show');
-                });
-            }
+            // User dropdown functionality is now in main.js
         });
     </script>
 </body>

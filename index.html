@@ -76,10 +76,24 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="pages/user/profile.html">
+                    <li class="user-dropdown">
+                        <a href="javascript:void(0);" class="avatar-link">
                             <img src="assets/images/avatar.jpg" alt="Avatar"
                                 style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover;">
-                        </a></li>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="user-dropdown-menu">
+                            <a href="pages/user/profile.html">
+                                <i class="fas fa-user"></i> Hồ sơ
+                            </a>
+                            <a href="pages/user/settings.html">
+                                <i class="fas fa-cog"></i> Cài đặt
+                            </a>
+                            <a href="pages/auth.html">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -477,7 +491,9 @@
                     <h3>Liên kết</h3>
                     <ul class="footer-links">
                         <li><a href="index.html">Trang chủ</a></li>
-                        <li><a href="pages/products.html">Sản phẩm</a></li>
+                        <li><a href="pages/products.html">Sách</a></li>
+                        <li><a href="pages/categories.html">Thể loại</a></li>
+                        <li><a href="pages/authors.html">Tác giả</a></li>
                         <li><a href="pages/compare.html">So sánh</a></li>
                         <li><a href="pages/contact.html">Liên hệ</a></li>
                     </ul>
